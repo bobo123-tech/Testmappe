@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hair & Style - Ihr Friseursalon</title>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    :root {
+        --primary: #d4a574;
+        --dark: #2c2420;
+        --light: #f9f6f2;
+        --accent: #8b6f47;
+    }
+
+    body {
+        background: var(--light);
+        color: var(--dark);
+        line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+        background: var(--dark);
+        padding: 20px 5%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+        color: var(--primary);
+        font-size: 28px;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 30px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: var(--primary);
+    }
+
+    .burger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+    }
+
+    .burger div {
+        width: 25px;
+        height: 3px;
+        background: white;
+    }
+
+    /* Hero Section */
+    .hero {
+        height: 100vh;
+        background: linear-gradient(rgba(44,36,32,0.7), rgba(44,36,32,0.7)), 
+                    url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1600') center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+    }
+
+    .hero-content h1 {
+        font-size: 56px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+    }
+
+    .hero-content p {
+        font-size: 20px;
+        margin-bottom: 30px;
+        font-weight: 300;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 15px 40px;
+        background: var(--primary);
+        color: var(--dark);
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn:hover {
+        background: var(--accent);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Sections */
+    section {
+        padding: 80px 5%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 15px;
+        color: var(--dark);
+    }
+
+    .section-subtitle {
+        text-align: center;
+        color: var(--accent);
+        margin-bottom: 50px;
+        font-size: 18px;
+    }
+
+    /* Services */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    .service-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .service-icon {
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: var(--dark);
+    }
+
+    .price {
+        color: var(--primary);
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 15px;
+    }
+
+    /* About */
+    .about {
+        background: white;
+    }
+
+    .about-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        align-items: center;
+    }
+
+    .about-img {
+        width: 100%;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .about-text h3 {
+        font-size: 32px;
+        margin-bottom: 20px;
+        color: var(--dark);
+    }
+
+    .about-text p {
+        margin-bottom: 15px;
+        color: #555;
+    }
+
+    .features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .feature {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .feature-icon {
+        color: var(--primary);
+        font-size: 24px;
+    }
+
+    /* Gallery */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .gallery-item {
+        overflow: hidden;
+        border-radius: 15px;
+        height: 250px;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.1);
+    }
+
+    /* Team */
+    .team {
+        background: white;
+    }
+
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+    }
+
+    .team-member {
+        text-align: center;
+    }
+
+    .team-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 5px solid var(--primary);
+    }
+
+    .team-member h3 {
+        font-size: 22px;
+        margin-bottom: 5px;
+    }
+
+    .team-member p {
+        color: var(--accent);
+    }
+
+    /* Testimonials */
+    .testimonials {
+        background: var(--dark);
+        color: white;
+    }
+
+    .testimonials .section-title {
+        color: white;
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .testimonial-card {
+        background: rgba(255,255,255,0.1);
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    .stars {
+        color: var(--primary);
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    .testimonial-author {
+        margin-top: 15px;
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    /* Contact */
+    .contact-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .info-item {
+        display: flex;
+        gap: 15px;
+        align-items: start;
+    }
+
+    .info-icon {
+        font-size: 24px;
+        color: var(--primary);
+    }
+
+    .info-item h4 {
+        margin-bottom: 5px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    .contact-form textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    /* Footer */
+    footer {
+        background: var(--dark);
+        color: white;
+        padding: 50px 5% 20px;
+        text-align: center;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+    }
+
+    .social-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+        color: var(--primary);
+    }
+
+    .footer-bottom {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        nav ul {
+            position: fixed;
+            top: 70px;
+            left: -100%;
+            width: 100%;
+            background: var(--dark);
+            flex-direction: column;
+            padding: 30px;
+            transition: left 0.3s;
+        }
+
+        nav ul.active {
+            left: 0;
+        }
+
+        .burger {
+            display: flex;
+        }
+
+        .hero-content h1 {
+            font-size: 36px;
+        }
+
+        .about-content,
+        .contact-content {
+            grid-template-columns: 1fr;
+        }
+
+        .gallery-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .section-title {
+            font-size: 30px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .gallery-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="logo">✂ Hair & Style</div>
+    <nav>
+        <ul id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Leistungen</a></li>
+            <li><a href="#about">Über uns</a></li>
+            <li><a href="#gallery">Galerie</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+    </nav>
+    <div class="burger" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Ihr Look. Unsere Leidenschaft.</h1>
+        <p>Professionelle Haarpflege in entspannter Atmosphäre</p>
+        <a href="#contact" class="btn">Termin buchen</a>
+    </div>
+</section>
+
+<!-- Services -->
+<section id="services">
+    <h2 class="section-title">Unsere Leistungen</h2>
+    <p class="section-subtitle">Für jeden Style das passende Angebot</p>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="service-icon">💇‍♀️</div>
+            <h3>Damenhaarschnitt</h3>
+            <p>Waschen, Schneiden, Föhnen</p>
+            <div class="price">ab 45€</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">💇‍♂️</div>
+            <h3>Herrenhaarschnitt</h3>
+            <p>Klassisch oder modern</p>
+            <div class="price">ab 30€</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🎨</div>
+            <h3>Coloration</h3>
+            <p>Farbe, Strähnen, Balayage</p>
+            <div class="price">ab 65€</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">✨</div>
+            <h3>Styling</h3>
+            <p>Für besondere Anlässe</p>
+            <div class="price">ab 40€</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🧴</div>
+            <h3>Haarpflege</h3>
+            <p>Kur & Behandlungen</p>
+            <div class="price">ab 25€</div>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">👰</div>
+            <h3>Brautstyling</h3>
+            <p>Ihr perfekter Tag</p>
+            <div class="price">ab 120€</div>
+        </div>
+    </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+    <div class="about-content">
+        <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600" alt="Salon" class="about-img">
+        <div class="about-text">
+            <h3>Über uns</h3>
+            <p>Seit über 15 Jahren stehen wir für erstklassige Haarpflege und individuelle Beratung. Unser Team aus erfahrenen Stylisten sorgt dafür, dass Sie sich rundum wohlfühlen.</p>
+            <p>Wir verwenden ausschließlich hochwertige Produkte und bleiben immer auf dem neuesten Stand der Trends und Techniken.</p>
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>15+ Jahre Erfahrung</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Premium Produkte</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Individuelle Beratung</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✓</span>
+                    <span>Faire Preise</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Gallery -->
+<section id="gallery">
+    <h2 class="section-title">Galerie</h2>
+    <p class="section-subtitle">Einblicke in unsere Arbeit</p>
+    <div class="gallery-grid">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400" alt="Style 1">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400" alt="Style 2">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400" alt="Style 3">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400" alt="Style 4">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400" alt="Style 5">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400" alt="Style 6">
+        </div>
+    </div>
+</section>
+
+<!-- Team -->
+<section class="team" id="team">
+    <h2 class="section-title">Unser Team</h2>
+    <p class="section-subtitle">Lernen Sie unsere Stylisten kennen</p>
+    <div class="team-grid">
+        <div class="team-member">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300" alt="Team 1" class="team-img">
+            <h3>Sarah Meier</h3>
+            <p>Salon-Inhaberin</p>
+        </div>
+        <div class="team-member">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300" alt="Team 2" class="team-img">
+            <h3>Max Schmidt</h3>
+            <p>Senior Stylist</p>
+        </div>
+        <div class="team-member">
+            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=300" alt="Team 3" class="team-img">
+            <h3>Lisa Wagner</h3>
+            <p>Coloristin</p>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+    <h2 class="section-title">Was unsere Kunden sagen</h2>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Der beste Friseur in der Stadt! Immer zufrieden mit dem Ergebnis."</p>
+            <div class="testimonial-author">- Anna K.</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Sehr professionell und freundlich. Kann ich nur empfehlen!"</p>
+            <div class="testimonial-author">- Thomas B.</div>
+        </div>
+        <div class="testimonial-card">
+            <div class="stars">★★★★★</div>
+            <p>"Tolle Atmosphäre und super Beratung. Immer wieder gerne!"</p>
+            <div class="testimonial-author">- Julia S.</div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+    <h2 class="section-title">Kontakt & Termine</h2>
+    <p class="section-subtitle">Wir freuen uns auf Sie</p>
+    <div class="contact-content">
+        <div class="contact-info">
+            <div class="info-item">
+                <span class="info-icon">📍</span>
+                <div>
+                    <h4>Adresse</h4>
+                    <p>Musterstraße 123<br>12345 Musterstadt</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📞</span>
+                <div>
+                    <h4>Telefon</h4>
+                    <p>+49 123 456789</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">✉️</span>
+                <div>
+                    <h4>E-Mail</h4>
+                    <p>info@hairandstyle.de</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🕐</span>
+                <div>
+                    <h4>Öffnungszeiten</h4>
+                    <p>Mo-Fr: 9:00 - 19:00<br>Sa: 9:00 - 16:00</p>
+                </div>
+            </div>
+        </div>
+        <form class="contact-form" onsubmit="submitForm(event)">
+            <input type="text" placeholder="Ihr Name" required>
+            <input type="email" placeholder="Ihre E-Mail" required>
+            <input type="tel" placeholder="Ihre Telefonnummer">
+            <select required>
+                <option value="">Leistung auswählen</option>
+                <option value="damen">Damenhaarschnitt</option>
+                <option value="herren">Herrenhaarschnitt</option>
+                <option value="farbe">Coloration</option>
+                <option value="styling">Styling</option>
+            </select>
+            <textarea placeholder="Ihre Nachricht" required></textarea>
+            <button type="submit" class="btn">Nachricht senden</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="logo">✂ Hair & Style</div>
+        <div class="social-links">
+            <a href="#">📘</a>
+            <a href="#">📷</a>
+            <a href="#">🐦</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Hair & Style. Alle Rechte vorbehalten.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('navMenu').classList.toggle('active');
+    }
+
+    function submitForm(e) {
+        e.preventDefault();
+        alert('Vielen Dank für Ihre Nachricht! Wir melden uns bald bei Ihnen.');
+        e.target.reset();
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+            document.getElementById('navMenu').classList.remove('active');
+        });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.padding = '10px 5%';
+        } else {
+            header.style.padding = '20px 5%';
+        }
+    });
+</script>
+
+</body>
+</html>

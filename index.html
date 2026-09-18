@@ -3,407 +3,360 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gabi — Kunst &amp; Fotografie</title>
-<meta name="description" content="Gabi — Kunst & Fotografie. Collagen, Acryl-Malerei und mehr in einer kuratierten Sammlung.">
+<title>Gabi – Kunst & Fotografie | Galerie & Verkauf</title>
+<meta name="description" content="Gabi – Kunst & Fotografie. Originale Collagen und Acryl-Malerei zum Kauf.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   RESET & BASIS
-============================================================ */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-    --ink:#161310;
-    --ink-soft:#3a352e;
-    --paper:#f6f3ec;
-    --paper-2:#efebe0;
-    --card:#fbf9f3;
-    --line:#ddd6c4;
-    --muted:#8a8171;
-    --accent:#8a3324;
-    --accent-soft:#c98a56;
-    --gold:#b5924f;
-    --serif:'Fraunces',serif;
-    --sans:'Inter',sans-serif;
-    --ease:cubic-bezier(.16,1,.3,1);
+    --gold:#c8964f;
+    --gold-dark:#a97b3c;
+    --dark:#211c17;
+    --dark-2:#2c2620;
+    --bg:#f9f6f0;
+    --card:#ffffff;
+    --border:#e9e1d0;
+    --text:#2c2620;
+    --muted:#84796a;
+    --sold:#a24a3d;
+    --radius:10px;
 }
-html{scroll-behavior:smooth;}
-body{
-    font-family:var(--sans);
-    background:var(--paper);
-    color:var(--ink);
-    line-height:1.7;
-    font-weight:300;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-weight:400;}
+h1,h2,h3,h4{font-family:'Poppins',sans-serif;font-weight:700;line-height:1.25;color:var(--dark);}
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;display:block;}
 button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit;}
-input,select,textarea{font-family:var(--sans);}
+input,select,textarea{font-family:inherit;}
 .hidden{display:none!important;}
-.container{max-width:1280px;margin:0 auto;padding:0 6%;}
-::selection{background:var(--accent);color:#fff;}
+.container{max-width:1240px;margin:0 auto;padding:0 5%;}
 
-/* Scrollbar */
-::-webkit-scrollbar{width:10px;}
-::-webkit-scrollbar-track{background:var(--paper);}
-::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px;}
-::-webkit-scrollbar-thumb:hover{background:var(--muted);}
+/* ===== TOPBAR ===== */
+.topbar{background:var(--dark);color:rgba(255,255,255,.75);font-size:13px;padding:9px 0;}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;}
+.topbar span{color:var(--gold);}
+@media(max-width:768px){.topbar .right{display:none;}.topbar .container{justify-content:center;}}
 
-h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.15;color:var(--ink);}
-em{font-style:italic;color:var(--accent);}
-
-/* ============================================================
-   CUSTOM CURSOR
-============================================================ */
-#cursor{
-    position:fixed;top:0;left:0;width:14px;height:14px;border-radius:50%;
-    background:var(--accent);pointer-events:none;z-index:9999;
-    transform:translate(-50%,-50%);transition:width .3s var(--ease),height .3s var(--ease),background .3s;
-    mix-blend-mode:multiply;
-}
-#cursor.big{width:56px;height:56px;background:rgba(138,51,36,.15);}
-@media(pointer:coarse){ #cursor{display:none;} }
-
-/* ============================================================
-   LOADER
-============================================================ */
-#loader{
-    position:fixed;inset:0;background:var(--ink);z-index:10000;
-    display:flex;align-items:center;justify-content:center;
-    transition:opacity .8s var(--ease), visibility .8s;
-}
-#loader.done{opacity:0;visibility:hidden;}
-.loader-logo{font-family:var(--serif);font-style:italic;font-size:32px;color:var(--paper);letter-spacing:2px;
-    opacity:0;animation:loaderFade 1.6s var(--ease) forwards;}
-@keyframes loaderFade{0%{opacity:0;transform:translateY(10px);}30%{opacity:1;transform:translateY(0);}70%{opacity:1;}100%{opacity:0;}}
-
-/* Scroll progress */
-#progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:1200;width:0%;transition:width .1s linear;}
-
-/* ============================================================
-   HEADER
-============================================================ */
-header.site{position:sticky;top:0;z-index:500;background:rgba(246,243,236,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-.header-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 6%;}
-.logo{display:flex;flex-direction:column;line-height:1;}
-.logo-title{font-family:var(--serif);font-style:italic;font-weight:500;font-size:26px;letter-spacing:.5px;}
-.logo-sub{font-size:9px;letter-spacing:3px;color:var(--muted);font-weight:600;margin-top:5px;text-transform:uppercase;}
-nav.main-nav{display:flex;gap:44px;align-items:center;}
-.nav-link{font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;position:relative;padding:4px 0;color:var(--ink-soft);transition:color .3s;}
-.nav-link::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--accent);transition:width .35s var(--ease);}
-.nav-link:hover,.nav-link.active{color:var(--ink);}
-.nav-link:hover::after,.nav-link.active::after{width:100%;}
-.btn-admin{
-    font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
-    border:1px solid var(--ink);border-radius:40px;padding:11px 24px;transition:.35s var(--ease);
-}
-.btn-admin:hover{background:var(--ink);color:var(--paper);}
+/* ===== HEADER ===== */
+header.site{position:sticky;top:0;z-index:500;background:rgba(249,246,240,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 5%;}
+.logo{display:flex;flex-direction:column;line-height:1.1;}
+.logo-title{font-size:24px;font-weight:800;letter-spacing:.5px;}
+.logo-title span{color:var(--gold);}
+.logo-sub{font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:600;margin-top:2px;}
+nav.main-nav{display:flex;gap:6px;align-items:center;}
+.nav-link{font-size:14px;font-weight:600;padding:10px 18px;border-radius:30px;transition:.25s;}
+.nav-link:hover{background:rgba(0,0,0,.05);}
+.nav-link.active{background:var(--dark);color:#fff;}
+.btn-admin{font-size:12px;font-weight:600;letter-spacing:1px;border:1.5px dashed var(--muted);border-radius:30px;padding:10px 20px;transition:.25s;}
+.btn-admin:hover{border-color:var(--gold);color:var(--gold-dark);border-style:solid;}
 .burger-menu{display:none;flex-direction:column;gap:5px;padding:8px;}
-.burger-menu span{width:22px;height:1px;background:var(--ink);}
+.burger-menu span{width:24px;height:2px;background:var(--dark);}
 
-/* ============================================================
-   VIEWS / SECTIONS
-============================================================ */
+/* ===== VIEWS ===== */
 .view{display:none;}
-.view.active{display:block;animation:viewIn .6s var(--ease);}
-@keyframes viewIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+.view.active{display:block;animation:fadeIn .5s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-.eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--accent);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;}
-.eyebrow::before{content:'';width:26px;height:1px;background:var(--accent);}
-.page-head{padding:90px 0 40px;}
-.page-title{font-size:clamp(38px,5vw,60px);font-weight:400;}
-.page-subtitle{color:var(--muted);font-size:16px;max-width:600px;margin-top:16px;font-style:italic;font-family:var(--serif);}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold-dark);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--gold);}
+.page-head{padding:60px 0 30px;}
+.page-title{font-size:44px;margin-bottom:12px;}
+.page-subtitle{color:var(--muted);font-size:16px;max-width:620px;}
 
-.section{padding:90px 0;}
-.section-head{margin-bottom:56px;max-width:640px;}
-.section-head h2{font-size:clamp(30px,3.5vw,42px);font-weight:400;}
+.section{padding:80px 0;}
+.section-head{margin-bottom:44px;max-width:640px;}
+.section-head h2{font-size:34px;}
+.section-head.center{margin:0 auto 50px;text-align:center;}
+.section-head.center .eyebrow{justify-content:center;}
 
-/* Reveal animation */
-.reveal{opacity:0;transform:translateY(36px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal.d1{transition-delay:.12s;}
-.reveal.d2{transition-delay:.24s;}
-.reveal.d3{transition-delay:.36s;}
+/* ===== BUTTONS ===== */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;padding:15px 32px;border-radius:30px;border:1.5px solid var(--dark);transition:.3s;white-space:nowrap;}
+.btn-dark{background:var(--dark);color:#fff;}
+.btn-dark:hover{background:var(--gold);border-color:var(--gold);color:var(--dark);}
+.btn-gold{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+.btn-gold:hover{background:var(--gold-dark);border-color:var(--gold-dark);}
+.btn-outline{background:transparent;color:var(--dark);}
+.btn-outline:hover{background:var(--dark);color:#fff;}
+.btn-block{width:100%;justify-content:center;}
+.btn-sm{padding:11px 20px;font-size:13px;}
 
-/* Buttons */
-.btn{
-    display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;
-    letter-spacing:2px;text-transform:uppercase;padding:17px 34px;border-radius:40px;
-    border:1px solid var(--ink);transition:.4s var(--ease);
+/* ===== HERO ===== */
+.hero{padding:70px 0 0;overflow:hidden;}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:50px;align-items:center;padding-bottom:70px;}
+.hero-title{font-size:clamp(36px,4.5vw,54px);margin-bottom:20px;}
+.hero-title em{color:var(--gold-dark);font-style:normal;}
+.hero-text{color:var(--muted);font-size:17px;max-width:480px;margin-bottom:34px;}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+.hero-stats{display:flex;gap:44px;margin-top:56px;flex-wrap:wrap;}
+.hero-stats strong{display:block;font-family:'Poppins',sans-serif;font-size:30px;color:var(--gold-dark);}
+.hero-stats span{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+.hero-visual{position:relative;}
+.hero-img-main{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius);box-shadow:0 30px 60px rgba(33,28,23,.18);}
+.hero-badge{
+    position:absolute;bottom:-24px;left:-24px;background:#fff;border-radius:var(--radius);
+    padding:20px 24px;box-shadow:0 20px 40px rgba(33,28,23,.15);display:flex;align-items:center;gap:14px;
 }
-.btn-fill{background:var(--ink);color:var(--paper);}
-.btn-fill:hover{background:var(--accent);border-color:var(--accent);}
-.btn-line{background:transparent;color:var(--ink);}
-.btn-line:hover{background:var(--ink);color:var(--paper);}
-.link-arrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:3px;}
-.link-arrow span{transition:transform .3s var(--ease);}
-.link-arrow:hover span{transform:translateX(6px);}
+.hero-badge .dot{width:44px;height:44px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.hero-badge strong{display:block;font-size:15px;}
+.hero-badge span{font-size:12px;color:var(--muted);}
 
-/* ============================================================
-   HERO (HOME)
-============================================================ */
-.hero{padding:70px 0 60px;}
-.hero-title{font-size:clamp(46px,7vw,92px);font-weight:400;max-width:900px;}
-.hero-title .line{display:block;overflow:hidden;}
-.hero-title .line span{display:inline-block;transform:translateY(110%);animation:lineUp 1s var(--ease) forwards;}
-.hero-title .line:nth-child(1) span{animation-delay:.15s;}
-.hero-title .line:nth-child(2) span{animation-delay:.3s;}
-@keyframes lineUp{to{transform:translateY(0);}}
-.hero-sub{margin-top:26px;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--ink-soft);max-width:500px;}
-.hero-btns{display:flex;gap:18px;margin-top:42px;flex-wrap:wrap;}
+/* ===== KATEGORIEN (services-style) ===== */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;}
+.cat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:36px 30px;transition:.3s;cursor:pointer;}
+.cat-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(33,28,23,.09);border-color:var(--gold);}
+.cat-icon{font-size:38px;margin-bottom:20px;}
+.cat-card h3{font-size:21px;margin-bottom:8px;}
+.cat-card p{color:var(--muted);font-size:14px;margin-bottom:18px;}
+.cat-arrow{color:var(--gold-dark);font-weight:600;font-size:13px;}
 
-/* Ticker / Marquee */
-.ticker-wrap{margin-top:80px;overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0;}
-.ticker-track{display:flex;gap:22px;width:max-content;animation:tickerScroll 40s linear infinite;}
-.ticker-wrap:hover .ticker-track{animation-play-state:paused;}
-@keyframes tickerScroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.ticker-item{width:180px;height:230px;flex-shrink:0;border-radius:2px;overflow:hidden;background:var(--paper-2);}
-.ticker-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(35%);transition:filter .4s;}
-.ticker-item:hover img{filter:grayscale(0%);}
-
-/* Kategorien (Home) */
-.cat-list{display:flex;flex-direction:column;}
-.cat-row{
-    display:flex;align-items:center;justify-content:space-between;padding:34px 0;
-    border-bottom:1px solid var(--line);cursor:pointer;transition:.35s var(--ease);position:relative;
-}
-.cat-row:first-child{border-top:1px solid var(--line);}
-.cat-row:hover{padding-left:16px;}
-.cat-row-left{display:flex;align-items:baseline;gap:30px;}
-.cat-num{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:15px;}
-.cat-name{font-family:var(--serif);font-size:clamp(24px,3vw,36px);font-weight:400;transition:color .3s;}
-.cat-row:hover .cat-name{color:var(--accent);}
-.cat-meta{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
-.cat-preview{
-    position:absolute;top:50%;right:60px;transform:translateY(-50%) scale(.85);width:90px;height:110px;
-    border-radius:3px;overflow:hidden;opacity:0;transition:.4s var(--ease);pointer-events:none;box-shadow:0 20px 40px rgba(0,0,0,.15);
-}
-.cat-row:hover .cat-preview{opacity:1;transform:translateY(-50%) scale(1);}
-.cat-preview img{width:100%;height:100%;object-fit:cover;}
-
-/* Latest works grid (shared style used in gallery too) */
-.work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:34px 28px;}
-.work-card{cursor:pointer;position:relative;}
-.work-thumb-wrap{position:relative;overflow:hidden;border-radius:2px;background:var(--paper-2);aspect-ratio:4/5;}
-.work-thumb{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease);}
+/* ===== WORK GRID (Gallery cards) ===== */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:28px;}
+.work-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;cursor:pointer;transition:.3s;position:relative;}
+.work-card:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(33,28,23,.12);}
+.work-thumb-wrap{position:relative;aspect-ratio:4/5;background:var(--border);overflow:hidden;}
+.work-thumb{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
 .work-card:hover .work-thumb{transform:scale(1.06);}
-.work-thumb-empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;letter-spacing:1px;text-transform:uppercase;}
-.work-overlay{
-    position:absolute;inset:0;background:linear-gradient(to top,rgba(22,19,16,.75) 0%,rgba(22,19,16,0) 55%);
-    opacity:0;transition:opacity .4s var(--ease);
+.work-thumb-empty{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;}
+.fav-btn{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--sold);z-index:2;transition:.2s;box-shadow:0 4px 10px rgba(0,0,0,.1);}
+.fav-btn:hover{transform:scale(1.1);}
+.sold-ribbon{
+    position:absolute;top:16px;left:-34px;background:var(--sold);color:#fff;font-size:11px;font-weight:700;
+    letter-spacing:1px;text-transform:uppercase;padding:6px 40px;transform:rotate(-40deg);z-index:2;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
 }
-.work-card:hover .work-overlay{opacity:1;}
-.fav-btn{
-    position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;
-    border:1px solid rgba(255,255,255,.7);background:rgba(255,255,255,.1);backdrop-filter:blur(4px);
-    display:flex;align-items:center;justify-content:center;color:#fff;font-size:15px;z-index:2;transition:.3s;
-}
-.fav-btn:hover{background:#fff;color:var(--accent);}
-.work-caption{
-    position:absolute;left:0;right:0;bottom:0;padding:20px;color:#fff;
-    transform:translateY(12px);opacity:0;transition:.4s var(--ease);
-}
-.work-card:hover .work-caption{transform:translateY(0);opacity:1;}
-.work-caption h4{color:#fff;font-size:19px;font-weight:400;margin-bottom:4px;}
-.work-caption span{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.75);}
+.work-info{padding:18px 20px;}
+.work-info h4{font-size:17px;margin-bottom:4px;}
+.work-meta{font-size:12px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px;}
+.work-price-row{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border);}
+.price-tag{font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:var(--gold-dark);}
+.price-tag.sold-text{color:var(--muted);text-decoration:line-through;font-size:15px;}
+.status-pill{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;}
+.status-pill.available{background:rgba(200,150,79,.15);color:var(--gold-dark);}
+.status-pill.sold{background:rgba(162,74,61,.12);color:var(--sold);}
 
-.empty-hint{border:1px dashed var(--line);border-radius:6px;padding:60px 30px;text-align:center;color:var(--muted);font-style:italic;font-family:var(--serif);}
-.empty-hint a{color:var(--accent);font-style:normal;font-weight:600;border-bottom:1px solid var(--accent);}
+.empty-hint{border:1.5px dashed var(--border);border-radius:var(--radius);padding:60px 20px;text-align:center;color:var(--muted);}
+.empty-hint a{color:var(--gold-dark);font-weight:600;}
 
-/* ============================================================
-   GALERIE
-============================================================ */
-.gallery-toolbar{display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between;margin-bottom:50px;padding-bottom:26px;border-bottom:1px solid var(--line);}
-.search-box{display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--ink);padding:8px 2px;min-width:240px;flex:1;max-width:380px;}
-.search-box input{border:none;outline:none;background:none;flex:1;font-size:15px;font-family:var(--serif);font-style:italic;}
-.search-box svg{width:16px;height:16px;stroke:var(--muted);}
-.toolbar-right{display:flex;gap:14px;align-items:center;flex-wrap:wrap;}
-.pill-btn{display:flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:40px;padding:11px 20px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:.3s;}
-.pill-btn.active{background:var(--ink);color:var(--paper);border-color:var(--ink);}
-.pill-btn:hover{border-color:var(--accent);}
-select.pill-select{border:1px solid var(--line);border-radius:40px;padding:11px 20px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:var(--card);}
-.result-count{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;}
+/* ===== ABOUT TEASER ===== */
+.about{background:var(--card);}
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;align-items:center;}
+.about-img{width:100%;border-radius:var(--radius);box-shadow:0 20px 50px rgba(33,28,23,.12);aspect-ratio:4/5;object-fit:cover;}
+.about-text h2{font-size:32px;margin-bottom:20px;}
+.about-text p{color:var(--muted);margin-bottom:16px;}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;margin:26px 0 32px;}
+.about-features li{list-style:none;display:flex;gap:10px;align-items:center;font-size:14px;}
+.about-features li::before{content:'✓';width:24px;height:24px;border-radius:50%;background:var(--gold);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;}
 
-.gallery-layout{display:grid;grid-template-columns:240px 1fr;gap:60px;padding-bottom:120px;}
-.sidebar-all{font-family:var(--serif);font-size:18px;font-style:italic;color:var(--ink);padding-bottom:14px;border-bottom:1px solid var(--ink);margin-bottom:30px;cursor:pointer;display:inline-block;}
-.sidebar-all.inactive{color:var(--muted);border-color:var(--line);}
-.cat-group{margin-bottom:32px;}
-.cat-group-title{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;cursor:pointer;color:var(--ink-soft);transition:.3s;}
-.cat-group-title:hover{color:var(--accent);}
+/* ===== GALLERY TOOLBAR / LAYOUT ===== */
+.gallery-toolbar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-bottom:34px;}
+.search-box{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:30px;padding:12px 20px;flex:1;min-width:220px;max-width:380px;}
+.search-box input{border:none;outline:none;background:none;flex:1;font-size:14px;}
+.toolbar-right{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.pill-btn{display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:30px;background:var(--card);padding:11px 18px;font-size:13px;font-weight:600;transition:.25s;}
+.pill-btn.active{background:var(--dark);color:#fff;border-color:var(--dark);}
+.pill-btn:hover{border-color:var(--gold);}
+select.pill-select{border:1px solid var(--border);border-radius:30px;background:var(--card);padding:11px 18px;font-size:13px;font-weight:600;}
+.result-count{font-size:12px;color:var(--muted);white-space:nowrap;}
+
+.gallery-layout{display:grid;grid-template-columns:220px 1fr;gap:50px;padding-bottom:100px;}
+.sidebar-all{font-weight:700;font-size:16px;color:var(--gold-dark);padding-bottom:10px;border-bottom:2px solid var(--gold-dark);display:inline-block;margin-bottom:24px;cursor:pointer;}
+.sidebar-all.inactive{color:var(--text);border-color:transparent;}
+.cat-group{margin-bottom:26px;}
+.cat-group-title{font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;cursor:pointer;}
+.cat-group-title:hover{color:var(--gold-dark);}
 .sub-list{list-style:none;}
-.sub-list li{font-size:14px;font-family:var(--serif);color:var(--muted);padding:8px 0 8px 14px;cursor:pointer;border-left:1px solid var(--line);transition:.25s;}
-.sub-list li:hover{color:var(--ink);border-color:var(--muted);}
-.sub-list li.active{color:var(--accent);border-color:var(--accent);font-style:italic;}
+.sub-list li{font-size:14px;color:var(--muted);padding:6px 0;cursor:pointer;transition:.2s;}
+.sub-list li:hover{color:var(--text);}
+.sub-list li.active{color:var(--gold-dark);font-weight:600;}
 .sidebar-empty{font-size:13px;color:var(--muted);font-style:italic;}
 
-.empty-state{border:1px dashed var(--line);border-radius:8px;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:50px;}
-.badge-dashed{border:1px dashed var(--muted);border-radius:30px;padding:7px 18px;font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:700;margin-bottom:24px;text-transform:uppercase;}
-.empty-state h3{font-size:26px;margin-bottom:10px;font-weight:400;}
-.empty-state p{color:var(--muted);font-style:italic;font-family:var(--serif);}
+.empty-state{border:1.5px dashed var(--border);border-radius:var(--radius);min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;}
+.badge-dashed{border:1.5px dashed var(--muted);border-radius:20px;padding:6px 16px;font-size:11px;letter-spacing:2px;color:var(--muted);font-weight:700;margin-bottom:20px;}
+.empty-state h3{font-size:24px;margin-bottom:10px;}
+.empty-state p{color:var(--muted);}
 
-/* ============================================================
-   INFO SEITE
-============================================================ */
-.info-hero{display:grid;grid-template-columns:1.2fr 1fr;gap:70px;align-items:center;padding:60px 0 70px;}
-.info-quote{font-family:var(--serif);font-size:clamp(22px,2.4vw,30px);font-style:italic;color:var(--ink-soft);line-height:1.6;}
-.portrait-frame{aspect-ratio:4/5;border:1px solid var(--line);padding:14px;background:var(--card);}
-.portrait-box{width:100%;height:100%;background:var(--paper-2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;}
-.portrait-box img{width:100%;height:100%;object-fit:cover;}
-.portrait-box p{color:var(--muted);font-style:italic;font-family:var(--serif);font-size:14px;}
+/* ===== TESTIMONIALS ===== */
+.testimonials{background:var(--dark);color:#fff;}
+.testimonials .section-head h2{color:#fff;}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;}
+.testi-card{background:rgba(255,255,255,.06);padding:32px;border-radius:var(--radius);}
+.stars{color:var(--gold);margin-bottom:14px;font-size:16px;letter-spacing:2px;}
+.testi-card p{color:rgba(255,255,255,.85);margin-bottom:18px;font-size:15px;}
+.testi-author{font-weight:700;color:var(--gold);font-size:14px;}
+.testi-author span{display:block;font-weight:400;color:rgba(255,255,255,.5);font-size:12px;margin-top:2px;}
 
-.info-numbered{padding:70px 0 110px;}
-.numbered-row{display:grid;grid-template-columns:80px 1fr;gap:30px;padding:36px 0;border-top:1px solid var(--line);}
-.numbered-row:last-child{border-bottom:1px solid var(--line);}
-.numbered-row .num{font-family:var(--serif);font-style:italic;font-size:26px;color:var(--accent-soft);}
-.numbered-row h3{font-size:20px;font-weight:500;margin-bottom:10px;}
-.numbered-row p{color:var(--muted);font-size:15px;max-width:640px;}
+/* ===== CTA ===== */
+.cta{background:linear-gradient(135deg,var(--dark),#332c22);text-align:center;color:#fff;padding:90px 0;}
+.cta h2{color:#fff;font-size:36px;margin-bottom:16px;}
+.cta p{color:rgba(255,255,255,.7);margin-bottom:30px;font-size:16px;}
+.cta-links{display:flex;gap:26px;justify-content:center;margin-top:26px;flex-wrap:wrap;}
+.cta-links a{color:var(--gold);font-weight:600;font-size:15px;}
 
-/* ============================================================
-   VERWALTUNG
-============================================================ */
-.admin-login{max-width:440px;margin:110px auto;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:56px 44px;text-align:center;}
-.admin-login h2{font-size:28px;margin-bottom:12px;font-weight:400;}
-.admin-login p{color:var(--muted);font-size:14px;margin-bottom:26px;font-style:italic;font-family:var(--serif);}
-.uline-input{width:100%;border:none;border-bottom:1px solid var(--line);background:none;padding:14px 4px;margin-bottom:24px;font-size:15px;text-align:center;transition:.3s;}
-.uline-input:focus{outline:none;border-color:var(--accent);}
-.admin-dash{padding:60px 0 120px;}
-.admin-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:14px;flex-wrap:wrap;gap:16px;border-bottom:1px solid var(--line);padding-bottom:30px;}
-.admin-tabs{display:flex;gap:36px;margin:34px 0 40px;border-bottom:1px solid var(--line);flex-wrap:wrap;}
-.admin-tab{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:0 0 16px;color:var(--muted);border-bottom:2px solid transparent;transition:.3s;}
-.admin-tab.active{color:var(--ink);border-color:var(--accent);}
+/* ===== FAQ ===== */
+.faq-list{max-width:800px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{width:100%;text-align:left;padding:24px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:17px;font-weight:600;}
+.faq-q::after{content:'+';font-size:26px;color:var(--gold-dark);transition:transform .3s;}
+.faq-item.open .faq-q::after{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:var(--muted);}
+.faq-a p{padding-bottom:24px;font-size:14px;}
+
+/* ===== CONTACT ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;}
+.contact-info h3{font-size:26px;margin-bottom:26px;}
+.info-block{display:flex;gap:16px;margin-bottom:26px;}
+.info-icon{width:44px;height:44px;flex-shrink:0;border-radius:50%;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;}
+.info-block h4{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:4px;font-weight:700;}
+.info-block p{font-size:15px;}
+
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:40px;}
+.form-card h3{font-size:22px;margin-bottom:6px;}
+.form-card>p{color:var(--muted);font-size:13px;margin-bottom:26px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;font-weight:700;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 15px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:var(--bg);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--gold);}
+.form-group textarea{min-height:100px;resize:vertical;}
+.form-check{display:flex;gap:9px;align-items:flex-start;font-size:12px;color:var(--muted);margin:6px 0 20px;}
+.form-check input{margin-top:3px;accent-color:var(--gold);}
+.form-check a{color:var(--gold-dark);text-decoration:underline;}
+.form-success{display:none;text-align:center;padding:50px 10px;}
+.form-success .check{width:60px;height:60px;border-radius:50%;background:var(--gold);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;}
+
+/* ===== LEGAL PAGES ===== */
+.legal-content{max-width:800px;margin:0 auto;padding-bottom:100px;}
+.legal-content h3{font-size:20px;margin:34px 0 12px;}
+.legal-content p{color:var(--muted);margin-bottom:10px;font-size:15px;}
+
+/* ===== ADMIN ===== */
+.admin-login{max-width:420px;margin:100px auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:50px 40px;text-align:center;}
+.admin-login h2{font-size:26px;margin-bottom:10px;}
+.admin-login p{color:var(--muted);font-size:14px;margin-bottom:24px;}
+.admin-login input{width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:6px;margin-bottom:16px;font-size:15px;}
+.admin-dash{padding:50px 0 100px;}
+.admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:16px;}
+.admin-tabs{display:flex;gap:10px;margin:30px 0;flex-wrap:wrap;}
+.admin-tab{font-weight:600;font-size:13px;padding:11px 22px;border-radius:30px;border:1px solid var(--border);background:var(--card);}
+.admin-tab.active{background:var(--dark);color:#fff;border-color:var(--dark);}
 .admin-panel{display:none;}
-.admin-panel.active{display:block;animation:viewIn .5s var(--ease);}
-.admin-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px;flex-wrap:wrap;gap:14px;}
+.admin-panel.active{display:block;}
+.admin-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:14px;}
 
-.admin-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);}
-.admin-table th,.admin-table td{padding:16px 18px;text-align:left;font-size:14px;border-bottom:1px solid var(--line);}
-.admin-table th{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--paper-2);}
-.admin-table img{width:46px;height:58px;object-fit:cover;border-radius:2px;}
+.admin-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.admin-table th,.admin-table td{padding:14px 16px;text-align:left;font-size:14px;border-bottom:1px solid var(--border);}
+.admin-table th{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);background:var(--bg);}
+.admin-table img{width:46px;height:56px;object-fit:cover;border-radius:4px;}
 .admin-table tr:last-child td{border-bottom:none;}
-.admin-table tr:hover td{background:var(--paper-2);}
-.row-actions{display:flex;gap:10px;}
-.icon-btn{border:1px solid var(--line);background:var(--card);border-radius:30px;padding:8px 16px;font-size:11px;letter-spacing:1px;text-transform:uppercase;font-weight:600;transition:.25s;}
-.icon-btn:hover{border-color:var(--accent);color:var(--accent);}
-.icon-btn.danger:hover{border-color:#a13b3b;color:#a13b3b;}
+.row-actions{display:flex;gap:8px;flex-wrap:wrap;}
+.icon-btn{border:1px solid var(--border);background:var(--card);border-radius:6px;padding:7px 12px;font-size:12px;font-weight:600;transition:.2s;}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold-dark);}
+.icon-btn.danger:hover{border-color:var(--sold);color:var(--sold);}
+.icon-btn.toggle-sold{border-color:var(--sold);color:var(--sold);}
+.icon-btn.toggle-available{border-color:var(--gold);color:var(--gold-dark);}
 
-.cat-manage-card{background:var(--card);border:1px solid var(--line);padding:28px;margin-bottom:22px;}
-.cat-manage-card h4{font-size:19px;font-weight:400;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;font-family:var(--serif);}
-.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;}
-.tag{background:var(--paper-2);border:1px solid var(--line);border-radius:30px;padding:8px 16px;font-size:13px;display:flex;align-items:center;gap:8px;}
+.cat-manage-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:20px;}
+.cat-manage-card h4{font-size:18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.tag{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-size:13px;display:flex;align-items:center;gap:8px;}
 .tag button{color:var(--muted);font-size:14px;}
-.tag button:hover{color:#a13b3b;}
+.tag button:hover{color:var(--sold);}
 .inline-add{display:flex;gap:10px;}
-.inline-add input{flex:1;border:none;border-bottom:1px solid var(--line);background:none;padding:10px 4px;font-size:14px;}
-.inline-add input:focus{outline:none;border-color:var(--accent);}
+.inline-add input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;}
 
-.form-group{margin-bottom:22px;}
-.form-group label{display:block;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;}
-.form-group input,.form-group select,.form-group textarea{width:100%;border:none;border-bottom:1px solid var(--line);background:none;padding:12px 2px;font-size:15px;transition:.3s;}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--accent);}
-.form-group textarea{min-height:90px;resize:vertical;font-family:var(--sans);}
-.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.form-group2{margin-bottom:18px;}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
 .checkbox-row{display:flex;align-items:center;gap:10px;font-size:14px;}
 .checkbox-row input{width:auto;}
-.upload-preview{width:110px;height:140px;object-fit:cover;border-radius:2px;border:1px solid var(--line);margin-top:12px;background:var(--paper-2);}
+.upload-preview{width:110px;height:135px;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-top:10px;background:var(--bg);}
 
-.info-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;}
-.data-box{background:var(--card);border:1px solid var(--line);padding:34px;}
-.data-box h3{margin-bottom:14px;font-weight:400;font-size:22px;}
-.data-box p{color:var(--muted);font-size:14px;margin-bottom:22px;}
-.data-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.info-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.data-box{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:30px;}
+.data-box p{color:var(--muted);font-size:14px;margin-bottom:20px;}
+.data-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.legal-editor textarea{width:100%;min-height:340px;padding:18px;border:1px solid var(--border);border-radius:8px;font-size:14px;line-height:1.6;background:var(--card);font-family:'Inter',monospace;}
+.legal-hint{font-size:12px;color:var(--muted);margin:10px 0 20px;}
 
-/* ============================================================
-   MODALS
-============================================================ */
-.modal-overlay{position:fixed;inset:0;background:rgba(20,17,14,.94);z-index:2000;display:flex;align-items:center;justify-content:center;padding:30px;opacity:0;pointer-events:none;transition:.4s var(--ease);}
+/* ===== MODALS ===== */
+.modal-overlay{position:fixed;inset:0;background:rgba(33,28,23,.75);z-index:2000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:.3s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
-.modal-close{position:fixed;top:28px;right:34px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.3);color:#fff;font-size:18px;z-index:5;transition:.3s;}
-.modal-close:hover{background:#fff;color:var(--ink);}
+.modal-box{background:#fff;border-radius:var(--radius);max-width:920px;width:100%;max-height:88vh;overflow-y:auto;position:relative;}
+.modal-box.small{max-width:520px;}
+.modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:var(--bg);border:1px solid var(--border);font-size:18px;z-index:5;}
+.work-modal-content{display:grid;grid-template-columns:1fr 1fr;}
+.work-modal-img{width:100%;height:100%;object-fit:cover;min-height:340px;background:var(--bg);}
+.work-modal-body{padding:44px;display:flex;flex-direction:column;}
+.work-modal-body h2{font-size:28px;margin-bottom:10px;}
+.work-modal-body .work-meta{margin-bottom:18px;}
+.work-modal-body p.desc{color:var(--muted);font-size:15px;margin-bottom:20px;}
+.work-modal-specs{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;font-size:13px;color:var(--muted);}
+.work-modal-specs strong{color:var(--text);}
+.work-modal-price-row{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:24px;}
+.work-modal-price{font-family:'Poppins',sans-serif;font-size:30px;font-weight:700;color:var(--gold-dark);}
+.modal-fav-btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13px;border:1px solid var(--border);border-radius:30px;padding:11px 18px;margin-top:14px;align-self:flex-start;}
 
-/* Work detail lightbox */
-.lb-content{display:grid;grid-template-columns:1.3fr 1fr;gap:0;max-width:1180px;width:100%;max-height:86vh;}
-.lb-img-wrap{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0e0c0a;}
-.lb-img-wrap img{max-width:100%;max-height:86vh;object-fit:contain;opacity:0;transform:scale(.97);transition:.5s var(--ease);}
-.lb-img-wrap img.show{opacity:1;transform:scale(1);}
-.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:18px;display:flex;align-items:center;justify-content:center;transition:.3s;}
-.lb-nav:hover{background:#fff;color:var(--ink);}
-.lb-prev{left:20px;}.lb-next{right:20px;}
-.lb-body{background:var(--paper);padding:50px 44px;display:flex;flex-direction:column;justify-content:center;}
-.lb-counter{font-size:11px;letter-spacing:2px;color:var(--muted);margin-bottom:22px;font-weight:600;}
-.lb-body h2{font-size:32px;margin-bottom:16px;font-weight:400;}
-.lb-body p.lb-desc{color:var(--ink-soft);font-size:15px;margin-bottom:22px;}
-.lb-meta{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:26px;}
-.lb-fav{display:inline-flex;align-items:center;gap:9px;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border:1px solid var(--ink);border-radius:40px;padding:12px 22px;align-self:flex-start;transition:.3s;}
-.lb-fav:hover{background:var(--ink);color:var(--paper);}
-
-/* Admin work-form modal */
-.modal-box.small{background:var(--paper);border-radius:6px;max-width:560px;width:100%;max-height:88vh;overflow-y:auto;position:relative;}
-.modal-box.small .modal-close{position:absolute;top:18px;right:18px;border-color:var(--line);color:var(--ink);}
-.modal-box.small .modal-close:hover{background:var(--ink);color:var(--paper);}
-
-.toast{position:fixed;bottom:34px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:var(--paper);padding:16px 30px;border-radius:40px;font-size:13px;z-index:3000;transition:.4s var(--ease);letter-spacing:.5px;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--dark);color:#fff;padding:16px 28px;border-radius:30px;font-size:14px;z-index:3000;transition:.3s;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 
-footer.site-footer{border-top:1px solid var(--line);padding:70px 6% 34px;}
-.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;margin-bottom:50px;}
-.footer-brand .logo-title{font-size:24px;}
-.footer-links{display:flex;gap:60px;flex-wrap:wrap;}
-.footer-col h5{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:700;}
-.footer-col p, .footer-col a{display:block;font-size:14px;margin-bottom:8px;color:var(--ink-soft);}
-.footer-col a:hover{color:var(--accent);}
-.footer-bottom{border-top:1px solid var(--line);padding-top:26px;text-align:center;font-size:12px;color:var(--muted);letter-spacing:.5px;}
+/* ===== FOOTER ===== */
+footer.site-footer{background:var(--dark);color:rgba(255,255,255,.65);padding:70px 5% 26px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:44px;margin-bottom:50px;}
+.footer-brand p{margin:16px 0;font-size:14px;max-width:300px;color:rgba(255,255,255,.5);}
+footer h4{color:#fff;font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;}
+footer ul{list-style:none;}
+footer li{margin-bottom:11px;font-size:14px;}
+footer li a:hover{color:var(--gold);}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;}
+.footer-bottom a{margin-left:20px;}
+.footer-bottom a:hover{color:var(--gold);}
 
-/* ============================================================
-   RESPONSIVE
-============================================================ */
+/* ===== RESPONSIVE ===== */
 @media(max-width:1024px){
+    .hero-grid,.about-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1;max-width:420px;margin:0 auto;}
     .gallery-layout{grid-template-columns:1fr;}
-    .sidebar{border-bottom:1px solid var(--line);padding-bottom:30px;margin-bottom:34px;}
-    .info-hero{grid-template-columns:1fr;}
-    .lb-content{grid-template-columns:1fr;max-height:none;overflow-y:auto;}
-    .lb-img-wrap{min-height:300px;}
+    .sidebar{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:24px;}
+    .contact-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .work-modal-content{grid-template-columns:1fr;}
 }
 @media(max-width:860px){
-    nav.main-nav{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--paper);flex-direction:column;justify-content:center;align-items:center;padding:30px;gap:30px;transform:translateY(-110%);transition:.4s var(--ease);z-index:400;}
+    nav.main-nav{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);flex-direction:column;justify-content:center;align-items:center;padding:30px;gap:22px;transform:translateY(-110%);transition:.35s;z-index:400;}
     nav.main-nav.open{transform:translateY(0);}
-    nav.main-nav .nav-link{font-size:16px;}
     .burger-menu{display:flex;z-index:401;}
     .header-inner{position:relative;}
-    .hero-title{font-size:44px;}
-    .cat-preview{display:none;}
-    .form-row2,.info-form-grid{grid-template-columns:1fr;}
-    .footer-links{gap:34px;}
-}
-@media(max-width:520px){
-    .container{padding:0 22px;}
-    .numbered-row{grid-template-columns:1fr;}
+    .form-row,.form-row2,.info-form-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
     .admin-header{flex-direction:column;align-items:flex-start;}
 }
 </style>
 </head>
 <body>
 
-<div id="cursor"></div>
-<div id="progress"></div>
-<div id="loader"><div class="loader-logo">Gabi — Kunst &amp; Fotografie</div></div>
+<!-- ===================== TOPBAR ===================== -->
+<div class="topbar">
+    <div class="container">
+        <div>📞 <span>+49 123 456 789</span> &nbsp;·&nbsp; ✉️ info@gabi-kunst.de</div>
+        <div class="right">Atelierbesuche nach Vereinbarung</div>
+    </div>
+</div>
 
 <!-- ===================== HEADER ===================== -->
 <header class="site">
     <div class="header-inner">
         <a href="#" class="logo" data-nav="home">
-            <span class="logo-title">Gabi<span style="color:var(--accent)">.</span></span>
-            <span class="logo-sub">Kunst &amp; Fotografie</span>
+            <span class="logo-title">GABI<span>.</span></span>
+            <span class="logo-sub">KUNST &amp; FOTOGRAFIE</span>
         </a>
         <nav class="main-nav" id="mainNav">
             <a href="#" class="nav-link" data-nav="home">Übersicht</a>
-            <a href="#" class="nav-link" data-nav="gallery">Bilder</a>
-            <a href="#" class="nav-link" data-nav="info">Info von Gabi</a>
+            <a href="#" class="nav-link" data-nav="gallery">Galerie</a>
+            <a href="#" class="nav-link" data-nav="info">Über Gabi</a>
+            <a href="#" class="nav-link" data-nav="home" data-anchor="contact">Kontakt</a>
         </nav>
-        <div style="display:flex;align-items:center;gap:12px;">
-            <button class="btn-admin" data-nav="admin">Verwaltung</button>
+        <div style="display:flex;align-items:center;gap:10px;">
+            <button class="btn-admin" data-nav="admin">VERWALTUNG</button>
             <button class="burger-menu" id="burgerBtn"><span></span><span></span><span></span></button>
         </div>
     </div>
@@ -412,38 +365,175 @@ footer.site-footer{border-top:1px solid var(--line);padding:70px 6% 34px;}
 <main>
 <!-- ===================== HOME ===================== -->
 <section class="view" id="view-home">
-    <div class="container hero">
-        <div class="eyebrow">Kuratierte Sammlung</div>
-        <h1 class="hero-title">
-            <span class="line"><span>Kunst, die</span></span>
-            <span class="line"><span>berührt<em>.</em></span></span>
-        </h1>
-        <p class="hero-sub">Gabi arbeitet mit Collage und Acryl-Malerei an Werken, die Reisen, Menschen und Momente einfangen — mal abstrakt, mal ganz konkret.</p>
-        <div class="hero-btns">
-            <a href="#" class="btn btn-fill" data-nav="gallery">Werke entdecken</a>
-            <a href="#" class="link-arrow" data-nav="info" style="align-self:center;">Mehr über Gabi <span>→</span></a>
-        </div>
-    </div>
 
-    <div class="ticker-wrap">
-        <div class="ticker-track" id="tickerTrack"></div>
+    <div class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="eyebrow">Galerie &amp; Atelier seit 2009</div>
+                <h1 class="hero-title">Kunst für Räume, <em>die etwas erzählen.</em></h1>
+                <p class="hero-text">Gabi verbindet Collage und Acryl-Malerei zu Werken mit Charakter. Jedes Bild ist ein Original — und jedes Original käuflich zu erwerben.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn btn-dark" data-nav="gallery">Galerie entdecken</a>
+                    <a href="#" class="btn btn-outline" data-nav="home" data-anchor="contact">Kunstwerk anfragen</a>
+                </div>
+                <div class="hero-stats">
+                    <div><strong id="statWorks">0</strong><span>Werke im Bestand</span></div>
+                    <div><strong id="statSold">0</strong><span>Bereits verkauft</span></div>
+                    <div><strong>15+</strong><span>Jahre Erfahrung</span></div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img class="hero-img-main" id="heroImg" src="https://images.unsplash.com/photo-1531913764164-f85c52e6e654?w=800&q=80" alt="Kunstwerk von Gabi">
+                <div class="hero-badge">
+                    <div class="dot">🎨</div>
+                    <div><strong>Handgefertigt</strong><span>Original & signiert</span></div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="container section">
-        <div class="section-head reveal">
+        <div class="section-head">
             <div class="eyebrow">Arbeitsbereiche</div>
             <h2>Kategorien der Sammlung</h2>
         </div>
-        <div class="cat-list" id="homeCatGrid"></div>
+        <div class="cat-grid" id="homeCatGrid"></div>
     </div>
 
-    <div class="container section" style="padding-bottom:130px;">
-        <div class="section-head reveal">
-            <div class="eyebrow">Neuzugänge</div>
-            <h2>Zuletzt hinzugefügt</h2>
+    <div class="container section" style="padding-top:0;">
+        <div class="section-head">
+            <div class="eyebrow">Sammlung</div>
+            <h2>Ausgewählte Werke</h2>
         </div>
         <div id="homeWorksPreview"></div>
+        <div style="text-align:center;margin-top:40px;">
+            <a href="#" class="btn btn-outline" data-nav="gallery">Alle Werke ansehen</a>
+        </div>
     </div>
+
+    <section class="about section">
+        <div class="container about-grid">
+            <img class="about-img" id="aboutTeaserImg" src="https://images.unsplash.com/photo-1544413660-299165566b1d?w=700&q=80" alt="Gabi im Atelier">
+            <div class="about-text">
+                <div class="eyebrow">Über die Künstlerin</div>
+                <h2>Handwerk trifft Ausdruck</h2>
+                <p id="aboutTeaserText">Hier kann später ein persönlicher Text über Gabi eingefügt werden.</p>
+                <ul class="about-features">
+                    <li>Originale Unikate</li>
+                    <li>Signiert &amp; datiert</li>
+                    <li>Sicherer Versand</li>
+                    <li>Persönliche Beratung</li>
+                </ul>
+                <a href="#" class="btn btn-dark" data-nav="info">Mehr über Gabi</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials section">
+        <div class="container">
+            <div class="section-head center">
+                <div class="eyebrow">Käuferstimmen</div>
+                <h2>Was Sammler sagen</h2>
+            </div>
+            <div class="testi-grid">
+                <div class="testi-card">
+                    <div class="stars">★★★★★</div>
+                    <p>„Das Bild ist noch schöner als auf den Fotos. Die Verpackung war top, alles kam sicher an."</p>
+                    <div class="testi-author">Anna K.<span>Käuferin, Berlin</span></div>
+                </div>
+                <div class="testi-card">
+                    <div class="stars">★★★★★</div>
+                    <p>„Persönliche Beratung, schnelle Antwort auf meine Anfrage. So stelle ich mir Kunstkauf vor."</p>
+                    <div class="testi-author">Thomas B.<span>Sammler</span></div>
+                </div>
+                <div class="testi-card">
+                    <div class="stars">★★★★★</div>
+                    <p>„Ich habe extra für ein Werk aus der Marokko-Serie angefragt — Gabi hat sich viel Zeit genommen."</p>
+                    <div class="testi-author">Julia S.<span>Käuferin, München</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ein Werk hat Ihr Interesse geweckt?</h2>
+            <p>Melden Sie sich unverbindlich — Gabi antwortet meist innerhalb von 24 Stunden.</p>
+            <a href="#" class="btn btn-gold" data-nav="home" data-anchor="contact">Jetzt Kontakt aufnehmen</a>
+            <div class="cta-links">
+                <a href="tel:+49123456789">📞 +49 123 456 789</a>
+                <a href="mailto:info@gabi-kunst.de">✉️ info@gabi-kunst.de</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-head center">
+                <div class="eyebrow">Häufige Fragen</div>
+                <h2>Gut zu wissen</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-q">Wie kann ich ein Kunstwerk kaufen?</button>
+                    <div class="faq-a"><p>Einfach über das Kontaktformular oder direkt über die Anfrage-Schaltfläche beim jeweiligen Werk anfragen. Gabi meldet sich mit den weiteren Schritten zu Zahlung und Versand oder Abholung.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Bietet Gabi Auftragsarbeiten an?</button>
+                    <div class="faq-a"><p>Ja, individuelle Auftragsarbeiten sind nach Absprache möglich. Schreiben Sie einfach Ihre Wünsche in das Kontaktformular.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Wie funktioniert der Versand?</button>
+                    <div class="faq-a"><p>Werke werden sorgfältig verpackt und versichert versendet. Alternativ ist eine persönliche Abholung im Atelier nach Vereinbarung möglich.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Kann ich ein Werk vorher im Original ansehen?</button>
+                    <div class="faq-a"><p>Selbstverständlich — vereinbaren Sie gerne einen Atelierbesuch über das Kontaktformular oder telefonisch.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-q">Welche Zahlungsmöglichkeiten gibt es?</button>
+                    <div class="faq-a"><p>Überweisung, PayPal oder Barzahlung bei Abholung — die Details werden individuell nach Ihrer Anfrage geklärt.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact" style="padding-bottom:110px;">
+        <div class="container">
+            <div class="section-head center">
+                <div class="eyebrow">Kontakt</div>
+                <h2>Kaufanfrage &amp; Kontakt</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>So erreichen Sie Gabi</h3>
+                    <div class="info-block"><div class="info-icon">📍</div><div><h4>Atelier</h4><p>Musterstraße 123<br>12345 Musterstadt</p></div></div>
+                    <div class="info-block"><div class="info-icon">📞</div><div><h4>Telefon</h4><p><a href="tel:+49123456789">+49 123 456 789</a></p></div></div>
+                    <div class="info-block"><div class="info-icon">✉️</div><div><h4>E-Mail</h4><p><a href="mailto:info@gabi-kunst.de">info@gabi-kunst.de</a></p></div></div>
+                    <div class="info-block"><div class="info-icon">🕒</div><div><h4>Erreichbarkeit</h4><p>Mo–Fr: 10:00 – 18:00<br>Atelierbesuche nach Vereinbarung</p></div></div>
+                </div>
+                <div class="form-card" id="generalFormWrap">
+                    <form id="generalContactForm">
+                        <h3>Allgemeine Anfrage</h3>
+                        <p>Für Fragen, Auftragsarbeiten oder Terminwünsche.</p>
+                        <div class="form-row">
+                            <div class="form-group"><label>Name *</label><input type="text" required></div>
+                            <div class="form-group"><label>E-Mail *</label><input type="email" required></div>
+                        </div>
+                        <div class="form-group"><label>Telefon</label><input type="tel"></div>
+                        <div class="form-group"><label>Nachricht *</label><textarea required placeholder="Ihre Frage oder Ihr Anliegen ..."></textarea></div>
+                        <label class="form-check"><input type="checkbox" required><span>Ich habe die <a href="#" data-nav="datenschutz">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. *</span></label>
+                        <button type="submit" class="btn btn-dark btn-block">Nachricht senden</button>
+                    </form>
+                    <div class="form-success" id="generalFormSuccess">
+                        <div class="check">✓</div>
+                        <h3>Vielen Dank!</h3>
+                        <p>Ihre Nachricht ist angekommen. Gabi meldet sich schnellstmöglich bei Ihnen.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </section>
 
 <!-- ===================== GALERIE ===================== -->
@@ -451,21 +541,25 @@ footer.site-footer{border-top:1px solid var(--line);padding:70px 6% 34px;}
     <div class="container page-head">
         <div class="eyebrow">Die Sammlung</div>
         <h1 class="page-title">Meine Werke</h1>
-        <p class="page-subtitle">„Klicke auf ein Werk, um es dir genauer anzusehen.“</p>
+        <p class="page-subtitle">Klicke auf ein Werk, um es genauer anzusehen oder eine Kaufanfrage zu senden.</p>
     </div>
     <div class="container">
         <div class="gallery-toolbar">
-            <div class="search-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                <input type="text" id="searchInput" placeholder="Werk suchen ...">
-            </div>
+            <div class="search-box"><span>🔍</span><input type="text" id="searchInput" placeholder="Werk suchen ..."></div>
             <div class="toolbar-right">
                 <button class="pill-btn" id="favToggleBtn">♥ Nur Favoriten</button>
+                <select class="pill-select" id="availSelect">
+                    <option value="all">Alle Werke</option>
+                    <option value="available">Nur verfügbare</option>
+                    <option value="sold">Nur verkaufte</option>
+                </select>
                 <select class="pill-select" id="sortSelect">
                     <option value="newest">Neueste zuerst</option>
                     <option value="oldest">Älteste zuerst</option>
                     <option value="az">Titel A–Z</option>
                     <option value="za">Titel Z–A</option>
+                    <option value="price-asc">Preis aufsteigend</option>
+                    <option value="price-desc">Preis absteigend</option>
                 </select>
                 <span class="result-count" id="resultCount">0 Werke angezeigt</span>
             </div>
@@ -486,23 +580,46 @@ footer.site-footer{border-top:1px solid var(--line);padding:70px 6% 34px;}
 
 <!-- ===================== INFO ===================== -->
 <section class="view" id="view-info">
-    <div class="container page-head" style="padding-bottom:10px;">
+    <div class="container page-head" style="padding-bottom:0;">
         <div class="eyebrow">Info von Gabi</div>
         <h1 class="page-title">Über Gabi</h1>
     </div>
-    <div class="container info-hero">
-        <p class="info-quote" id="infoIntroText"></p>
-        <div class="portrait-frame"><div class="portrait-box" id="portraitBox">
-            <div class="badge-dashed">Porträt</div><p>Hier erscheint bald ein Foto von Gabi.</p>
-        </div></div>
+    <div class="container about-grid" style="padding:50px 0;">
+        <div>
+            <p style="color:var(--muted);font-size:16px;" id="infoIntroText"></p>
+        </div>
+        <div class="about-img" id="portraitBox" style="background:var(--card);border:1.5px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;">
+            <div class="badge-dashed">Porträt</div>
+            <p style="color:var(--muted);">Hier erscheint bald ein Foto von Gabi.</p>
+        </div>
     </div>
-    <div class="container info-numbered">
-        <div class="numbered-row"><div class="num">I</div><div><h3>Künstlerische Arbeit</h3><p id="infoKunst"></p></div></div>
-        <div class="numbered-row"><div class="num">II</div><div><h3>Inspiration</h3><p id="infoInspiration"></p></div></div>
-        <div class="numbered-row"><div class="num">III</div><div><h3>Techniken</h3><p id="infoTechniken"></p></div></div>
-        <div class="numbered-row"><div class="num">IV</div><div><h3>Ausstellungen</h3><p id="infoAusstellungen"></p></div></div>
-        <div class="numbered-row"><div class="num">V</div><div><h3>Kontakt</h3><p id="infoKontakt"></p></div></div>
+    <div class="container" style="padding-bottom:100px;">
+        <div class="cat-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+            <div class="cat-card" style="cursor:default;"><h3>Künstlerische Arbeit</h3><p id="infoKunst"></p></div>
+            <div class="cat-card" style="cursor:default;"><h3>Inspiration</h3><p id="infoInspiration"></p></div>
+            <div class="cat-card" style="cursor:default;"><h3>Techniken</h3><p id="infoTechniken"></p></div>
+            <div class="cat-card" style="cursor:default;"><h3>Ausstellungen</h3><p id="infoAusstellungen"></p></div>
+            <div class="cat-card" style="cursor:default;"><h3>Kontakt</h3><p id="infoKontakt"></p></div>
+        </div>
     </div>
+</section>
+
+<!-- ===================== IMPRESSUM ===================== -->
+<section class="view" id="view-impressum">
+    <div class="container page-head">
+        <div class="eyebrow">Rechtliches</div>
+        <h1 class="page-title">Impressum</h1>
+    </div>
+    <div class="container legal-content" id="impressumContent"></div>
+</section>
+
+<!-- ===================== DATENSCHUTZ ===================== -->
+<section class="view" id="view-datenschutz">
+    <div class="container page-head">
+        <div class="eyebrow">Rechtliches</div>
+        <h1 class="page-title">Datenschutzerklärung</h1>
+    </div>
+    <div class="container legal-content" id="datenschutzContent"></div>
 </section>
 
 <!-- ===================== VERWALTUNG ===================== -->
@@ -510,84 +627,98 @@ footer.site-footer{border-top:1px solid var(--line);padding:70px 6% 34px;}
     <div class="container">
         <div class="admin-login" id="adminLogin">
             <h2>Verwaltung</h2>
-            <p>Bitte gib das Passwort ein, um Werke und Inhalte zu bearbeiten.</p>
-            <input type="password" id="adminPassword" class="uline-input" placeholder="Passwort">
-            <button class="btn btn-fill" style="width:100%;justify-content:center;" id="adminLoginBtn">Anmelden</button>
-            <p id="adminLoginError" style="color:#a13b3b;font-size:13px;margin-top:14px;display:none;">Falsches Passwort. Bitte versuche es erneut.</p>
+            <p>Bitte gib das Passwort ein, um Werke, Preise und Inhalte zu bearbeiten.</p>
+            <input type="password" id="adminPassword" placeholder="Passwort">
+            <button class="btn btn-dark btn-block" id="adminLoginBtn">Anmelden</button>
+            <p id="adminLoginError" style="color:var(--sold);font-size:13px;margin-top:10px;display:none;">Falsches Passwort. Bitte versuche es erneut.</p>
         </div>
 
         <div class="admin-dash hidden" id="adminDash">
             <div class="admin-header">
-                <div>
-                    <div class="eyebrow">Verwaltung</div>
-                    <h1 class="page-title" style="font-size:34px;">Inhalte bearbeiten</h1>
-                </div>
+                <div><div class="eyebrow">Verwaltung</div><h1 class="page-title" style="font-size:32px;margin-bottom:0;">Inhalte bearbeiten</h1></div>
                 <button class="btn-admin" id="adminLogoutBtn">Abmelden</button>
             </div>
 
             <div class="admin-tabs">
-                <button class="admin-tab active" data-tab="works">Werke</button>
+                <button class="admin-tab active" data-tab="works">Werke &amp; Preise</button>
                 <button class="admin-tab" data-tab="cats">Kategorien</button>
                 <button class="admin-tab" data-tab="infoedit">Info-Seite</button>
+                <button class="admin-tab" data-tab="legal">Rechtliches</button>
                 <button class="admin-tab" data-tab="data">Daten</button>
             </div>
 
+            <!-- WERKE -->
             <div class="admin-panel active" id="panel-works">
                 <div class="admin-toolbar">
                     <span style="color:var(--muted);font-size:14px;" id="worksCountLabel">0 Werke insgesamt</span>
-                    <button class="btn btn-fill" id="addWorkBtn">+ Neues Werk</button>
+                    <button class="btn btn-dark" id="addWorkBtn">+ Neues Werk</button>
                 </div>
                 <div style="overflow-x:auto;">
                     <table class="admin-table" id="worksTable">
-                        <thead><tr><th>Bild</th><th>Titel</th><th>Kategorie</th><th>Jahr</th><th>Favorit</th><th>Aktionen</th></tr></thead>
+                        <thead><tr><th>Bild</th><th>Titel</th><th>Kategorie</th><th>Preis</th><th>Status</th><th>Favorit</th><th>Aktionen</th></tr></thead>
                         <tbody id="worksTableBody"></tbody>
                     </table>
                 </div>
             </div>
 
+            <!-- KATEGORIEN -->
             <div class="admin-panel" id="panel-cats">
                 <div id="catManageList"></div>
                 <div class="cat-manage-card">
                     <h4>Neue Hauptkategorie</h4>
-                    <div class="inline-add">
-                        <input type="text" id="newMainCatInput" placeholder="z. B. Aquarell">
-                        <button class="icon-btn" id="addMainCatBtn">+ Hinzufügen</button>
-                    </div>
+                    <div class="inline-add"><input type="text" id="newMainCatInput" placeholder="z. B. Aquarell"><button class="btn btn-dark" id="addMainCatBtn">Hinzufügen</button></div>
                 </div>
             </div>
 
+            <!-- INFO -->
             <div class="admin-panel" id="panel-infoedit">
-                <div class="data-box" style="margin-bottom:26px;">
-                    <label style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);">Porträtfoto</label>
-                    <div style="display:flex;gap:22px;align-items:center;margin-top:14px;flex-wrap:wrap;">
+                <div class="data-box" style="margin-bottom:24px;">
+                    <label style="font-weight:700;font-size:13px;">Porträtfoto</label>
+                    <div style="display:flex;gap:20px;align-items:center;margin-top:12px;flex-wrap:wrap;">
                         <img id="portraitPreview" class="upload-preview" style="display:none;">
                         <input type="file" id="portraitUpload" accept="image/*">
                     </div>
                 </div>
-                <div class="form-group"><label>Haupttext (Über Gabi)</label><textarea id="editIntro"></textarea></div>
+                <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Haupttext (Über Gabi)</label><textarea id="editIntro" style="width:100%;padding:14px;border:1px solid var(--border);border-radius:6px;min-height:90px;"></textarea></div>
                 <div class="info-form-grid">
-                    <div class="form-group"><label>Künstlerische Arbeit</label><textarea id="editKunst"></textarea></div>
-                    <div class="form-group"><label>Inspiration</label><textarea id="editInspiration"></textarea></div>
-                    <div class="form-group"><label>Techniken</label><textarea id="editTechniken"></textarea></div>
-                    <div class="form-group"><label>Ausstellungen</label><textarea id="editAusstellungen"></textarea></div>
-                    <div class="form-group"><label>Kontakt</label><textarea id="editKontakt"></textarea></div>
+                    <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Künstlerische Arbeit</label><textarea id="editKunst" style="width:100%;padding:14px;border:1px solid var(--border);border-radius:6px;min-height:80px;"></textarea></div>
+                    <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Inspiration</label><textarea id="editInspiration" style="width:100%;padding:14px;border:1px solid var(--border);border-radius:6px;min-height:80px;"></textarea></div>
+                    <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Techniken</label><textarea id="editTechniken" style="width:100%;padding:14px;border:1px solid var(--border);border-radius:6px;min-height:80px;"></textarea></div>
+                    <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Ausstellungen</label><textarea id="editAusstellungen" style="width:100%;padding:14px;border:1px solid var(--border);border-radius:6px;min-height:80px;"></textarea></div>
+                    <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Kontakt</label><textarea id="editKontakt" style="width:100%;padding:14px;border:1px solid var(--border);border-radius:6px;min-height:80px;"></textarea></div>
                 </div>
-                <button class="btn btn-fill" id="saveInfoBtn">Info-Seite speichern</button>
+                <button class="btn btn-dark" id="saveInfoBtn" style="margin-top:10px;">Info-Seite speichern</button>
             </div>
 
+            <!-- RECHTLICHES -->
+            <div class="admin-panel" id="panel-legal">
+                <div class="legal-editor">
+                    <h3 style="margin-bottom:6px;">Impressum</h3>
+                    <p class="legal-hint">Zeilen, die mit <code>## </code> beginnen, werden als Zwischenüberschrift dargestellt. Leerzeile = neuer Absatz.</p>
+                    <textarea id="editImpressum"></textarea>
+                </div>
+                <div class="legal-editor" style="margin-top:34px;">
+                    <h3 style="margin-bottom:6px;">Datenschutzerklärung</h3>
+                    <p class="legal-hint">Bitte durch eine rechtsgültige, individuell geprüfte Datenschutzerklärung ersetzen.</p>
+                    <textarea id="editDatenschutz"></textarea>
+                </div>
+                <button class="btn btn-dark" id="saveLegalBtn" style="margin-top:20px;">Rechtliche Texte speichern</button>
+            </div>
+
+            <!-- DATEN -->
             <div class="admin-panel" id="panel-data">
                 <div class="data-box">
-                    <h3>Daten sichern &amp; übertragen</h3>
-                    <p>Diese Website läuft ohne eigenen Server — Änderungen werden nur in <strong>diesem Browser</strong> gespeichert. Exportiere die Daten regelmäßig, um sie zu sichern oder an den Entwickler zu senden, damit sie für alle Besucher sichtbar gemacht werden.</p>
+                    <h3 style="margin-bottom:14px;">Daten sichern &amp; übertragen</h3>
+                    <p>Diese Website läuft ohne eigenen Server. Alle Änderungen (Werke, Preise, Texte) werden nur in <strong>diesem Browser</strong> gespeichert. Exportiere die Daten regelmäßig, um sie zu sichern oder an den Entwickler zu senden, damit sie für alle Besucher sichtbar gemacht werden.</p>
                     <div class="data-btns">
-                        <button class="btn btn-line" id="exportBtn">↓ Daten exportieren</button>
-                        <button class="btn btn-line" id="importBtn">↑ Daten importieren</button>
+                        <button class="btn btn-dark" id="exportBtn">⬇ Daten exportieren</button>
+                        <button class="btn btn-outline" id="importBtn">⬆ Daten importieren</button>
                         <input type="file" id="importFile" accept="application/json" class="hidden">
                     </div>
                 </div>
-                <div class="data-box" style="margin-top:22px;border-color:#e0bcae;">
-                    <h3 style="color:#a13b3b;">Gefahrenzone</h3>
-                    <p>Setzt alle Werke, Kategorien und Texte auf den Ausgangszustand zurück.</p>
+                <div class="data-box" style="margin-top:20px;border-color:#e0b3ac;">
+                    <h3 style="margin-bottom:14px;color:var(--sold);">Gefahrenzone</h3>
+                    <p>Setzt alle Werke, Kategorien, Preise und Texte auf den Ausgangszustand zurück.</p>
                     <button class="icon-btn danger" id="resetBtn">Alles zurücksetzen</button>
                 </div>
             </div>
@@ -597,67 +728,109 @@ footer.site-footer{border-top:1px solid var(--line);padding:70px 6% 34px;}
 </main>
 
 <footer class="site-footer">
-    <div class="footer-top">
+    <div class="footer-grid">
         <div class="footer-brand">
-            <span class="logo-title">Gabi<span style="color:var(--accent)">.</span></span>
-            <p style="color:var(--muted);font-size:13px;margin-top:10px;max-width:260px;">Kunst &amp; Fotografie — Collage, Acryl-Malerei und mehr.</p>
+            <span class="logo-title" style="color:#fff;">GABI<span>.</span></span>
+            <p>Kunst &amp; Fotografie — originale Collagen und Acryl-Malerei, direkt aus dem Atelier zum Kauf.</p>
         </div>
-        <div class="footer-links">
-            <div class="footer-col">
-                <h5>Navigation</h5>
-                <a href="#" data-nav="home">Übersicht</a>
-                <a href="#" data-nav="gallery">Bilder</a>
-                <a href="#" data-nav="info">Info von Gabi</a>
-            </div>
-            <div class="footer-col">
-                <h5>Kontakt</h5>
-                <p>info@gabi-kunst.de</p>
-                <p>Atelier nach Vereinbarung</p>
-            </div>
-        </div>
+        <div><h4>Navigation</h4><ul>
+            <li><a href="#" data-nav="home">Übersicht</a></li>
+            <li><a href="#" data-nav="gallery">Galerie</a></li>
+            <li><a href="#" data-nav="info">Über Gabi</a></li>
+            <li><a href="#" data-nav="home" data-anchor="contact">Kontakt</a></li>
+        </ul></div>
+        <div><h4>Rechtliches</h4><ul>
+            <li><a href="#" data-nav="impressum">Impressum</a></li>
+            <li><a href="#" data-nav="datenschutz">Datenschutz</a></li>
+            <li><a href="#" data-nav="admin">Verwaltung</a></li>
+        </ul></div>
+        <div><h4>Kontakt</h4><ul>
+            <li>Musterstraße 123, 12345 Musterstadt</li>
+            <li><a href="tel:+49123456789">+49 123 456 789</a></li>
+            <li><a href="mailto:info@gabi-kunst.de">info@gabi-kunst.de</a></li>
+        </ul></div>
     </div>
-    <div class="footer-bottom">© <span id="year"></span> Gabi — Kunst &amp; Fotografie. Alle Rechte vorbehalten.</div>
+    <div class="footer-bottom">
+        <div>© <span id="year"></span> Gabi – Kunst &amp; Fotografie. Alle Rechte vorbehalten.</div>
+        <div><a href="#" data-nav="impressum">Impressum</a><a href="#" data-nav="datenschutz">Datenschutz</a></div>
+    </div>
 </footer>
 
-<!-- WORK LIGHTBOX -->
+<!-- WORK DETAIL MODAL -->
 <div class="modal-overlay" id="workModal">
-    <button class="modal-close" id="closeWorkModal">×</button>
-    <div class="lb-content">
-        <div class="lb-img-wrap">
-            <button class="lb-nav lb-prev" id="lbPrev">‹</button>
-            <img id="modalImg" alt="">
-            <button class="lb-nav lb-next" id="lbNext">›</button>
-        </div>
-        <div class="lb-body">
-            <div class="lb-counter" id="lbCounter">01 — 08</div>
-            <div class="eyebrow" id="modalCat" style="margin-bottom:14px;">Kategorie</div>
-            <h2 id="modalTitle">Titel</h2>
-            <p class="lb-desc" id="modalDesc"></p>
-            <p class="lb-meta" id="modalYear"></p>
-            <button class="lb-fav" id="modalFavBtn">♡ Zu Favoriten</button>
+    <div class="modal-box">
+        <button class="modal-close" id="closeWorkModal">×</button>
+        <div class="work-modal-content">
+            <img class="work-modal-img" id="modalImg">
+            <div class="work-modal-body">
+                <div class="eyebrow" id="modalCat">Kategorie</div>
+                <h2 id="modalTitle">Titel</h2>
+                <div class="work-modal-specs" id="modalSpecs"></div>
+                <p class="desc" id="modalDesc"></p>
+                <div class="work-modal-price-row">
+                    <span class="work-modal-price" id="modalPrice">–</span>
+                    <span class="status-pill" id="modalStatus">Verfügbar</span>
+                </div>
+                <button class="btn btn-gold btn-block" id="modalBuyBtn">Kaufanfrage senden</button>
+                <button class="modal-fav-btn" id="modalFavBtn">♡ Zu Favoriten</button>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- WORK FORM MODAL -->
+<!-- KAUFANFRAGE MODAL -->
+<div class="modal-overlay" id="buyModal">
+    <div class="modal-box small">
+        <button class="modal-close" id="closeBuyModal">×</button>
+        <div style="padding:40px;">
+            <h2 style="font-size:24px;margin-bottom:6px;">Kaufanfrage</h2>
+            <p style="color:var(--muted);font-size:14px;margin-bottom:24px;">Anfrage zu: <strong id="buyWorkTitle">–</strong></p>
+            <form id="buyForm">
+                <div class="form-group"><label>Name *</label><input type="text" required></div>
+                <div class="form-row">
+                    <div class="form-group"><label>E-Mail *</label><input type="email" required></div>
+                    <div class="form-group"><label>Telefon</label><input type="tel"></div>
+                </div>
+                <div class="form-group"><label>Nachricht</label><textarea placeholder="Fragen zum Werk, Versand, Abholung ..."></textarea></div>
+                <label class="form-check"><input type="checkbox" required><span>Ich stimme der <a href="#" data-nav="datenschutz">Datenschutzerklärung</a> zu. *</span></label>
+                <button type="submit" class="btn btn-gold btn-block">Anfrage senden</button>
+            </form>
+            <div class="form-success" id="buyFormSuccess">
+                <div class="check">✓</div>
+                <h3>Anfrage gesendet!</h3>
+                <p>Gabi meldet sich schnellstmöglich bei Ihnen bezüglich dieses Werks.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ADMIN WORK FORM MODAL -->
 <div class="modal-overlay" id="workFormModal">
     <div class="modal-box small">
         <button class="modal-close" id="closeWorkFormModal">×</button>
-        <div style="padding:44px;">
-            <h2 id="workFormTitle" style="font-size:26px;margin-bottom:28px;font-weight:400;">Neues Werk</h2>
-            <div class="form-group"><label>Titel *</label><input type="text" id="wfTitle" placeholder="z. B. Marokko bei Nacht"></div>
+        <div style="padding:40px;">
+            <h2 id="workFormTitle" style="font-size:22px;margin-bottom:22px;">Neues Werk</h2>
+            <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Titel *</label><input type="text" id="wfTitle" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;" placeholder="z. B. Marokko bei Nacht"></div>
             <div class="form-row2">
-                <div class="form-group"><label>Hauptkategorie *</label><select id="wfMainCat"></select></div>
-                <div class="form-group"><label>Unterkategorie *</label><select id="wfSubCat"></select></div>
+                <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Hauptkategorie *</label><select id="wfMainCat" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;"></select></div>
+                <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Unterkategorie *</label><select id="wfSubCat" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;"></select></div>
             </div>
             <div class="form-row2">
-                <div class="form-group"><label>Jahr</label><input type="text" id="wfYear" placeholder="2024"></div>
-                <div class="form-group"><label class="checkbox-row" style="margin-top:38px;"><input type="checkbox" id="wfFav"> Als Favorit markieren</label></div>
+                <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Jahr</label><input type="text" id="wfYear" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;" placeholder="2024"></div>
+                <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Maße</label><input type="text" id="wfSize" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;" placeholder="60 × 80 cm"></div>
             </div>
-            <div class="form-group"><label>Beschreibung</label><textarea id="wfDesc" placeholder="Kurze Beschreibung zum Werk ..."></textarea></div>
-            <div class="form-group"><label>Bild hochladen</label><input type="file" id="wfImageFile" accept="image/*"><img id="wfPreview" class="upload-preview" style="display:none;"></div>
-            <div class="form-group"><label>...oder Bild-URL einfügen</label><input type="text" id="wfImageUrl" placeholder="https://beispiel.de/bild.jpg"></div>
-            <button class="btn btn-fill" style="width:100%;justify-content:center;" id="wfSaveBtn">Werk speichern</button>
+            <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Technik</label><input type="text" id="wfTechnik" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;" placeholder="Acryl auf Leinwand"></div>
+            <div class="form-row2">
+                <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Preis (€) *</label><input type="number" id="wfPrice" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;" placeholder="490"></div>
+                <div style="display:flex;flex-direction:column;gap:12px;margin-top:32px;">
+                    <label class="checkbox-row"><input type="checkbox" id="wfSold"> Als verkauft markieren</label>
+                    <label class="checkbox-row"><input type="checkbox" id="wfFav"> Als Favorit markieren</label>
+                </div>
+            </div>
+            <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Beschreibung</label><textarea id="wfDesc" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;min-height:90px;" placeholder="Kurze Beschreibung zum Werk ..."></textarea></div>
+            <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">Bild hochladen</label><input type="file" id="wfImageFile" accept="image/*"><img id="wfPreview" class="upload-preview" style="display:none;"></div>
+            <div class="form-group2"><label style="display:block;font-size:12px;font-weight:700;margin-bottom:8px;">...oder Bild-URL einfügen</label><input type="text" id="wfImageUrl" style="width:100%;padding:12px;border:1px solid var(--border);border-radius:6px;" placeholder="https://beispiel.de/bild.jpg"></div>
+            <button class="btn btn-dark btn-block" id="wfSaveBtn">Werk speichern</button>
         </div>
     </div>
 </div>
@@ -665,21 +838,78 @@ footer.site-footer{border-top:1px solid var(--line);padding:70px 6% 34px;}
 <div class="toast" id="toast"></div>
 
 <script>
-/* ============================================================
-   STATE & DATENVERWALTUNG
-============================================================ */
-const STORAGE_KEY = 'gabiGalleryData_v2';
+/* =========================================================
+   STATE
+========================================================= */
+const STORAGE_KEY = 'gabiGalleryData_v3';
 const ADMIN_PASSWORD = 'gabi2024'; // <-- Passwort hier ändern
 
 const SAMPLE_IMG = {
-    mauer:'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=900&q=80',
-    marokko1:'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=900&q=80',
-    frau1:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=900&q=80',
-    natur:'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=900&q=80',
-    griechenland:'https://images.unsplash.com/photo-1601581875039-e899893d520c?w=900&q=80',
-    marokko2:'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=900&q=80',
-    frau2:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=900&q=80',
-    abstrakt:'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=900&q=80'
+    mauer:'https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&q=80',
+    marokko1:'https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=800&q=80',
+    frau1:'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80',
+    natur:'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=800&q=80',
+    griechenland:'https://images.unsplash.com/photo-1601581875039-e899893d520c?w=800&q=80',
+    marokko2:'https://images.unsplash.com/photo-1539020140153-e479b8c22e70?w=800&q=80',
+    frau2:'https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=800&q=80',
+    abstrakt:'https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=800&q=80'
+};
+
+const DEFAULT_LEGAL = {
+impressum:`## Angaben gemäß § 5 TMG
+
+Gabi Mustermann
+Musterstraße 123
+12345 Musterstadt
+
+## Kontakt
+
+Telefon: +49 123 456 789
+E-Mail: info@gabi-kunst.de
+
+## Umsatzsteuer-ID
+
+Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz: [Bitte ergänzen, falls vorhanden]
+
+## Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+
+Gabi Mustermann, Musterstraße 123, 12345 Musterstadt
+
+## Haftungsausschluss
+
+Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.
+
+## Urheberrecht
+
+Die durch die Seitenbetreiberin erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung der Urheberin.
+
+Bitte ersetze diesen Platzhaltertext durch deine echten, rechtsgültigen Angaben.`,
+
+datenschutz:`## 1. Datenschutz auf einen Blick
+
+Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.
+
+## 2. Verantwortliche Stelle
+
+Verantwortlich für die Datenverarbeitung auf dieser Website ist:
+
+Gabi Mustermann
+Musterstraße 123, 12345 Musterstadt
+E-Mail: info@gabi-kunst.de
+
+## 3. Erhebung und Speicherung personenbezogener Daten
+
+Beim Besuch dieser Website werden automatisch Informationen (z. B. IP-Adresse, Datum, Uhrzeit) allgemeiner Natur erfasst. Diese Informationen lassen keine Rückschlüsse auf Ihre Person zu.
+
+## 4. Kontakt- und Kaufanfrageformular
+
+Wenn Sie uns per Kontakt- oder Kaufanfrageformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+
+## 5. Ihre Rechte
+
+Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger sowie den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung, Sperrung oder Löschung dieser Daten.
+
+Bitte ersetze diesen Platzhaltertext durch eine individuell geprüfte, rechtsgültige Datenschutzerklärung (z. B. mit einem Datenschutzgenerator erstellt).`
 };
 
 const DEFAULT_DATA = {
@@ -688,14 +918,14 @@ const DEFAULT_DATA = {
         "Acryl-Malerei":["Natur","Griechenland","Marokko","Frau","Abstrakt"]
     },
     works:[
-        {id:'w1',title:'Fragmente der Mauer',category:'Collagen',subcategory:'Berliner Mauerfall',year:'2021',description:'Eine Collage aus Zeitungsausschnitten und Fotografien rund um den Fall der Berliner Mauer.',favorite:true,image:SAMPLE_IMG.mauer,createdAt:Date.now()-1000*60*60*24*2},
-        {id:'w2',title:'Souk der Farben',category:'Collagen',subcategory:'Marokko',year:'2022',description:'Impressionen einer Reise durch die Souks von Marrakesch.',favorite:false,image:SAMPLE_IMG.marokko1,createdAt:Date.now()-1000*60*60*24*10},
-        {id:'w3',title:'Stille Beobachterin',category:'Collagen',subcategory:'Frau(en)',year:'2023',description:'Porträtstudie in gemischter Collagetechnik.',favorite:true,image:SAMPLE_IMG.frau1,createdAt:Date.now()-1000*60*60*24*4},
-        {id:'w4',title:'Morgenlicht',category:'Acryl-Malerei',subcategory:'Natur',year:'2023',description:'Acrylstudie zum ersten Licht über einer Wiesenlandschaft.',favorite:false,image:SAMPLE_IMG.natur,createdAt:Date.now()-1000*60*60*24*20},
-        {id:'w5',title:'Santorin Blau',category:'Acryl-Malerei',subcategory:'Griechenland',year:'2022',description:'Die charakteristischen Blau- und Weißtöne der griechischen Inseln in Acryl.',favorite:true,image:SAMPLE_IMG.griechenland,createdAt:Date.now()-1000*60*60*24*30},
-        {id:'w6',title:'Wüstenlicht',category:'Acryl-Malerei',subcategory:'Marokko',year:'2021',description:'Warme Erdtöne und das besondere Licht der Sahara.',favorite:false,image:SAMPLE_IMG.marokko2,createdAt:Date.now()-1000*60*60*24*45},
-        {id:'w7',title:'Innehalten',category:'Acryl-Malerei',subcategory:'Frau',year:'2024',description:'Ein ruhiges Porträt in reduzierter Farbpalette.',favorite:false,image:SAMPLE_IMG.frau2,createdAt:Date.now()-1000*60*60*24*1},
-        {id:'w8',title:'Form ohne Namen',category:'Acryl-Malerei',subcategory:'Abstrakt',year:'2024',description:'Freie abstrakte Komposition in Rot- und Ockertönen.',favorite:false,image:SAMPLE_IMG.abstrakt,createdAt:Date.now()-1000*60*60*24*7}
+        {id:'w1',title:'Fragmente der Mauer',category:'Collagen',subcategory:'Berliner Mauerfall',year:'2021',technik:'Mischtechnik auf Leinwand',size:'50 × 70 cm',price:480,sold:false,favorite:true,description:'Eine Collage aus Zeitungsausschnitten und Fotografien rund um den Fall der Berliner Mauer.',image:SAMPLE_IMG.mauer,createdAt:Date.now()-1000*60*60*24*2},
+        {id:'w2',title:'Souk der Farben',category:'Collagen',subcategory:'Marokko',year:'2022',technik:'Collage auf Karton',size:'40 × 60 cm',price:320,sold:true,favorite:false,description:'Impressionen einer Reise durch die Souks von Marrakesch.',image:SAMPLE_IMG.marokko1,createdAt:Date.now()-1000*60*60*24*10},
+        {id:'w3',title:'Stille Beobachterin',category:'Collagen',subcategory:'Frau(en)',year:'2023',technik:'Collage & Acryl',size:'60 × 80 cm',price:650,sold:false,favorite:true,description:'Porträtstudie in gemischter Collagetechnik.',image:SAMPLE_IMG.frau1,createdAt:Date.now()-1000*60*60*24*4},
+        {id:'w4',title:'Morgenlicht',category:'Acryl-Malerei',subcategory:'Natur',year:'2023',technik:'Acryl auf Leinwand',size:'70 × 100 cm',price:890,sold:false,favorite:false,description:'Acrylstudie zum ersten Licht über einer Wiesenlandschaft.',image:SAMPLE_IMG.natur,createdAt:Date.now()-1000*60*60*24*20},
+        {id:'w5',title:'Santorin Blau',category:'Acryl-Malerei',subcategory:'Griechenland',year:'2022',technik:'Acryl auf Leinwand',size:'60 × 60 cm',price:540,sold:true,favorite:true,description:'Die charakteristischen Blau- und Weißtöne der griechischen Inseln in Acryl.',image:SAMPLE_IMG.griechenland,createdAt:Date.now()-1000*60*60*24*30},
+        {id:'w6',title:'Wüstenlicht',category:'Acryl-Malerei',subcategory:'Marokko',year:'2021',technik:'Acryl auf Leinwand',size:'80 × 100 cm',price:960,sold:false,favorite:false,description:'Warme Erdtöne und das besondere Licht der Sahara.',image:SAMPLE_IMG.marokko2,createdAt:Date.now()-1000*60*60*24*45},
+        {id:'w7',title:'Innehalten',category:'Acryl-Malerei',subcategory:'Frau',year:'2024',technik:'Acryl auf Leinwand',size:'50 × 70 cm',price:610,sold:false,favorite:false,description:'Ein ruhiges Porträt in reduzierter Farbpalette.',image:SAMPLE_IMG.frau2,createdAt:Date.now()-1000*60*60*24*1},
+        {id:'w8',title:'Form ohne Namen',category:'Acryl-Malerei',subcategory:'Abstrakt',year:'2024',technik:'Acryl auf Leinwand',size:'90 × 120 cm',price:1200,sold:false,favorite:false,description:'Freie abstrakte Komposition in Rot- und Ockertönen.',image:SAMPLE_IMG.abstrakt,createdAt:Date.now()-1000*60*60*24*7}
     ],
     info:{
         intro:"Hier kann später ein persönlicher Text über Gabi eingefügt werden. Erzähle von deinem Werdegang, deiner künstlerischen Haltung und dem, was dich an der Arbeit mit Collage und Malerei begeistert.",
@@ -705,107 +935,84 @@ const DEFAULT_DATA = {
         techniken:"Platz für einen Text über die verwendeten Techniken – Collage, Acryl-Malerei, Mischtechniken.",
         ausstellungen:"Platz für vergangene und aktuelle Ausstellungen.",
         kontakt:"Platz für Kontaktmöglichkeiten, z. B. E-Mail-Adresse oder Atelier-Öffnungszeiten."
-    }
+    },
+    legal: JSON.parse(JSON.stringify(DEFAULT_LEGAL))
 };
 
 let STATE = loadState();
 function loadState(){
-    try{ const raw = localStorage.getItem(STORAGE_KEY); if(raw) return JSON.parse(raw); }
-    catch(e){ console.warn('Konnte Daten nicht laden', e); }
+    try{ const raw = localStorage.getItem(STORAGE_KEY); if(raw){ const d = JSON.parse(raw); if(!d.legal) d.legal = JSON.parse(JSON.stringify(DEFAULT_LEGAL)); return d; } }
+    catch(e){ console.warn(e); }
     return JSON.parse(JSON.stringify(DEFAULT_DATA));
 }
 function saveState(){
     try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE)); }
-    catch(e){ showToast('⚠ Speicher voll — evtl. Bilder verkleinern.'); }
+    catch(e){ showToast('⚠ Speicher voll – evtl. Bilder verkleinern.'); }
 }
 function uid(){ return 'w_'+Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
-function showToast(msg){
-    const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
-    setTimeout(()=>t.classList.remove('show'),2800);
-}
+function showToast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),2600); }
+function formatPrice(p){ return p!=null ? p.toLocaleString('de-DE')+' €' : '–'; }
 
-/* ============================================================
-   LOADER / CURSOR / PROGRESS
-============================================================ */
-window.addEventListener('load', ()=>{ setTimeout(()=>document.getElementById('loader').classList.add('done'),900); });
-
-const cursor = document.getElementById('cursor');
-if(window.matchMedia('(pointer:fine)').matches){
-    document.addEventListener('mousemove', e=>{ cursor.style.left=e.clientX+'px'; cursor.style.top=e.clientY+'px'; });
-    document.addEventListener('mouseover', e=>{
-        if(e.target.closest('a,button,.work-card,.cat-row,input,select,textarea')) cursor.classList.add('big');
-        else cursor.classList.remove('big');
-    });
-}
-window.addEventListener('scroll', ()=>{
-    const h = document.documentElement;
-    const pct = (h.scrollTop)/(h.scrollHeight - h.clientHeight)*100;
-    document.getElementById('progress').style.width = pct+'%';
-});
-
-/* ============================================================
+/* =========================================================
    NAVIGATION
-============================================================ */
-const views = ['home','gallery','info','admin'];
-function showView(name){
+========================================================= */
+const views = ['home','gallery','info','impressum','datenschutz','admin'];
+function showView(name, anchor){
     views.forEach(v=>document.getElementById('view-'+v).classList.toggle('active', v===name));
-    document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active', l.dataset.nav===name));
+    document.querySelectorAll('.nav-link').forEach(l=>l.classList.toggle('active', l.dataset.nav===name && !l.dataset.anchor));
     document.getElementById('mainNav').classList.remove('open');
-    window.scrollTo({top:0,behavior:'smooth'});
     if(name==='home') renderHome();
     if(name==='gallery') renderGallery();
     if(name==='info') renderInfo();
+    if(name==='impressum') renderLegalPage('impressum');
+    if(name==='datenschutz') renderLegalPage('datenschutz');
     if(name==='admin') renderAdmin();
-    setTimeout(initReveal, 50);
+
+    if(anchor){
+        setTimeout(()=>{ const el=document.getElementById(anchor); if(el) el.scrollIntoView({behavior:'smooth'}); }, 80);
+    }else{
+        window.scrollTo({top:0,behavior:'smooth'});
+    }
 }
 document.querySelectorAll('[data-nav]').forEach(el=>{
-    el.addEventListener('click', e=>{ e.preventDefault(); showView(el.dataset.nav); });
+    el.addEventListener('click', e=>{
+        e.preventDefault();
+        showView(el.dataset.nav, el.dataset.anchor);
+    });
 });
 document.getElementById('burgerBtn').addEventListener('click', ()=>document.getElementById('mainNav').classList.toggle('open'));
 
-/* Reveal on scroll */
-let revealObserver;
-function initReveal(){
-    if(revealObserver) revealObserver.disconnect();
-    revealObserver = new IntersectionObserver(entries=>{
-        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
-    },{threshold:.12});
-    document.querySelectorAll('.view.active .reveal').forEach(el=>revealObserver.observe(el));
-}
-
-/* ============================================================
+/* =========================================================
    HOME
-============================================================ */
-function renderTicker(){
-    const track = document.getElementById('tickerTrack');
-    const imgs = STATE.works.filter(w=>w.image).map(w=>w.image);
-    if(imgs.length===0){ track.innerHTML=''; return; }
-    const doubled = [...imgs, ...imgs, ...imgs];
-    track.innerHTML = doubled.map(src=>`<div class="ticker-item"><img src="${src}" alt=""></div>`).join('');
-}
-
+========================================================= */
 function renderHome(){
-    renderTicker();
+    document.getElementById('statWorks').textContent = STATE.works.length;
+    document.getElementById('statSold').textContent = STATE.works.filter(w=>w.sold).length;
+
+    const firstImg = STATE.works.find(w=>w.image);
+    if(firstImg) document.getElementById('heroImg').src = firstImg.image;
+
+    document.getElementById('aboutTeaserText').textContent = STATE.info.intro;
+    if(STATE.info.portrait) document.getElementById('aboutTeaserImg').src = STATE.info.portrait;
+
     const catGrid = document.getElementById('homeCatGrid');
     const mainCats = Object.keys(STATE.categories);
+    const icons = ['🎨','🖼️','✂️','🌿','🏺','🖌️'];
     if(mainCats.length===0){
         catGrid.innerHTML = '<div class="empty-hint">Noch keine Kategorien angelegt. Füge welche in der <a href="#" data-nav="admin">Verwaltung</a> hinzu.</div>';
     }else{
         catGrid.innerHTML = mainCats.map((cat,i)=>{
             const subCount = STATE.categories[cat].length;
             const workCount = STATE.works.filter(w=>w.category===cat).length;
-            const preview = STATE.works.find(w=>w.category===cat && w.image);
-            return `<div class="cat-row reveal" data-cat="${cat}">
-                <div class="cat-row-left">
-                    <span class="cat-num">${String(i+1).padStart(2,'0')}</span>
-                    <span class="cat-name">${cat}</span>
-                </div>
-                <span class="cat-meta">${subCount} Unterkategorien · ${workCount} Werke</span>
-                ${preview ? `<div class="cat-preview"><img src="${preview.image}" alt=""></div>` : ''}
+            return `<div class="cat-card" data-cat="${cat}">
+                <div class="cat-icon">${icons[i%icons.length]}</div>
+                <h3>${cat}</h3>
+                <p>${subCount} Unterkategorien · ${workCount} Werke</p>
+                <div class="cat-arrow">Ansehen →</div>
             </div>`;
         }).join('');
     }
-    catGrid.querySelectorAll('.cat-row').forEach(card=>{
+    catGrid.querySelectorAll('.cat-card').forEach(card=>{
         card.addEventListener('click', ()=>{ filterState.mainCat=card.dataset.cat; filterState.subCat=null; showView('gallery'); });
     });
     catGrid.querySelectorAll('[data-nav]').forEach(el=>el.addEventListener('click', e=>{e.preventDefault();showView(el.dataset.nav);}));
@@ -819,13 +1026,12 @@ function renderHome(){
         preview.innerHTML = `<div class="work-grid">${latest.map(workCardHTML).join('')}</div>`;
         bindWorkCardEvents(preview);
     }
-    setTimeout(initReveal,50);
 }
 
-/* ============================================================
+/* =========================================================
    GALERIE
-============================================================ */
-let filterState = { mainCat:null, subCat:null, search:'', onlyFav:false, sort:'newest' };
+========================================================= */
+let filterState = { mainCat:null, subCat:null, search:'', onlyFav:false, availability:'all', sort:'newest' };
 let currentFilteredList = [];
 
 function renderSidebar(){
@@ -850,6 +1056,8 @@ function getFilteredWorks(){
     if(filterState.mainCat) list=list.filter(w=>w.category===filterState.mainCat);
     if(filterState.subCat) list=list.filter(w=>w.subcategory===filterState.subCat);
     if(filterState.onlyFav) list=list.filter(w=>w.favorite);
+    if(filterState.availability==='available') list=list.filter(w=>!w.sold);
+    if(filterState.availability==='sold') list=list.filter(w=>w.sold);
     if(filterState.search.trim()){
         const q=filterState.search.trim().toLowerCase();
         list=list.filter(w=>w.title.toLowerCase().includes(q) || (w.description||'').toLowerCase().includes(q));
@@ -859,18 +1067,27 @@ function getFilteredWorks(){
         case 'oldest': list.sort((a,b)=>a.createdAt-b.createdAt); break;
         case 'az': list.sort((a,b)=>a.title.localeCompare(b.title)); break;
         case 'za': list.sort((a,b)=>b.title.localeCompare(a.title)); break;
+        case 'price-asc': list.sort((a,b)=>(a.price||0)-(b.price||0)); break;
+        case 'price-desc': list.sort((a,b)=>(b.price||0)-(a.price||0)); break;
     }
     return list;
 }
 
 function workCardHTML(w){
     const img = w.image ? `<img class="work-thumb" src="${w.image}" alt="${w.title}">` : `<div class="work-thumb-empty">Kein Bild</div>`;
-    return `<div class="work-card reveal" data-id="${w.id}">
+    const priceHTML = w.sold
+        ? `<span class="price-tag sold-text">${formatPrice(w.price)}</span><span class="status-pill sold">Verkauft</span>`
+        : `<span class="price-tag">${formatPrice(w.price)}</span><span class="status-pill available">Verfügbar</span>`;
+    return `<div class="work-card" data-id="${w.id}">
         <div class="work-thumb-wrap">
             ${img}
-            <div class="work-overlay"></div>
+            ${w.sold ? '<div class="sold-ribbon">Verkauft</div>' : ''}
             <button class="fav-btn" data-favid="${w.id}">${w.favorite?'♥':'♡'}</button>
-            <div class="work-caption"><h4>${w.title}</h4><span>${w.category}${w.subcategory?' · '+w.subcategory:''}</span></div>
+        </div>
+        <div class="work-info">
+            <h4>${w.title}</h4>
+            <div class="work-meta">${w.category}${w.subcategory?' · '+w.subcategory:''}</div>
+            <div class="work-price-row">${priceHTML}</div>
         </div>
     </div>`;
 }
@@ -888,70 +1105,81 @@ function renderGallery(){
 
     document.getElementById('resultCount').textContent = list.length + (list.length===1?' Werk angezeigt':' Werke angezeigt');
     document.getElementById('favToggleBtn').classList.toggle('active', filterState.onlyFav);
+    document.getElementById('availSelect').value = filterState.availability;
     document.getElementById('sortSelect').value = filterState.sort;
     document.getElementById('searchInput').value = filterState.search;
 
     if(list.length===0){ grid.classList.add('hidden'); empty.classList.remove('hidden'); }
     else{ grid.classList.remove('hidden'); empty.classList.add('hidden'); grid.innerHTML=list.map(workCardHTML).join(''); bindWorkCardEvents(grid); }
-    setTimeout(initReveal,30);
 }
-
 function toggleFavorite(id){
     const w=STATE.works.find(x=>x.id===id); if(!w) return;
     w.favorite=!w.favorite; saveState(); renderGallery();
     if(document.getElementById('view-admin').classList.contains('active')) renderAdminWorksTable();
 }
-
 document.getElementById('searchInput').addEventListener('input', e=>{ filterState.search=e.target.value; renderGallery(); });
 document.getElementById('favToggleBtn').addEventListener('click', ()=>{ filterState.onlyFav=!filterState.onlyFav; renderGallery(); });
+document.getElementById('availSelect').addEventListener('change', e=>{ filterState.availability=e.target.value; renderGallery(); });
 document.getElementById('sortSelect').addEventListener('change', e=>{ filterState.sort=e.target.value; renderGallery(); });
 
-/* ---- Lightbox ---- */
-let lbIndex = 0;
+/* ---- Work Detail Modal ---- */
+let currentModalWorkId = null;
 function openWorkModal(id){
-    const idx = currentFilteredList.findIndex(w=>w.id===id);
-    lbIndex = idx>=0 ? idx : 0;
-    renderLightbox();
-    document.getElementById('workModal').classList.add('open');
-}
-function renderLightbox(){
-    const list = currentFilteredList.length ? currentFilteredList : STATE.works;
-    if(list.length===0) return;
-    const w = list[lbIndex];
-    const img = document.getElementById('modalImg');
-    img.classList.remove('show');
-    setTimeout(()=>{ img.src = w.image || ''; img.classList.add('show'); }, 80);
-    document.getElementById('lbCounter').textContent = String(lbIndex+1).padStart(2,'0') + ' — ' + String(list.length).padStart(2,'0');
+    const w = STATE.works.find(x=>x.id===id); if(!w) return;
+    currentModalWorkId = id;
+    document.getElementById('modalImg').src = w.image || '';
     document.getElementById('modalCat').textContent = w.category + (w.subcategory ? ' · '+w.subcategory : '');
     document.getElementById('modalTitle').textContent = w.title;
     document.getElementById('modalDesc').textContent = w.description || 'Keine Beschreibung vorhanden.';
-    document.getElementById('modalYear').textContent = w.year ? 'Jahr: '+w.year : '';
+    document.getElementById('modalPrice').textContent = formatPrice(w.price);
+    document.getElementById('modalStatus').textContent = w.sold ? 'Verkauft' : 'Verfügbar';
+    document.getElementById('modalStatus').className = 'status-pill ' + (w.sold ? 'sold' : 'available');
     document.getElementById('modalFavBtn').innerHTML = w.favorite ? '♥ Favorit' : '♡ Zu Favoriten';
-    document.getElementById('modalFavBtn').dataset.id = w.id;
+
+    const specs = [];
+    if(w.technik) specs.push(`<div><strong>Technik:</strong> ${w.technik}</div>`);
+    if(w.size) specs.push(`<div><strong>Maße:</strong> ${w.size}</div>`);
+    if(w.year) specs.push(`<div><strong>Jahr:</strong> ${w.year}</div>`);
+    document.getElementById('modalSpecs').innerHTML = specs.join('');
+
+    const buyBtn = document.getElementById('modalBuyBtn');
+    if(w.sold){ buyBtn.textContent = 'Bereits verkauft'; buyBtn.disabled = true; buyBtn.style.opacity = .5; buyBtn.style.cursor='not-allowed'; }
+    else{ buyBtn.textContent = 'Kaufanfrage senden'; buyBtn.disabled = false; buyBtn.style.opacity = 1; buyBtn.style.cursor='pointer'; }
+
+    document.getElementById('workModal').classList.add('open');
 }
-document.getElementById('lbPrev').addEventListener('click', ()=>{
-    const list = currentFilteredList.length ? currentFilteredList : STATE.works;
-    lbIndex = (lbIndex - 1 + list.length) % list.length; renderLightbox();
-});
-document.getElementById('lbNext').addEventListener('click', ()=>{
-    const list = currentFilteredList.length ? currentFilteredList : STATE.works;
-    lbIndex = (lbIndex + 1) % list.length; renderLightbox();
-});
-document.getElementById('modalFavBtn').addEventListener('click', function(){
-    toggleFavorite(this.dataset.id); renderLightbox();
-});
+document.getElementById('modalFavBtn').addEventListener('click', ()=>{ if(currentModalWorkId){ toggleFavorite(currentModalWorkId); openWorkModal(currentModalWorkId); } });
 document.getElementById('closeWorkModal').addEventListener('click', ()=>document.getElementById('workModal').classList.remove('open'));
 document.getElementById('workModal').addEventListener('click', e=>{ if(e.target.id==='workModal') e.currentTarget.classList.remove('open'); });
-document.addEventListener('keydown', e=>{
-    if(!document.getElementById('workModal').classList.contains('open')) return;
-    if(e.key==='Escape') document.getElementById('workModal').classList.remove('open');
-    if(e.key==='ArrowLeft') document.getElementById('lbPrev').click();
-    if(e.key==='ArrowRight') document.getElementById('lbNext').click();
+
+/* ---- Buy Modal ---- */
+document.getElementById('modalBuyBtn').addEventListener('click', ()=>{
+    const w = STATE.works.find(x=>x.id===currentModalWorkId); if(!w || w.sold) return;
+    document.getElementById('buyWorkTitle').textContent = w.title + ' — ' + formatPrice(w.price);
+    document.getElementById('buyForm').style.display='block';
+    document.getElementById('buyFormSuccess').style.display='none';
+    document.getElementById('buyForm').reset();
+    document.getElementById('workModal').classList.remove('open');
+    document.getElementById('buyModal').classList.add('open');
+});
+document.getElementById('closeBuyModal').addEventListener('click', ()=>document.getElementById('buyModal').classList.remove('open'));
+document.getElementById('buyModal').addEventListener('click', e=>{ if(e.target.id==='buyModal') e.currentTarget.classList.remove('open'); });
+document.getElementById('buyForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    document.getElementById('buyForm').style.display='none';
+    document.getElementById('buyFormSuccess').style.display='block';
 });
 
-/* ============================================================
+/* ---- General contact form ---- */
+document.getElementById('generalContactForm').addEventListener('submit', e=>{
+    e.preventDefault();
+    document.getElementById('generalContactForm').style.display='none';
+    document.getElementById('generalFormSuccess').style.display='block';
+});
+
+/* =========================================================
    INFO
-============================================================ */
+========================================================= */
 function renderInfo(){
     document.getElementById('infoIntroText').textContent = STATE.info.intro;
     document.getElementById('infoKunst').textContent = STATE.info.kunst;
@@ -959,34 +1187,48 @@ function renderInfo(){
     document.getElementById('infoTechniken').textContent = STATE.info.techniken;
     document.getElementById('infoAusstellungen').textContent = STATE.info.ausstellungen;
     document.getElementById('infoKontakt').textContent = STATE.info.kontakt;
-    const box=document.getElementById('portraitBox');
+    const box = document.getElementById('portraitBox');
     box.innerHTML = STATE.info.portrait
-        ? `<img src="${STATE.info.portrait}" alt="Porträt von Gabi">`
-        : `<div class="badge-dashed">Porträt</div><p>Hier erscheint bald ein Foto von Gabi.</p>`;
+        ? `<img src="${STATE.info.portrait}" alt="Porträt von Gabi" style="width:100%;height:100%;object-fit:cover;border-radius:var(--radius);">`
+        : `<div class="badge-dashed">Porträt</div><p style="color:var(--muted);">Hier erscheint bald ein Foto von Gabi.</p>`;
 }
 
-/* ============================================================
+/* =========================================================
+   RECHTLICHES (Impressum / Datenschutz) - Render
+========================================================= */
+function renderLegalText(raw){
+    const blocks = raw.split(/\n\s*\n/);
+    return blocks.map(block=>{
+        block = block.trim();
+        if(block.startsWith('## ')) return `<h3>${block.slice(3)}</h3>`;
+        return `<p>${block.replace(/\n/g,'<br>')}</p>`;
+    }).join('');
+}
+function renderLegalPage(type){
+    const raw = STATE.legal[type] || '';
+    document.getElementById(type+'Content').innerHTML = renderLegalText(raw);
+}
+
+/* =========================================================
    ADMIN
-============================================================ */
-let adminLoggedIn = sessionStorage.getItem('gabiAdminLoggedIn')==='true';
+========================================================= */
+let adminLoggedIn = sessionStorage.getItem('gabiAdminLoggedIn') === 'true';
 function renderAdmin(){
     document.getElementById('adminLogin').classList.toggle('hidden', adminLoggedIn);
     document.getElementById('adminDash').classList.toggle('hidden', !adminLoggedIn);
-    if(adminLoggedIn){ renderAdminWorksTable(); renderAdminCategories(); fillInfoEditForm(); }
+    if(adminLoggedIn){ renderAdminWorksTable(); renderAdminCategories(); fillInfoEditForm(); fillLegalEditForm(); }
 }
 document.getElementById('adminLoginBtn').addEventListener('click', doLogin);
 document.getElementById('adminPassword').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
 function doLogin(){
-    const val=document.getElementById('adminPassword').value;
-    if(val===ADMIN_PASSWORD){
-        adminLoggedIn=true; sessionStorage.setItem('gabiAdminLoggedIn','true');
+    const val = document.getElementById('adminPassword').value;
+    if(val === ADMIN_PASSWORD){
+        adminLoggedIn = true; sessionStorage.setItem('gabiAdminLoggedIn','true');
         document.getElementById('adminLoginError').style.display='none';
         document.getElementById('adminPassword').value=''; renderAdmin();
     }else document.getElementById('adminLoginError').style.display='block';
 }
-document.getElementById('adminLogoutBtn').addEventListener('click', ()=>{
-    adminLoggedIn=false; sessionStorage.removeItem('gabiAdminLoggedIn'); renderAdmin();
-});
+document.getElementById('adminLogoutBtn').addEventListener('click', ()=>{ adminLoggedIn=false; sessionStorage.removeItem('gabiAdminLoggedIn'); renderAdmin(); });
 document.querySelectorAll('.admin-tab').forEach(tab=>{
     tab.addEventListener('click', ()=>{
         document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
@@ -995,103 +1237,137 @@ document.querySelectorAll('.admin-tab').forEach(tab=>{
     });
 });
 
+/* ---- Werke-Tabelle ---- */
 function renderAdminWorksTable(){
-    const tbody=document.getElementById('worksTableBody');
+    const tbody = document.getElementById('worksTableBody');
     document.getElementById('worksCountLabel').textContent = STATE.works.length + ' Werke insgesamt';
-    if(STATE.works.length===0){ tbody.innerHTML=`<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:50px;">Noch keine Werke vorhanden.</td></tr>`; return; }
-    tbody.innerHTML=[...STATE.works].sort((a,b)=>b.createdAt-a.createdAt).map(w=>`
+    if(STATE.works.length===0){ tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:40px;">Noch keine Werke vorhanden.</td></tr>`; return; }
+    tbody.innerHTML = [...STATE.works].sort((a,b)=>b.createdAt-a.createdAt).map(w=>`
         <tr>
-            <td>${w.image?`<img src="${w.image}" alt="">`:'—'}</td>
+            <td>${w.image ? `<img src="${w.image}" alt="">` : '—'}</td>
             <td><strong>${w.title}</strong></td>
-            <td>${w.category}${w.subcategory?' · '+w.subcategory:''}</td>
-            <td>${w.year||'–'}</td>
-            <td>${w.favorite?'♥':'–'}</td>
-            <td class="row-actions"><button class="icon-btn" data-edit="${w.id}">Bearbeiten</button><button class="icon-btn danger" data-del="${w.id}">Löschen</button></td>
-        </tr>`).join('');
+            <td>${w.category}${w.subcategory ? ' · '+w.subcategory : ''}</td>
+            <td>${formatPrice(w.price)}</td>
+            <td><span class="status-pill ${w.sold?'sold':'available'}">${w.sold?'Verkauft':'Verfügbar'}</span></td>
+            <td>${w.favorite ? '♥' : '–'}</td>
+            <td class="row-actions">
+                <button class="icon-btn ${w.sold?'toggle-available':'toggle-sold'}" data-togglesold="${w.id}">${w.sold?'Als verfügbar':'Als verkauft'}</button>
+                <button class="icon-btn" data-edit="${w.id}">Bearbeiten</button>
+                <button class="icon-btn danger" data-del="${w.id}">Löschen</button>
+            </td>
+        </tr>
+    `).join('');
     tbody.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click', ()=>openWorkForm(b.dataset.edit)));
+    tbody.querySelectorAll('[data-togglesold]').forEach(b=>b.addEventListener('click', ()=>{
+        const w = STATE.works.find(x=>x.id===b.dataset.togglesold);
+        w.sold = !w.sold; saveState(); renderAdminWorksTable(); showToast(w.sold ? 'Als verkauft markiert.' : 'Als verfügbar markiert.');
+    }));
     tbody.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', ()=>{
-        if(confirm('Dieses Werk wirklich löschen?')){ STATE.works=STATE.works.filter(w=>w.id!==b.dataset.del); saveState(); renderAdminWorksTable(); showToast('Werk gelöscht.'); }
+        if(confirm('Dieses Werk wirklich löschen?')){ STATE.works = STATE.works.filter(w=>w.id!==b.dataset.del); saveState(); renderAdminWorksTable(); showToast('Werk gelöscht.'); }
     }));
 }
 
-let editingWorkId=null, wfImageData=null;
-function populateCategorySelects(selMain, selSub){
-    const mainSel=document.getElementById('wfMainCat');
-    const cats=Object.keys(STATE.categories);
+/* ---- Work Form ---- */
+let editingWorkId = null;
+let wfImageData = null;
+function populateCategorySelects(selectedMain, selectedSub){
+    const mainSel = document.getElementById('wfMainCat');
+    const cats = Object.keys(STATE.categories);
     mainSel.innerHTML = cats.map(c=>`<option value="${c}">${c}</option>`).join('') || '<option value="">Keine Kategorien</option>';
-    const activeMain = selMain && cats.includes(selMain) ? selMain : cats[0];
-    mainSel.value = activeMain; updateSubSelect(activeMain, selSub);
+    const activeMain = selectedMain && cats.includes(selectedMain) ? selectedMain : cats[0];
+    mainSel.value = activeMain;
+    updateSubSelect(activeMain, selectedSub);
 }
-function updateSubSelect(mainCat, selSub){
-    const subSel=document.getElementById('wfSubCat');
-    const subs=STATE.categories[mainCat]||[];
+function updateSubSelect(mainCat, selectedSub){
+    const subSel = document.getElementById('wfSubCat');
+    const subs = STATE.categories[mainCat] || [];
     subSel.innerHTML = subs.map(s=>`<option value="${s}">${s}</option>`).join('') || '<option value="">Keine Unterkategorien</option>';
-    if(selSub && subs.includes(selSub)) subSel.value=selSub;
+    if(selectedSub && subs.includes(selectedSub)) subSel.value = selectedSub;
 }
-document.getElementById('wfMainCat').addEventListener('change', e=>updateSubSelect(e.target.value,null));
+document.getElementById('wfMainCat').addEventListener('change', e=>updateSubSelect(e.target.value, null));
 
 function openWorkForm(id){
-    editingWorkId=id||null; wfImageData=null;
+    editingWorkId = id || null; wfImageData = null;
     document.getElementById('workFormTitle').textContent = id ? 'Werk bearbeiten' : 'Neues Werk';
     const w = id ? STATE.works.find(x=>x.id===id) : null;
-    if(Object.keys(STATE.categories).length===0){ alert('Bitte lege zuerst mindestens eine Kategorie an.'); return; }
-    document.getElementById('wfTitle').value = w? w.title:'';
-    document.getElementById('wfYear').value = w? (w.year||''):'';
-    document.getElementById('wfDesc').value = w? (w.description||''):'';
-    document.getElementById('wfFav').checked = w? !!w.favorite:false;
+    if(Object.keys(STATE.categories).length===0){ alert('Bitte lege zuerst mindestens eine Kategorie im Tab "Kategorien" an.'); return; }
+
+    document.getElementById('wfTitle').value = w ? w.title : '';
+    document.getElementById('wfYear').value = w ? (w.year||'') : '';
+    document.getElementById('wfSize').value = w ? (w.size||'') : '';
+    document.getElementById('wfTechnik').value = w ? (w.technik||'') : '';
+    document.getElementById('wfPrice').value = w ? (w.price!=null ? w.price : '') : '';
+    document.getElementById('wfSold').checked = w ? !!w.sold : false;
+    document.getElementById('wfFav').checked = w ? !!w.favorite : false;
+    document.getElementById('wfDesc').value = w ? (w.description||'') : '';
     document.getElementById('wfImageUrl').value = (w && w.image && w.image.startsWith('http')) ? w.image : '';
-    document.getElementById('wfImageFile').value='';
-    const preview=document.getElementById('wfPreview');
-    if(w && w.image){ preview.src=w.image; preview.style.display='block'; } else preview.style.display='none';
-    populateCategorySelects(w?w.category:null, w?w.subcategory:null);
+    document.getElementById('wfImageFile').value = '';
+    const preview = document.getElementById('wfPreview');
+    if(w && w.image){ preview.src = w.image; preview.style.display='block'; } else preview.style.display='none';
+
+    populateCategorySelects(w ? w.category : null, w ? w.subcategory : null);
     document.getElementById('workFormModal').classList.add('open');
 }
 document.getElementById('addWorkBtn').addEventListener('click', ()=>openWorkForm(null));
 document.getElementById('closeWorkFormModal').addEventListener('click', ()=>document.getElementById('workFormModal').classList.remove('open'));
 document.getElementById('workFormModal').addEventListener('click', e=>{ if(e.target.id==='workFormModal') e.currentTarget.classList.remove('open'); });
 document.getElementById('wfImageFile').addEventListener('change', e=>{
-    const file=e.target.files[0]; if(!file) return;
-    const reader=new FileReader();
-    reader.onload=ev=>{ wfImageData=ev.target.result; const p=document.getElementById('wfPreview'); p.src=wfImageData; p.style.display='block'; };
+    const file = e.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{ wfImageData = ev.target.result; const preview = document.getElementById('wfPreview'); preview.src = wfImageData; preview.style.display='block'; };
     reader.readAsDataURL(file);
 });
 document.getElementById('wfSaveBtn').addEventListener('click', ()=>{
-    const title=document.getElementById('wfTitle').value.trim();
-    const mainCat=document.getElementById('wfMainCat').value;
-    const subCat=document.getElementById('wfSubCat').value;
-    const year=document.getElementById('wfYear').value.trim();
-    const desc=document.getElementById('wfDesc').value.trim();
-    const fav=document.getElementById('wfFav').checked;
-    const urlVal=document.getElementById('wfImageUrl').value.trim();
+    const title = document.getElementById('wfTitle').value.trim();
+    const mainCat = document.getElementById('wfMainCat').value;
+    const subCat = document.getElementById('wfSubCat').value;
+    const year = document.getElementById('wfYear').value.trim();
+    const size = document.getElementById('wfSize').value.trim();
+    const technik = document.getElementById('wfTechnik').value.trim();
+    const priceVal = document.getElementById('wfPrice').value;
+    const sold = document.getElementById('wfSold').checked;
+    const fav = document.getElementById('wfFav').checked;
+    const desc = document.getElementById('wfDesc').value.trim();
+    const urlVal = document.getElementById('wfImageUrl').value.trim();
+
     if(!title){ alert('Bitte einen Titel eingeben.'); return; }
     if(!mainCat){ alert('Bitte eine Kategorie wählen.'); return; }
-    let finalImage=null;
-    if(wfImageData) finalImage=wfImageData;
-    else if(urlVal) finalImage=urlVal;
-    else if(editingWorkId){ const ex=STATE.works.find(w=>w.id===editingWorkId); finalImage=ex?ex.image:null; }
+    if(priceVal==='' || isNaN(priceVal)){ alert('Bitte einen gültigen Preis eingeben.'); return; }
+
+    let finalImage = null;
+    if(wfImageData) finalImage = wfImageData;
+    else if(urlVal) finalImage = urlVal;
+    else if(editingWorkId){ const existing = STATE.works.find(w=>w.id===editingWorkId); finalImage = existing ? existing.image : null; }
+
+    const payload = {title, category:mainCat, subcategory:subCat, year, size, technik, price:Number(priceVal), sold, favorite:fav, description:desc, image:finalImage};
+
     if(editingWorkId){
-        const w=STATE.works.find(x=>x.id===editingWorkId);
-        Object.assign(w,{title,category:mainCat,subcategory:subCat,year,description:desc,favorite:fav,image:finalImage});
+        const w = STATE.works.find(x=>x.id===editingWorkId);
+        Object.assign(w, payload);
         showToast('Werk aktualisiert.');
     }else{
-        STATE.works.push({id:uid(),title,category:mainCat,subcategory:subCat,year,description:desc,favorite:fav,image:finalImage,createdAt:Date.now()});
+        STATE.works.push({id: uid(), ...payload, createdAt: Date.now()});
         showToast('Werk hinzugefügt.');
     }
-    saveState(); document.getElementById('workFormModal').classList.remove('open'); renderAdminWorksTable();
+    saveState();
+    document.getElementById('workFormModal').classList.remove('open');
+    renderAdminWorksTable();
 });
 
+/* ---- Kategorien ---- */
 function renderAdminCategories(){
-    const wrap=document.getElementById('catManageList');
-    const cats=Object.keys(STATE.categories);
-    if(cats.length===0){ wrap.innerHTML='<p style="color:var(--muted);margin-bottom:22px;">Noch keine Kategorien vorhanden.</p>'; return; }
-    wrap.innerHTML=cats.map(cat=>`
+    const wrap = document.getElementById('catManageList');
+    const cats = Object.keys(STATE.categories);
+    if(cats.length===0){ wrap.innerHTML = '<p style="color:var(--muted);margin-bottom:20px;">Noch keine Kategorien vorhanden.</p>'; return; }
+    wrap.innerHTML = cats.map(cat=>`
         <div class="cat-manage-card">
             <h4>${cat} <button class="icon-btn danger" data-delmain="${cat}">Kategorie löschen</button></h4>
             <div class="tag-row">${STATE.categories[cat].map(sub=>`<span class="tag">${sub} <button data-delsub="${cat}|||${sub}">×</button></span>`).join('') || '<span style="color:var(--muted);font-size:13px;">Keine Unterkategorien</span>'}</div>
             <div class="inline-add"><input type="text" placeholder="Neue Unterkategorie ..." data-subinput="${cat}"><button class="icon-btn" data-addsub="${cat}">+ Hinzufügen</button></div>
-        </div>`).join('');
+        </div>
+    `).join('');
     wrap.querySelectorAll('[data-delmain]').forEach(b=>b.addEventListener('click', ()=>{
-        const cat=b.dataset.delmain;
+        const cat = b.dataset.delmain;
         if(confirm('Kategorie "'+cat+'" inkl. aller Unterkategorien löschen?')){
             delete STATE.categories[cat];
             STATE.works.forEach(w=>{ if(w.category===cat){ w.category=''; w.subcategory=''; } });
@@ -1099,79 +1375,106 @@ function renderAdminCategories(){
         }
     }));
     wrap.querySelectorAll('[data-delsub]').forEach(b=>b.addEventListener('click', ()=>{
-        const [cat,sub]=b.dataset.delsub.split('|||');
-        STATE.categories[cat]=STATE.categories[cat].filter(s=>s!==sub);
+        const [cat, sub] = b.dataset.delsub.split('|||');
+        STATE.categories[cat] = STATE.categories[cat].filter(s=>s!==sub);
         saveState(); renderAdminCategories();
     }));
     wrap.querySelectorAll('[data-addsub]').forEach(b=>b.addEventListener('click', ()=>{
-        const cat=b.dataset.addsub;
-        const input=wrap.querySelector(`[data-subinput="${cat}"]`);
-        const val=input.value.trim(); if(!val) return;
+        const cat = b.dataset.addsub;
+        const input = wrap.querySelector(`[data-subinput="${cat}"]`);
+        const val = input.value.trim(); if(!val) return;
         if(!STATE.categories[cat].includes(val)) STATE.categories[cat].push(val);
         input.value=''; saveState(); renderAdminCategories();
     }));
 }
 document.getElementById('addMainCatBtn').addEventListener('click', ()=>{
-    const input=document.getElementById('newMainCatInput'); const val=input.value.trim(); if(!val) return;
+    const input = document.getElementById('newMainCatInput');
+    const val = input.value.trim(); if(!val) return;
     if(STATE.categories[val]){ alert('Diese Kategorie gibt es bereits.'); return; }
-    STATE.categories[val]=[]; input.value=''; saveState(); renderAdminCategories();
+    STATE.categories[val] = []; input.value=''; saveState(); renderAdminCategories();
 });
 
+/* ---- Info-Seite ---- */
 function fillInfoEditForm(){
-    document.getElementById('editIntro').value=STATE.info.intro;
-    document.getElementById('editKunst').value=STATE.info.kunst;
-    document.getElementById('editInspiration').value=STATE.info.inspiration;
-    document.getElementById('editTechniken').value=STATE.info.techniken;
-    document.getElementById('editAusstellungen').value=STATE.info.ausstellungen;
-    document.getElementById('editKontakt').value=STATE.info.kontakt;
-    const preview=document.getElementById('portraitPreview');
-    if(STATE.info.portrait){ preview.src=STATE.info.portrait; preview.style.display='block'; } else preview.style.display='none';
+    document.getElementById('editIntro').value = STATE.info.intro;
+    document.getElementById('editKunst').value = STATE.info.kunst;
+    document.getElementById('editInspiration').value = STATE.info.inspiration;
+    document.getElementById('editTechniken').value = STATE.info.techniken;
+    document.getElementById('editAusstellungen').value = STATE.info.ausstellungen;
+    document.getElementById('editKontakt').value = STATE.info.kontakt;
+    const preview = document.getElementById('portraitPreview');
+    if(STATE.info.portrait){ preview.src = STATE.info.portrait; preview.style.display='block'; } else preview.style.display='none';
 }
-let portraitTempData=null;
+let portraitTempData = null;
 document.getElementById('portraitUpload').addEventListener('change', e=>{
-    const file=e.target.files[0]; if(!file) return;
-    const reader=new FileReader();
-    reader.onload=ev=>{ portraitTempData=ev.target.result; const p=document.getElementById('portraitPreview'); p.src=portraitTempData; p.style.display='block'; };
+    const file = e.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{ portraitTempData = ev.target.result; const preview = document.getElementById('portraitPreview'); preview.src = portraitTempData; preview.style.display='block'; };
     reader.readAsDataURL(file);
 });
 document.getElementById('saveInfoBtn').addEventListener('click', ()=>{
-    STATE.info.intro=document.getElementById('editIntro').value;
-    STATE.info.kunst=document.getElementById('editKunst').value;
-    STATE.info.inspiration=document.getElementById('editInspiration').value;
-    STATE.info.techniken=document.getElementById('editTechniken').value;
-    STATE.info.ausstellungen=document.getElementById('editAusstellungen').value;
-    STATE.info.kontakt=document.getElementById('editKontakt').value;
-    if(portraitTempData) STATE.info.portrait=portraitTempData;
+    STATE.info.intro = document.getElementById('editIntro').value;
+    STATE.info.kunst = document.getElementById('editKunst').value;
+    STATE.info.inspiration = document.getElementById('editInspiration').value;
+    STATE.info.techniken = document.getElementById('editTechniken').value;
+    STATE.info.ausstellungen = document.getElementById('editAusstellungen').value;
+    STATE.info.kontakt = document.getElementById('editKontakt').value;
+    if(portraitTempData) STATE.info.portrait = portraitTempData;
     saveState(); showToast('Info-Seite gespeichert.');
 });
 
+/* ---- Rechtliches ---- */
+function fillLegalEditForm(){
+    document.getElementById('editImpressum').value = STATE.legal.impressum;
+    document.getElementById('editDatenschutz').value = STATE.legal.datenschutz;
+}
+document.getElementById('saveLegalBtn').addEventListener('click', ()=>{
+    STATE.legal.impressum = document.getElementById('editImpressum').value;
+    STATE.legal.datenschutz = document.getElementById('editDatenschutz').value;
+    saveState(); showToast('Rechtliche Texte gespeichert.');
+});
+
+/* ---- Daten Export / Import / Reset ---- */
 document.getElementById('exportBtn').addEventListener('click', ()=>{
-    const blob=new Blob([JSON.stringify(STATE,null,2)],{type:'application/json'});
-    const url=URL.createObjectURL(blob); const a=document.createElement('a');
-    a.href=url; a.download='gabi-galerie-daten.json'; a.click(); URL.revokeObjectURL(url);
+    const blob = new Blob([JSON.stringify(STATE, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'gabi-galerie-daten.json'; a.click();
+    URL.revokeObjectURL(url);
 });
 document.getElementById('importBtn').addEventListener('click', ()=>document.getElementById('importFile').click());
 document.getElementById('importFile').addEventListener('change', e=>{
-    const file=e.target.files[0]; if(!file) return;
-    const reader=new FileReader();
-    reader.onload=ev=>{
+    const file = e.target.files[0]; if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{
         try{
-            const data=JSON.parse(ev.target.result);
-            if(!data.categories||!data.works||!data.info) throw new Error('Ungültig');
-            STATE=data; saveState(); showToast('Daten erfolgreich importiert.'); renderAdmin();
+            const data = JSON.parse(ev.target.result);
+            if(!data.categories || !data.works || !data.info) throw new Error('Ungültiges Format');
+            if(!data.legal) data.legal = JSON.parse(JSON.stringify(DEFAULT_LEGAL));
+            STATE = data; saveState(); showToast('Daten erfolgreich importiert.'); renderAdmin();
         }catch(err){ alert('Die Datei konnte nicht gelesen werden.'); }
     };
     reader.readAsText(file);
 });
 document.getElementById('resetBtn').addEventListener('click', ()=>{
-    if(confirm('Wirklich ALLE Werke, Kategorien und Texte zurücksetzen?')){
-        STATE=JSON.parse(JSON.stringify(DEFAULT_DATA)); saveState(); renderAdmin(); showToast('Alles wurde zurückgesetzt.');
+    if(confirm('Wirklich ALLE Werke, Kategorien, Preise und Texte zurücksetzen?')){
+        STATE = JSON.parse(JSON.stringify(DEFAULT_DATA)); saveState(); renderAdmin(); showToast('Alles wurde zurückgesetzt.');
     }
 });
 
-/* ============================================================
+/* ---- FAQ Akkordeon ---- */
+document.querySelectorAll('.faq-item').forEach(item=>{
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', ()=>{
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i=>{ i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight=null; });
+        if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+});
+
+/* =========================================================
    INIT
-============================================================ */
+========================================================= */
 document.getElementById('year').textContent = new Date().getFullYear();
 showView('home');
 </script>

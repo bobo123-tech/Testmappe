@@ -3,1008 +3,1220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Hair & Style – Ihr Friseursalon für Damen und Herren. Haarschnitt, Coloration, Balayage & Brautstyling. Jetzt Termin buchen!">
-<title>Hair & Style | Friseursalon – Haarschnitt, Farbe & Styling</title>
+<title>Gabi – Kunst & Fotografie</title>
+<meta name="description" content="Gabi – Kunst & Fotografie. Collagen, Acryl-Malerei und mehr.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
-    /* ========== BASIS ========== */
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root{
+    --bg:#f0efe4;
+    --bg-card:#f7f6ee;
+    --border:#dbd7c9;
+    --text:#1c1a17;
+    --muted:#6f6a5f;
+    --accent:#8c2c3b;
+    --accent-dark:#6e2130;
+    --black:#141311;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{
+    font-family:'Lora',serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+}
+h1,h2,h3,h4,.font-head{font-family:'Poppins',sans-serif;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+button{font-family:inherit;cursor:pointer;}
+input,select,textarea{font-family:'Lora',serif;}
+.container{max-width:1240px;margin:0 auto;padding:0 5%;}
+.hidden{display:none!important;}
 
-    :root {
-        --gold: #c9a56a;
-        --gold-light: #e2c896;
-        --dark: #1a1613;
-        --dark-2: #26201c;
-        --cream: #faf7f2;
-        --beige: #f1ebe2;
-        --text: #3d3530;
-        --muted: #8a7f75;
-        --font-head: 'Playfair Display', Georgia, serif;
-        --font-body: 'Inter', -apple-system, sans-serif;
-        --shadow: 0 20px 60px rgba(26,22,19,0.12);
-        --radius: 4px;
-    }
+/* ===== HEADER ===== */
+header.site{
+    position:sticky;top:0;z-index:500;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+}
+.header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 5%;
+}
+.logo{display:flex;flex-direction:column;line-height:1.1;}
+.logo-title{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;letter-spacing:1px;}
+.logo-sub{font-size:10px;letter-spacing:2px;color:var(--muted);font-weight:600;margin-top:2px;}
+nav.main-nav{display:flex;gap:6px;align-items:center;}
+.nav-link{
+    font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;
+    padding:10px 18px;border-radius:30px;color:var(--text);transition:.25s;
+}
+.nav-link:hover{background:rgba(0,0,0,.05);}
+.nav-link.active{background:var(--black);color:#fff;}
+.btn-admin{
+    font-family:'Poppins',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;
+    border:1px dashed var(--muted);border-radius:30px;padding:10px 20px;background:none;color:var(--text);
+    transition:.25s;
+}
+.btn-admin:hover{border-color:var(--accent);color:var(--accent);}
+.burger-menu{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:8px;}
+.burger-menu span{width:24px;height:2px;background:var(--text);}
 
-    html { scroll-behavior: smooth; }
+/* ===== VIEWS ===== */
+.view{display:none;}
+.view.active{display:block;}
 
-    body {
-        font-family: var(--font-body);
-        background: var(--cream);
-        color: var(--text);
-        line-height: 1.7;
-        font-weight: 300;
-        overflow-x: hidden;
-    }
+/* ===== GENERIC PAGE HEAD ===== */
+.page-head{padding:60px 0 30px;}
+.eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    color:var(--accent);font-family:'Poppins',sans-serif;font-weight:700;
+    font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;
+}
+.eyebrow::before{content:'';width:22px;height:2px;background:var(--accent);}
+.page-title{font-size:44px;font-weight:800;margin-bottom:14px;}
+.page-subtitle{font-family:'Lora',serif;color:var(--muted);font-size:17px;max-width:640px;}
 
-    h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 600; line-height: 1.2; color: var(--dark); }
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+/* ===== HOME ===== */
+.hero-home{padding:80px 0 60px;}
+.hero-home .page-title{font-size:52px;max-width:700px;}
+.hero-btns{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+.btn{
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;
+    padding:15px 30px;border-radius:30px;border:1px solid var(--black);
+    display:inline-block;transition:.25s;
+}
+.btn-dark{background:var(--black);color:#fff;}
+.btn-dark:hover{background:var(--accent);border-color:var(--accent);}
+.btn-outline{background:none;color:var(--text);}
+.btn-outline:hover{background:var(--black);color:#fff;}
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+.section{padding:60px 0;}
+.section-head{margin-bottom:40px;}
+.section-head h2{font-size:32px;font-weight:800;}
 
-    /* ========== ANIMATIONEN ========== */
-    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s ease, transform .8s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal.delay-1 { transition-delay: .15s; }
-    .reveal.delay-2 { transition-delay: .3s; }
-    .reveal.delay-3 { transition-delay: .45s; }
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;}
+.cat-card{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:6px;
+    padding:30px;transition:.3s;
+}
+.cat-card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.08);}
+.cat-card h3{font-size:22px;margin-bottom:8px;}
+.cat-card p{color:var(--muted);font-size:14px;}
+.cat-card .cat-arrow{margin-top:16px;color:var(--accent);font-weight:600;font-size:14px;font-family:'Poppins',sans-serif;}
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes scrollHint { 0%, 100% { transform: translateY(0); opacity: .5; } 50% { transform: translateY(10px); opacity: 1; } }
+.works-preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;}
 
-    /* ========== TOPBAR ========== */
-    .topbar {
-        background: var(--dark);
-        color: rgba(255,255,255,.7);
-        font-size: 13px;
-        padding: 8px 0;
-        letter-spacing: .5px;
-    }
-    .topbar .container { display: flex; justify-content: space-between; align-items: center; }
-    .topbar span { color: var(--gold); }
-    @media (max-width: 768px) { .topbar .right { display: none; } .topbar .container { justify-content: center; } }
+.empty-hint{
+    border:1px dashed var(--border);border-radius:8px;padding:50px 20px;text-align:center;color:var(--muted);
+}
+.empty-hint a{color:var(--accent);font-weight:600;}
 
-    /* ========== HEADER ========== */
-    header {
-        position: sticky; top: 0; z-index: 1000;
-        background: rgba(26,22,19,.92);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(201,165,106,.15);
-        transition: box-shadow .3s;
-    }
-    header.scrolled { box-shadow: 0 5px 30px rgba(0,0,0,.4); }
-    .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+/* ===== GALLERY TOOLBAR ===== */
+.gallery-toolbar{
+    display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+    margin-bottom:34px;
+}
+.search-box{
+    display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--border);
+    border-radius:30px;padding:12px 20px;flex:1;min-width:220px;max-width:420px;
+}
+.search-box input{border:none;outline:none;background:none;flex:1;font-size:14px;}
+.toolbar-right{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.pill-btn{
+    display:flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:30px;
+    background:#fff;padding:11px 18px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;
+    color:var(--text);transition:.25s;
+}
+.pill-btn.active{background:var(--black);color:#fff;border-color:var(--black);}
+.pill-btn:hover{border-color:var(--accent);}
+select.pill-select{
+    border:1px solid var(--border);border-radius:30px;background:#fff;padding:11px 18px;
+    font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;color:var(--text);
+}
+.result-count{font-size:12px;color:var(--muted);font-family:'Poppins',sans-serif;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
 
-    .logo { display: flex; align-items: center; gap: 10px; }
-    .logo-icon {
-        width: 42px; height: 42px; border: 1px solid var(--gold);
-        display: flex; align-items: center; justify-content: center;
-        color: var(--gold); font-size: 18px; transform: rotate(45deg);
-    }
-    .logo-icon span { transform: rotate(-45deg); }
-    .logo-text { font-family: var(--font-head); color: #fff; font-size: 24px; letter-spacing: 1px; }
-    .logo-text em { color: var(--gold); font-style: italic; }
+/* ===== GALLERY LAYOUT ===== */
+.gallery-layout{display:grid;grid-template-columns:220px 1fr;gap:50px;padding-bottom:100px;}
+.sidebar{border-right:1px solid var(--border);padding-right:30px;}
+.sidebar-all{
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:var(--accent);
+    padding-bottom:10px;border-bottom:2px solid var(--accent);display:inline-block;margin-bottom:24px;cursor:pointer;
+}
+.sidebar-all.inactive{color:var(--text);border-color:transparent;}
+.cat-group{margin-bottom:26px;}
+.cat-group-title{
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;
+    text-transform:uppercase;margin-bottom:10px;cursor:pointer;
+}
+.cat-group-title:hover{color:var(--accent);}
+.sub-list{list-style:none;}
+.sub-list li{
+    font-size:14px;color:var(--muted);padding:6px 0;cursor:pointer;transition:.2s;
+}
+.sub-list li:hover{color:var(--text);}
+.sub-list li.active{color:var(--accent);font-weight:600;}
+.sidebar-empty{font-size:13px;color:var(--muted);font-style:italic;}
 
-    nav ul { display: flex; list-style: none; gap: 36px; align-items: center; }
-    nav a {
-        color: rgba(255,255,255,.85); font-size: 13px; text-transform: uppercase;
-        letter-spacing: 2px; font-weight: 400; position: relative; padding: 6px 0;
-    }
-    nav a::after {
-        content: ''; position: absolute; left: 0; bottom: 0; width: 0; height: 1px;
-        background: var(--gold); transition: width .3s;
-    }
-    nav a:hover::after, nav a.active::after { width: 100%; }
-    nav a:hover { color: #fff; }
+/* ===== WORK GRID ===== */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:26px;}
+.work-card{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:6px;overflow:hidden;
+    cursor:pointer;transition:.3s;position:relative;
+}
+.work-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(0,0,0,.1);}
+.work-thumb{
+    width:100%;aspect-ratio:4/5;object-fit:cover;background:#e6e3d6;
+    display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;
+}
+.fav-btn{
+    position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;
+    background:rgba(255,255,255,.85);border:none;display:flex;align-items:center;justify-content:center;
+    font-size:16px;color:var(--accent);transition:.2s;
+}
+.fav-btn:hover{background:#fff;transform:scale(1.1);}
+.work-info{padding:16px 18px;}
+.work-info h4{font-size:17px;font-weight:700;margin-bottom:4px;}
+.work-info .work-meta{font-size:12px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;font-family:'Poppins',sans-serif;}
 
-    .btn {
-        display: inline-block; padding: 14px 34px;
-        background: var(--gold); color: var(--dark);
-        font-size: 13px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500;
-        border: 1px solid var(--gold); cursor: pointer; transition: all .35s; font-family: var(--font-body);
-    }
-    .btn:hover { background: transparent; color: var(--gold); }
-    .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
-    .btn-outline:hover { background: #fff; color: var(--dark); border-color: #fff; }
-    .btn-dark { background: var(--dark); color: #fff; border-color: var(--dark); }
-    .btn-dark:hover { background: transparent; color: var(--dark); }
-    nav .btn { padding: 11px 24px; }
+/* Empty state (no results) */
+.empty-state{
+    border:1px dashed var(--border);border-radius:10px;min-height:340px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;
+}
+.badge-dashed{
+    border:1px dashed var(--muted);border-radius:20px;padding:6px 16px;font-size:11px;
+    letter-spacing:2px;color:var(--muted);font-family:'Poppins',sans-serif;font-weight:600;margin-bottom:20px;
+}
+.empty-state h3{font-size:24px;margin-bottom:10px;}
+.empty-state p{color:var(--muted);font-style:italic;}
 
-    .burger { display: none; flex-direction: column; gap: 6px; cursor: pointer; padding: 8px; }
-    .burger span { width: 28px; height: 2px; background: #fff; transition: .3s; }
-    .burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .burger.open span:nth-child(2) { opacity: 0; }
-    .burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+/* ===== INFO PAGE ===== */
+.info-hero{display:grid;grid-template-columns:1.3fr 1fr;gap:50px;align-items:start;padding:60px 0 50px;}
+.info-text p{color:var(--muted);font-size:16px;max-width:520px;}
+.portrait-box{
+    border:1px dashed var(--border);border-radius:10px;background:var(--bg-card);
+    aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+    overflow:hidden;
+}
+.portrait-box img{width:100%;height:100%;object-fit:cover;}
+.portrait-box p{color:var(--muted);font-style:italic;font-size:14px;}
+.divider{border:none;border-top:1px solid var(--border);margin:0;}
+.info-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px 70px;padding:55px 0 90px;
+}
+.info-block h3{font-size:20px;font-weight:700;margin-bottom:10px;padding-bottom:12px;border-bottom:1px solid var(--border);}
+.info-block p{color:var(--muted);font-size:15px;}
 
-    /* ========== HERO ========== */
-    .hero {
-        min-height: calc(100vh - 116px); position: relative;
-        display: flex; align-items: center;
-        background: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920&q=80') center/cover fixed;
-        color: #fff;
-    }
-    .hero::before {
-        content: ''; position: absolute; inset: 0;
-        background: linear-gradient(105deg, rgba(26,22,19,.92) 0%, rgba(26,22,19,.7) 50%, rgba(26,22,19,.3) 100%);
-    }
-    .hero-content { position: relative; max-width: 680px; animation: fadeUp 1s ease both; }
-    .eyebrow {
-        display: inline-flex; align-items: center; gap: 14px;
-        color: var(--gold); font-size: 12px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 24px;
-    }
-    .eyebrow::before { content: ''; width: 50px; height: 1px; background: var(--gold); }
-    .hero h1 { font-size: clamp(42px, 6vw, 78px); color: #fff; font-weight: 400; margin-bottom: 24px; }
-    .hero h1 em { font-style: italic; color: var(--gold-light); }
-    .hero p { font-size: 18px; color: rgba(255,255,255,.8); max-width: 520px; margin-bottom: 40px; }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-    .hero-stats { display: flex; gap: 48px; margin-top: 70px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,.15); }
-    .hero-stats strong { display: block; font-family: var(--font-head); font-size: 36px; color: var(--gold); font-weight: 400; }
-    .hero-stats span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.6); }
-    .scroll-hint {
-        position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-        color: rgba(255,255,255,.6); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; text-align: center;
-    }
-    .scroll-hint::after { content: '↓'; display: block; font-size: 20px; margin-top: 6px; animation: scrollHint 2s infinite; }
+/* ===== ADMIN ===== */
+.admin-login{
+    max-width:420px;margin:100px auto;background:#fff;border:1px solid var(--border);border-radius:10px;
+    padding:50px 40px;text-align:center;
+}
+.admin-login h2{font-size:26px;margin-bottom:10px;}
+.admin-login p{color:var(--muted);font-size:14px;margin-bottom:24px;}
+.admin-login input{
+    width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:6px;margin-bottom:16px;font-size:15px;
+}
+.admin-dash{padding:50px 0 100px;}
+.admin-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:16px;}
+.admin-tabs{display:flex;gap:10px;margin:30px 0;flex-wrap:wrap;}
+.admin-tab{
+    font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;padding:11px 22px;border-radius:30px;
+    border:1px solid var(--border);background:#fff;
+}
+.admin-tab.active{background:var(--black);color:#fff;border-color:var(--black);}
+.admin-panel{display:none;}
+.admin-panel.active{display:block;}
 
-    /* ========== SECTIONS ========== */
-    section { padding: 110px 0; }
-    .section-head { text-align: center; max-width: 620px; margin: 0 auto 70px; }
-    .section-head .eyebrow::before { display: none; }
-    .section-head .eyebrow { justify-content: center; }
-    .section-head h2 { font-size: clamp(32px, 4vw, 48px); margin-bottom: 18px; font-weight: 400; }
-    .section-head h2 em { font-style: italic; color: var(--gold); }
-    .section-head p { color: var(--muted); font-size: 16px; }
-    .divider { width: 60px; height: 1px; background: var(--gold); margin: 22px auto 0; }
+.admin-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;flex-wrap:wrap;gap:14px;}
 
-    /* ========== LEISTUNGEN ========== */
-    .services { background: var(--cream); }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-    .service-card {
-        background: #fff; padding: 46px 36px; position: relative; overflow: hidden;
-        transition: transform .4s, box-shadow .4s; border: 1px solid rgba(201,165,106,.15);
-    }
-    .service-card::before {
-        content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-        background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform .4s;
-    }
-    .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-num { position: absolute; top: 20px; right: 26px; font-family: var(--font-head); font-size: 60px; color: var(--beige); font-weight: 700; line-height: 1; }
-    .service-icon { width: 56px; height: 56px; margin-bottom: 26px; color: var(--gold); }
-    .service-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.3; }
-    .service-card h3 { font-size: 24px; margin-bottom: 12px; }
-    .service-card p { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
-    .service-price { display: flex; justify-content: space-between; align-items: center; padding-top: 20px; border-top: 1px solid var(--beige); }
-    .service-price span { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
-    .service-price strong { font-family: var(--font-head); font-size: 26px; color: var(--gold); font-weight: 400; }
+.admin-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.admin-table th,.admin-table td{padding:14px 16px;text-align:left;font-size:14px;border-bottom:1px solid var(--border);}
+.admin-table th{font-family:'Poppins',sans-serif;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);background:var(--bg-card);}
+.admin-table img{width:50px;height:60px;object-fit:cover;border-radius:4px;}
+.admin-table tr:last-child td{border-bottom:none;}
+.row-actions{display:flex;gap:8px;}
+.icon-btn{
+    border:1px solid var(--border);background:#fff;border-radius:6px;padding:7px 12px;font-size:13px;transition:.2s;
+}
+.icon-btn:hover{border-color:var(--accent);color:var(--accent);}
+.icon-btn.danger:hover{border-color:#b23b3b;color:#b23b3b;}
 
-    /* ========== ÜBER UNS ========== */
-    .about { background: #fff; }
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-    .about-images { position: relative; padding-bottom: 60px; padding-right: 60px; }
-    .about-img-main { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
-    .about-img-small {
-        position: absolute; bottom: 0; right: 0; width: 55%; aspect-ratio: 1; object-fit: cover;
-        border: 10px solid #fff; box-shadow: var(--shadow);
-    }
-    .about-badge {
-        position: absolute; top: 30px; left: -25px; background: var(--gold); color: var(--dark);
-        padding: 24px 22px; text-align: center; box-shadow: var(--shadow);
-    }
-    .about-badge strong { display: block; font-family: var(--font-head); font-size: 44px; line-height: 1; font-weight: 400; }
-    .about-badge span { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
-    .about-text h2 { font-size: clamp(32px, 3.5vw, 46px); font-weight: 400; margin: 20px 0 26px; }
-    .about-text h2 em { font-style: italic; color: var(--gold); }
-    .about-text p { margin-bottom: 18px; color: var(--muted); }
-    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 30px; margin: 34px 0 40px; }
-    .about-features li { list-style: none; display: flex; gap: 12px; align-items: center; font-size: 15px; color: var(--text); font-weight: 400; }
-    .about-features li::before {
-        content: '✓'; width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
-        border: 1px solid var(--gold); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 12px;
-    }
-    .signature { font-family: var(--font-head); font-style: italic; font-size: 28px; color: var(--dark); margin-top: 30px; }
-    .signature small { display: block; font-family: var(--font-body); font-style: normal; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
+.cat-manage-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:20px;}
+.cat-manage-card h4{font-size:18px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+.tag{
+    background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-size:13px;
+    display:flex;align-items:center;gap:8px;
+}
+.tag button{background:none;border:none;color:var(--muted);font-size:14px;}
+.tag button:hover{color:#b23b3b;}
+.inline-add{display:flex;gap:10px;}
+.inline-add input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:6px;font-size:14px;}
+.inline-add button{padding:10px 18px;}
 
-    /* ========== PREISLISTE ========== */
-    .pricing { background: var(--dark); color: #fff; position: relative; }
-    .pricing .section-head h2, .pricing h3 { color: #fff; }
-    .pricing .section-head p { color: rgba(255,255,255,.6); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px 80px; }
-    .price-group h3 { font-size: 26px; font-weight: 400; margin-bottom: 30px; padding-bottom: 14px; border-bottom: 1px solid rgba(201,165,106,.3); display: flex; justify-content: space-between; align-items: baseline; }
-    .price-group h3 span { font-family: var(--font-body); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
-    .price-row { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
-    .price-row .name { font-weight: 400; }
-    .price-row .desc { display: block; font-size: 13px; color: rgba(255,255,255,.5); }
-    .price-row .dots { flex: 1; border-bottom: 1px dotted rgba(255,255,255,.25); transform: translateY(-5px); }
-    .price-row .amt { font-family: var(--font-head); font-size: 20px; color: var(--gold); white-space: nowrap; }
-    .pricing-note { text-align: center; margin-top: 60px; font-size: 13px; color: rgba(255,255,255,.5); }
+.form-group{margin-bottom:18px;}
+.form-group label{display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;font-family:'Poppins',sans-serif;}
+.form-group input,.form-group select,.form-group textarea{
+    width:100%;padding:13px 15px;border:1px solid var(--border);border-radius:6px;font-size:14px;background:#fbfaf5;
+}
+.form-group textarea{min-height:100px;resize:vertical;}
+.form-row2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.checkbox-row{display:flex;align-items:center;gap:10px;font-size:14px;}
+.checkbox-row input{width:auto;}
+.upload-preview{width:120px;height:150px;object-fit:cover;border-radius:6px;border:1px solid var(--border);margin-top:10px;background:var(--bg-card);}
 
-    /* ========== GALERIE ========== */
-    .gallery { background: var(--cream); }
-    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 260px; gap: 16px; }
-    .gallery-item { position: relative; overflow: hidden; cursor: pointer; }
-    .gallery-item.tall { grid-row: span 2; }
-    .gallery-item.wide { grid-column: span 2; }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
-    .gallery-item::after {
-        content: '+'; position: absolute; inset: 0; background: rgba(26,22,19,.55); color: var(--gold);
-        display: flex; align-items: center; justify-content: center; font-size: 48px; font-weight: 300;
-        opacity: 0; transition: opacity .4s;
-    }
-    .gallery-item:hover img { transform: scale(1.08); }
-    .gallery-item:hover::after { opacity: 1; }
+.info-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.data-box{background:#fff;border:1px solid var(--border);border-radius:8px;padding:30px;}
+.data-box p{color:var(--muted);font-size:14px;margin-bottom:20px;}
+.data-btns{display:flex;gap:12px;flex-wrap:wrap;}
 
-    /* Lightbox */
-    .lightbox {
-        position: fixed; inset: 0; background: rgba(26,22,19,.96); z-index: 2000;
-        display: flex; align-items: center; justify-content: center;
-        opacity: 0; pointer-events: none; transition: opacity .3s;
-    }
-    .lightbox.open { opacity: 1; pointer-events: all; }
-    .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; box-shadow: 0 30px 80px rgba(0,0,0,.6); }
-    .lightbox-close, .lightbox-prev, .lightbox-next {
-        position: absolute; color: #fff; background: none; border: none; cursor: pointer; font-size: 40px; padding: 20px; opacity: .7; transition: opacity .2s;
-    }
-    .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; }
-    .lightbox-close { top: 10px; right: 20px; }
-    .lightbox-prev { left: 10px; top: 50%; transform: translateY(-50%); }
-    .lightbox-next { right: 10px; top: 50%; transform: translateY(-50%); }
+/* ===== MODALS ===== */
+.modal-overlay{
+    position:fixed;inset:0;background:rgba(20,19,17,.7);z-index:2000;
+    display:flex;align-items:center;justify-content:center;padding:20px;
+    opacity:0;pointer-events:none;transition:.25s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{
+    background:#fff;border-radius:10px;max-width:900px;width:100%;max-height:88vh;overflow-y:auto;
+    position:relative;
+}
+.modal-box.small{max-width:520px;}
+.modal-close{
+    position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:var(--bg-card);
+    border:none;font-size:18px;z-index:5;
+}
+.work-modal-content{display:grid;grid-template-columns:1fr 1fr;}
+.work-modal-img{width:100%;height:100%;object-fit:cover;min-height:320px;background:var(--bg-card);}
+.work-modal-body{padding:40px;}
+.work-modal-body .eyebrow{margin-bottom:16px;}
+.work-modal-body h2{font-size:30px;margin-bottom:14px;}
+.work-modal-body p{color:var(--muted);font-size:15px;margin-bottom:20px;}
+.work-modal-fav{display:inline-flex;align-items:center;gap:8px;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;}
 
-    /* ========== TEAM ========== */
-    .team { background: #fff; }
-    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; }
-    .team-card { text-align: center; }
-    .team-img-wrap { position: relative; overflow: hidden; margin-bottom: 24px; aspect-ratio: 3/4; }
-    .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s; filter: grayscale(20%); }
-    .team-card:hover .team-img-wrap img { transform: scale(1.05); filter: grayscale(0); }
-    .team-social {
-        position: absolute; bottom: 0; left: 0; right: 0; background: var(--gold); padding: 14px;
-        display: flex; justify-content: center; gap: 22px; transform: translateY(100%); transition: transform .4s;
-    }
-    .team-card:hover .team-social { transform: translateY(0); }
-    .team-social a { color: var(--dark); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; }
-    .team-card h3 { font-size: 24px; font-weight: 400; margin-bottom: 4px; }
-    .team-card p { color: var(--gold); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; }
-    .team-card .bio { color: var(--muted); font-size: 14px; letter-spacing: 0; text-transform: none; margin-top: 12px; }
+.toast{
+    position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(100px);
+    background:var(--black);color:#fff;padding:16px 28px;border-radius:30px;font-size:14px;z-index:3000;
+    transition:.3s;font-family:'Poppins',sans-serif;
+}
+.toast.show{transform:translateX(-50%) translateY(0);}
 
-    /* ========== BEWERTUNGEN ========== */
-    .testimonials { background: var(--beige); position: relative; overflow: hidden; }
-    .testimonials::before {
-        content: '”'; position: absolute; top: -60px; left: 5%; font-family: var(--font-head);
-        font-size: 400px; color: rgba(201,165,106,.12); line-height: 1;
-    }
-    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; position: relative; }
-    .testi-card { background: #fff; padding: 44px 38px; position: relative; transition: transform .3s; }
-    .testi-card:hover { transform: translateY(-6px); }
-    .stars { color: var(--gold); font-size: 16px; letter-spacing: 3px; margin-bottom: 20px; }
-    .testi-card p { font-family: var(--font-head); font-style: italic; font-size: 18px; color: var(--dark); margin-bottom: 28px; line-height: 1.6; }
-    .testi-author { display: flex; align-items: center; gap: 14px; }
-    .testi-author img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-    .testi-author strong { display: block; font-weight: 500; font-size: 15px; }
-    .testi-author span { font-size: 12px; color: var(--muted); }
-    .google-badge { text-align: center; margin-top: 50px; font-size: 14px; color: var(--muted); }
-    .google-badge strong { color: var(--dark); font-weight: 500; }
+footer.site-footer{
+    border-top:1px solid var(--border);padding:30px 5%;text-align:center;color:var(--muted);font-size:13px;
+}
 
-    /* ========== CTA BANNER ========== */
-    .cta {
-        background: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1920&q=80') center/cover fixed;
-        position: relative; text-align: center; color: #fff; padding: 130px 0;
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+    .gallery-layout{grid-template-columns:1fr;}
+    .sidebar{border-right:none;border-bottom:1px solid var(--border);padding:0 0 24px;margin-bottom:24px;display:flex;flex-wrap:wrap;gap:10px 24px;}
+    .cat-group{margin-bottom:0;width:100%;}
+    .info-hero{grid-template-columns:1fr;}
+    .info-grid{grid-template-columns:1fr;}
+    .work-modal-content{grid-template-columns:1fr;}
+    .work-modal-img{min-height:220px;}
+    .form-row2, .info-form-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+    nav.main-nav{
+        position:fixed;top:78px;left:0;right:0;bottom:0;background:var(--bg);flex-direction:column;
+        padding:30px;gap:14px;transform:translateX(100%);transition:.3s;z-index:400;
     }
-    .cta::before { content: ''; position: absolute; inset: 0; background: rgba(26,22,19,.82); }
-    .cta .container { position: relative; }
-    .cta h2 { color: #fff; font-size: clamp(34px, 4.5vw, 56px); font-weight: 400; margin-bottom: 20px; }
-    .cta h2 em { font-style: italic; color: var(--gold-light); }
-    .cta p { color: rgba(255,255,255,.75); font-size: 18px; margin-bottom: 40px; }
-    .cta-phone { display: block; font-family: var(--font-head); font-size: 32px; color: var(--gold); margin-top: 30px; }
-
-    /* ========== FAQ ========== */
-    .faq { background: #fff; }
-    .faq-list { max-width: 800px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid var(--beige); }
-    .faq-q {
-        width: 100%; background: none; border: none; text-align: left; padding: 26px 0; cursor: pointer;
-        display: flex; justify-content: space-between; align-items: center; gap: 20px;
-        font-family: var(--font-head); font-size: 20px; color: var(--dark);
-    }
-    .faq-q::after { content: '+'; font-size: 28px; color: var(--gold); font-weight: 300; transition: transform .3s; flex-shrink: 0; }
-    .faq-item.open .faq-q::after { transform: rotate(45deg); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .4s ease; color: var(--muted); }
-    .faq-a p { padding-bottom: 26px; }
-
-    /* ========== KONTAKT ========== */
-    .contact { background: var(--cream); }
-    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 70px; }
-    .contact-info h3 { font-size: 30px; font-weight: 400; margin-bottom: 30px; }
-    .info-block { display: flex; gap: 20px; margin-bottom: 30px; }
-    .info-icon { width: 50px; height: 50px; flex-shrink: 0; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; color: var(--gold); }
-    .info-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-    .info-block h4 { font-family: var(--font-body); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-weight: 500; }
-    .info-block p { color: var(--dark); font-weight: 400; }
-    .hours { width: 100%; margin-top: 8px; }
-    .hours td { padding: 5px 0; font-size: 15px; }
-    .hours td:last-child { text-align: right; color: var(--dark); font-weight: 400; }
-    .hours tr.closed td:last-child { color: var(--muted); }
-    .hours tr.today td { color: var(--gold); font-weight: 500; }
-
-    .contact-form { background: #fff; padding: 50px; box-shadow: var(--shadow); }
-    .contact-form h3 { font-size: 28px; font-weight: 400; margin-bottom: 8px; }
-    .contact-form > p { color: var(--muted); font-size: 14px; margin-bottom: 30px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .form-group { margin-bottom: 18px; }
-    .form-group label { display: block; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; font-weight: 500; }
-    .form-group input, .form-group select, .form-group textarea {
-        width: 100%; padding: 14px 16px; border: 1px solid #e3ddd3; background: var(--cream);
-        font-family: var(--font-body); font-size: 15px; color: var(--dark); transition: border-color .3s, background .3s;
-    }
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); background: #fff; }
-    .form-group textarea { min-height: 110px; resize: vertical; }
-    .form-check { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); margin: 6px 0 24px; }
-    .form-check input { margin-top: 4px; accent-color: var(--gold); }
-    .form-check a { text-decoration: underline; }
-    .form-success { display: none; text-align: center; padding: 60px 20px; }
-    .form-success .check { width: 70px; height: 70px; border-radius: 50%; background: var(--gold); color: var(--dark); font-size: 32px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
-    .form-success h3 { margin-bottom: 10px; }
-
-    .map { width: 100%; height: 420px; border: 0; filter: grayscale(100%) contrast(1.1); display: block; }
-
-    /* ========== FOOTER ========== */
-    footer { background: var(--dark); color: rgba(255,255,255,.65); padding: 80px 0 30px; }
-    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-    .footer-brand p { margin: 20px 0; font-size: 14px; max-width: 320px; }
-    .socials { display: flex; gap: 12px; }
-    .socials a {
-        width: 40px; height: 40px; border: 1px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center;
-        transition: all .3s; color: #fff;
-    }
-    .socials a:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
-    .socials svg { width: 17px; height: 17px; fill: currentColor; }
-    footer h4 { color: #fff; font-family: var(--font-body); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; font-weight: 500; }
-    footer ul { list-style: none; }
-    footer li { margin-bottom: 12px; font-size: 14px; }
-    footer li a { transition: color .3s; }
-    footer li a:hover { color: var(--gold); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding-top: 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; font-size: 13px; }
-    .footer-bottom a { margin-left: 22px; }
-    .footer-bottom a:hover { color: var(--gold); }
-
-    /* ========== BACK TO TOP ========== */
-    .to-top {
-        position: fixed; bottom: 30px; right: 30px; width: 48px; height: 48px; background: var(--gold); color: var(--dark);
-        display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 900; font-size: 20px;
-        opacity: 0; transform: translateY(20px); transition: all .3s; box-shadow: 0 10px 30px rgba(0,0,0,.2);
-    }
-    .to-top.show { opacity: 1; transform: translateY(0); }
-    .to-top:hover { background: var(--dark); color: var(--gold); }
-
-    /* ========== RESPONSIVE ========== */
-    @media (max-width: 1024px) {
-        .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-        .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 860px) {
-        nav ul {
-            position: fixed; top: 80px; left: 0; right: 0; bottom: 0; background: var(--dark);
-            flex-direction: column; padding: 50px 30px; gap: 28px;
-            transform: translateX(100%); transition: transform .4s;
-        }
-        nav ul.open { transform: translateX(0); }
-        nav a { font-size: 16px; }
-        .burger { display: flex; }
-        .hero { background-attachment: scroll; }
-        .hero-stats { gap: 28px; }
-        .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 50px; }
-        .about-images { padding-right: 30px; }
-        .about-badge { left: 0; }
-        .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 200px; }
-        .gallery-item.wide { grid-column: span 2; }
-        .cta { background-attachment: scroll; }
-        .contact-form { padding: 32px 24px; }
-        section { padding: 80px 0; }
-    }
-    @media (max-width: 520px) {
-        .hero-stats { flex-wrap: wrap; }
-        .form-row { grid-template-columns: 1fr; }
-        .about-features { grid-template-columns: 1fr; }
-        .footer-grid { grid-template-columns: 1fr; }
-        .gallery-item.tall { grid-row: span 1; }
-        .footer-bottom { justify-content: center; text-align: center; }
-        .footer-bottom a { margin: 0 10px; }
-    }
+    nav.main-nav.open{transform:translateX(0);}
+    .burger-menu{display:flex;}
+    .page-title,.hero-home .page-title{font-size:32px;}
+    .admin-header{flex-direction:column;align-items:flex-start;}
+}
 </style>
 </head>
 <body>
 
-<!-- TOPBAR -->
-<div class="topbar">
-    <div class="container">
-        <div>📞 <span>+49 123 456 789</span> &nbsp;·&nbsp; Mo–Fr 9–19 Uhr · Sa 9–16 Uhr</div>
-        <div class="right">Musterstraße 123 · 12345 Musterstadt</div>
-    </div>
-</div>
-
-<!-- HEADER -->
-<header id="header">
-    <div class="container nav-inner">
-        <a href="#home" class="logo">
-            <div class="logo-icon"><span>✂</span></div>
-            <div class="logo-text">Hair <em>&</em> Style</div>
+<!-- ===================== HEADER ===================== -->
+<header class="site">
+    <div class="header-inner">
+        <a href="#" class="logo" data-nav="home">
+            <span class="logo-title">GABI</span>
+            <span class="logo-sub">KUNST &amp; FOTOGRAFIE</span>
         </a>
-        <nav>
-            <ul id="navMenu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Leistungen</a></li>
-                <li><a href="#about">Über uns</a></li>
-                <li><a href="#pricing">Preise</a></li>
-                <li><a href="#gallery">Galerie</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-                <li><a href="#contact" class="btn">Termin buchen</a></li>
-            </ul>
+        <nav class="main-nav" id="mainNav">
+            <a href="#" class="nav-link" data-nav="home">Übersicht</a>
+            <a href="#" class="nav-link" data-nav="gallery">Bilder</a>
+            <a href="#" class="nav-link" data-nav="info">Info von Gabi</a>
         </nav>
-        <div class="burger" id="burger"><span></span><span></span><span></span></div>
+        <div style="display:flex;align-items:center;gap:10px;">
+            <button class="btn-admin" data-nav="admin">VERWALTUNG</button>
+            <button class="burger-menu" id="burgerBtn"><span></span><span></span><span></span></button>
+        </div>
     </div>
 </header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-    <div class="container">
-        <div class="hero-content">
-            <div class="eyebrow">Friseursalon seit 2009</div>
-            <h1>Wo Ihr Stil <em>zum Ausdruck</em> kommt</h1>
-            <p>Individuelle Beratung, handwerkliche Präzision und hochwertige Produkte – für einen Look, der zu Ihnen passt.</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn">Termin vereinbaren</a>
-                <a href="#services" class="btn btn-outline">Leistungen entdecken</a>
-            </div>
-            <div class="hero-stats">
-                <div><strong>15+</strong><span>Jahre Erfahrung</span></div>
-                <div><strong>8.000+</strong><span>Zufriedene Kunden</span></div>
-                <div><strong>4.9 ★</strong><span>Google Bewertung</span></div>
-            </div>
+<!-- ===================== HOME / ÜBERSICHT ===================== -->
+<main>
+<section class="view" id="view-home">
+    <div class="container hero-home">
+        <div class="eyebrow">Willkommen</div>
+        <h1 class="page-title">Kunst, die berührt.</h1>
+        <p class="page-subtitle">Gabi arbeitet mit Collage und Acryl-Malerei an Werken, die Reisen, Menschen und Momente einfangen – mal abstrakt, mal ganz konkret.</p>
+        <div class="hero-btns">
+            <a href="#" class="btn btn-dark" data-nav="gallery">Werke entdecken</a>
+            <a href="#" class="btn btn-outline" data-nav="info">Mehr über Gabi</a>
         </div>
     </div>
-    <div class="scroll-hint">Scrollen</div>
+
+    <div class="container section">
+        <div class="section-head">
+            <div class="eyebrow">Arbeitsbereiche</div>
+            <h2>Kategorien</h2>
+        </div>
+        <div class="cat-grid" id="homeCatGrid"></div>
+    </div>
+
+    <div class="container section" style="padding-bottom:100px;">
+        <div class="section-head">
+            <div class="eyebrow">Sammlung</div>
+            <h2>Neueste Werke</h2>
+        </div>
+        <div id="homeWorksPreview"></div>
+    </div>
 </section>
 
-<!-- LEISTUNGEN -->
-<section class="services" id="services">
+<!-- ===================== GALERIE / BILDER ===================== -->
+<section class="view" id="view-gallery">
+    <div class="container page-head">
+        <div class="eyebrow">Die Sammlung</div>
+        <h1 class="page-title">Meine Werke</h1>
+        <p class="page-subtitle">Klicke auf ein Werk, um es dir genauer anzusehen.</p>
+    </div>
+
     <div class="container">
-        <div class="section-head reveal">
-            <div class="eyebrow">Unsere Leistungen</div>
-            <h2>Handwerk trifft <em>Leidenschaft</em></h2>
-            <p>Vom klassischen Schnitt bis zur aufwendigen Coloration – wir nehmen uns Zeit für Sie.</p>
-            <div class="divider"></div>
+        <div class="gallery-toolbar">
+            <div class="search-box">
+                <span>🔍</span>
+                <input type="text" id="searchInput" placeholder="Werk suchen ...">
+            </div>
+            <div class="toolbar-right">
+                <button class="pill-btn" id="favToggleBtn">♥ Nur Favoriten</button>
+                <select class="pill-select" id="sortSelect">
+                    <option value="newest">Neueste zuerst</option>
+                    <option value="oldest">Älteste zuerst</option>
+                    <option value="az">Titel A–Z</option>
+                    <option value="za">Titel Z–A</option>
+                </select>
+                <span class="result-count" id="resultCount">0 Werke angezeigt</span>
+            </div>
         </div>
-        <div class="services-grid">
-            <div class="service-card reveal">
-                <div class="service-num">01</div>
-                <div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
-                <h3>Damenhaarschnitt</h3>
-                <p>Beratung, Pflegewäsche, Schnitt und Styling – perfekt abgestimmt auf Gesichtsform und Haarstruktur.</p>
-                <div class="service-price"><span>ca. 60 Min.</span><strong>ab 49 €</strong></div>
-            </div>
-            <div class="service-card reveal delay-1">
-                <div class="service-num">02</div>
-                <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 2 8h10c0-3 2-5 2-8a7 7 0 0 0-7-7z"/><line x1="9" y1="21" x2="15" y2="21"/></svg></div>
-                <h3>Herrenhaarschnitt</h3>
-                <p>Klassisch, modern oder Fade – inklusive Waschen, Konturenschnitt und Bartkontur auf Wunsch.</p>
-                <div class="service-price"><span>ca. 40 Min.</span><strong>ab 32 €</strong></div>
-            </div>
-            <div class="service-card reveal delay-2">
-                <div class="service-num">03</div>
-                <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22c5 0 9-4 9-9 0-4-3-6-3-6s-2 2-3 4c0-4-3-9-3-9S9 6 9 10c-1-2-3-3-3-3s-3 2-3 6c0 5 4 9 9 9z"/></svg></div>
-                <h3>Coloration & Balayage</h3>
-                <p>Natürliche Farbverläufe, Strähnen oder komplette Farbveränderung – mit schonenden Premium-Farben.</p>
-                <div class="service-price"><span>ab 90 Min.</span><strong>ab 79 €</strong></div>
-            </div>
-            <div class="service-card reveal">
-                <div class="service-num">04</div>
-                <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 3l1.5 4.5L18 9l-4.5 1.5L12 15l-1.5-4.5L6 9l4.5-1.5z"/><path d="M5 17l.75 2.25L8 20l-2.25.75L5 23l-.75-2.25L2 20l2.25-.75z"/><path d="M19 15l.5 1.5L21 17l-1.5.5L19 19l-.5-1.5L17 17l1.5-.5z"/></svg></div>
-                <h3>Styling & Hochsteckfrisuren</h3>
-                <p>Für Hochzeiten, Galas und besondere Anlässe – wir kreieren den Look, der Sie strahlen lässt.</p>
-                <div class="service-price"><span>ca. 45 Min.</span><strong>ab 45 €</strong></div>
-            </div>
-            <div class="service-card reveal delay-1">
-                <div class="service-num">05</div>
-                <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="8" height="14" rx="1"/><path d="M10 8V5a2 2 0 0 1 4 0v3"/><line x1="8" y1="13" x2="16" y2="13"/></svg></div>
-                <h3>Pflege & Treatments</h3>
-                <p>Olaplex, Keratin-Glättung und intensive Haarkuren für gesundes, glänzendes Haar.</p>
-                <div class="service-price"><span>ca. 30 Min.</span><strong>ab 29 €</strong></div>
-            </div>
-            <div class="service-card reveal delay-2">
-                <div class="service-num">06</div>
-                <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 21C7 17 3 13 3 9a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4-4 8-9 12z"/></svg></div>
-                <h3>Brautstyling</h3>
-                <p>Inklusive Probetermin, Frisur und Make-up am Hochzeitstag – auch vor Ort möglich.</p>
-                <div class="service-price"><span>Paketpreis</span><strong>ab 149 €</strong></div>
+
+        <div class="gallery-layout">
+            <aside class="sidebar" id="sidebar"></aside>
+            <div>
+                <div class="work-grid" id="workGrid"></div>
+                <div class="empty-state hidden" id="emptyState">
+                    <div class="badge-dashed">Ohne Ergebnis</div>
+                    <h3>Kein passendes Werk gefunden.</h3>
+                    <p>Versuche es mit einem anderen Suchbegriff oder anderen Filtern.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ÜBER UNS -->
-<section class="about" id="about">
+<!-- ===================== INFO VON GABI ===================== -->
+<section class="view" id="view-info">
+    <div class="container page-head" style="padding-bottom:0;">
+        <div class="eyebrow">Info von Gabi</div>
+        <h1 class="page-title">Über Gabi</h1>
+    </div>
+    <div class="container info-hero">
+        <div class="info-text">
+            <p id="infoIntroText"></p>
+        </div>
+        <div class="portrait-box" id="portraitBox">
+            <div class="badge-dashed">Porträt</div>
+            <p>Hier erscheint bald ein Foto von Gabi.</p>
+        </div>
+    </div>
+    <hr class="divider">
+    <div class="container info-grid">
+        <div class="info-block"><h3>Künstlerische Arbeit</h3><p id="infoKunst"></p></div>
+        <div class="info-block"><h3>Inspiration</h3><p id="infoInspiration"></p></div>
+        <div class="info-block"><h3>Techniken</h3><p id="infoTechniken"></p></div>
+        <div class="info-block"><h3>Ausstellungen</h3><p id="infoAusstellungen"></p></div>
+        <div class="info-block"><h3>Kontakt</h3><p id="infoKontakt"></p></div>
+    </div>
+</section>
+
+<!-- ===================== VERWALTUNG ===================== -->
+<section class="view" id="view-admin">
+    <!-- LOGIN -->
     <div class="container">
-        <div class="about-grid">
-            <div class="about-images reveal">
-                <img class="about-img-main" src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=800&q=80" alt="Unser Salon">
-                <img class="about-img-small" src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?w=600&q=80" alt="Haarschnitt im Salon">
-                <div class="about-badge"><strong>15</strong><span>Jahre</span></div>
+        <div class="admin-login" id="adminLogin">
+            <h2>Verwaltung</h2>
+            <p>Bitte gib das Passwort ein, um Werke und Inhalte zu bearbeiten.</p>
+            <input type="password" id="adminPassword" placeholder="Passwort">
+            <button class="btn btn-dark" style="width:100%;" id="adminLoginBtn">Anmelden</button>
+            <p id="adminLoginError" style="color:#b23b3b;font-size:13px;margin-top:10px;display:none;">Falsches Passwort. Bitte versuche es erneut.</p>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div class="admin-dash hidden" id="adminDash">
+            <div class="admin-header">
+                <div>
+                    <div class="eyebrow">Verwaltung</div>
+                    <h1 class="page-title" style="font-size:34px;margin-bottom:0;">Inhalte bearbeiten</h1>
+                </div>
+                <button class="btn-admin" id="adminLogoutBtn">Abmelden</button>
             </div>
-            <div class="about-text reveal delay-1">
-                <div class="eyebrow">Über uns</div>
-                <h2>Ein Salon, in dem Sie sich <em>wohlfühlen</em></h2>
-                <p>Seit 2009 steht Hair & Style für ehrliche Beratung, präzises Handwerk und eine Atmosphäre, in der man gerne verweilt. Bei uns sind Sie keine Nummer – wir hören zu, bevor wir zur Schere greifen.</p>
-                <p>Unser Team bildet sich regelmäßig weiter und arbeitet ausschließlich mit hochwertigen Produkten von Kérastase, Olaplex und Wella.</p>
-                <ul class="about-features">
-                    <li>Individuelle Typberatung</li>
-                    <li>Premium-Produkte</li>
-                    <li>Vegane & tierversuchsfreie Farben</li>
-                    <li>Kaffee, Tee & Prosecco inklusive</li>
-                    <li>Kostenlose Parkplätze</li>
-                    <li>Barrierefreier Zugang</li>
-                </ul>
-                <a href="#team" class="btn btn-dark">Team kennenlernen</a>
-                <div class="signature">Sarah Meier<small>Inhaberin & Meisterin</small></div>
+
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="works">Werke</button>
+                <button class="admin-tab" data-tab="cats">Kategorien</button>
+                <button class="admin-tab" data-tab="infoedit">Info-Seite</button>
+                <button class="admin-tab" data-tab="data">Daten</button>
+            </div>
+
+            <!-- WERKE -->
+            <div class="admin-panel active" id="panel-works">
+                <div class="admin-toolbar">
+                    <span style="color:var(--muted);font-size:14px;" id="worksCountLabel">0 Werke insgesamt</span>
+                    <button class="btn btn-dark" id="addWorkBtn">+ Neues Werk</button>
+                </div>
+                <div style="overflow-x:auto;">
+                    <table class="admin-table" id="worksTable">
+                        <thead>
+                            <tr><th>Bild</th><th>Titel</th><th>Kategorie</th><th>Jahr</th><th>Favorit</th><th>Aktionen</th></tr>
+                        </thead>
+                        <tbody id="worksTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- KATEGORIEN -->
+            <div class="admin-panel" id="panel-cats">
+                <div id="catManageList"></div>
+                <div class="cat-manage-card">
+                    <h4>Neue Hauptkategorie</h4>
+                    <div class="inline-add">
+                        <input type="text" id="newMainCatInput" placeholder="z. B. Aquarell">
+                        <button class="btn btn-dark" id="addMainCatBtn">Hinzufügen</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- INFO-SEITE -->
+            <div class="admin-panel" id="panel-infoedit">
+                <div class="data-box" style="margin-bottom:24px;">
+                    <label style="font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;">Porträtfoto</label>
+                    <div style="display:flex;gap:20px;align-items:center;margin-top:12px;flex-wrap:wrap;">
+                        <img id="portraitPreview" class="upload-preview" style="display:none;">
+                        <input type="file" id="portraitUpload" accept="image/*">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Haupttext (Über Gabi)</label>
+                    <textarea id="editIntro"></textarea>
+                </div>
+                <div class="info-form-grid">
+                    <div class="form-group"><label>Künstlerische Arbeit</label><textarea id="editKunst"></textarea></div>
+                    <div class="form-group"><label>Inspiration</label><textarea id="editInspiration"></textarea></div>
+                    <div class="form-group"><label>Techniken</label><textarea id="editTechniken"></textarea></div>
+                    <div class="form-group"><label>Ausstellungen</label><textarea id="editAusstellungen"></textarea></div>
+                    <div class="form-group"><label>Kontakt</label><textarea id="editKontakt"></textarea></div>
+                </div>
+                <button class="btn btn-dark" id="saveInfoBtn">Info-Seite speichern</button>
+            </div>
+
+            <!-- DATEN -->
+            <div class="admin-panel" id="panel-data">
+                <div class="data-box">
+                    <h3 style="margin-bottom:14px;">Daten sichern &amp; übertragen</h3>
+                    <p>Da diese Website ohne eigenen Server läuft, werden alle Änderungen nur in <strong>diesem Browser</strong> gespeichert. Exportiere die Daten regelmäßig als Sicherung – oder um sie an den Entwickler zu schicken, damit sie für alle Besucher sichtbar gemacht werden.</p>
+                    <div class="data-btns">
+                        <button class="btn btn-dark" id="exportBtn">⬇ Daten exportieren</button>
+                        <button class="btn btn-outline" id="importBtn">⬆ Daten importieren</button>
+                        <input type="file" id="importFile" accept="application/json" class="hidden">
+                    </div>
+                </div>
+                <div class="data-box" style="margin-top:20px;border-color:#e0b3b3;">
+                    <h3 style="margin-bottom:14px;color:#b23b3b;">Gefahrenzone</h3>
+                    <p>Setzt alle Werke, Kategorien und Texte auf den Ausgangszustand zurück.</p>
+                    <button class="icon-btn danger" id="resetBtn">Alles zurücksetzen</button>
+                </div>
             </div>
         </div>
     </div>
 </section>
+</main>
 
-<!-- PREISLISTE -->
-<section class="pricing" id="pricing">
-    <div class="container">
-        <div class="section-head reveal">
-            <div class="eyebrow">Preisliste</div>
-            <h2>Transparente <em>Preise</em></h2>
-            <p>Alle Preise inkl. MwSt. Der genaue Preis richtet sich nach Haarlänge und Aufwand – wir beraten Sie vorab.</p>
-            <div class="divider"></div>
-        </div>
-        <div class="pricing-grid">
-            <div class="price-group reveal">
-                <h3>Damen <span>Schnitt & Styling</span></h3>
-                <div class="price-row"><div class="name">Waschen, Schneiden, Föhnen<span class="desc">inkl. Beratung & Kopfmassage</span></div><div class="dots"></div><div class="amt">49 – 69 €</div></div>
-                <div class="price-row"><div class="name">Trockenhaarschnitt</div><div class="dots"></div><div class="amt">35 €</div></div>
-                <div class="price-row"><div class="name">Waschen & Föhnen</div><div class="dots"></div><div class="amt">29 – 39 €</div></div>
-                <div class="price-row"><div class="name">Hochsteckfrisur</div><div class="dots"></div><div class="amt">ab 59 €</div></div>
-                <div class="price-row"><div class="name">Pony schneiden</div><div class="dots"></div><div class="amt">12 €</div></div>
-            </div>
-            <div class="price-group reveal delay-1">
-                <h3>Herren <span>Schnitt & Bart</span></h3>
-                <div class="price-row"><div class="name">Waschen, Schneiden, Stylen</div><div class="dots"></div><div class="amt">32 – 39 €</div></div>
-                <div class="price-row"><div class="name">Maschinenhaarschnitt</div><div class="dots"></div><div class="amt">22 €</div></div>
-                <div class="price-row"><div class="name">Bart formen & pflegen</div><div class="dots"></div><div class="amt">15 €</div></div>
-                <div class="price-row"><div class="name">Schnitt + Bart Kombi</div><div class="dots"></div><div class="amt">44 €</div></div>
-                <div class="price-row"><div class="name">Kinder bis 12 Jahre</div><div class="dots"></div><div class="amt">19 €</div></div>
-            </div>
-            <div class="price-group reveal">
-                <h3>Farbe <span>Coloration</span></h3>
-                <div class="price-row"><div class="name">Ansatzfärbung</div><div class="dots"></div><div class="amt">ab 45 €</div></div>
-                <div class="price-row"><div class="name">Komplettfärbung</div><div class="dots"></div><div class="amt">ab 65 €</div></div>
-                <div class="price-row"><div class="name">Foliensträhnen<span class="desc">Ober- oder Ganzkopf</span></div><div class="dots"></div><div class="amt">ab 69 €</div></div>
-                <div class="price-row"><div class="name">Balayage / Ombré</div><div class="dots"></div><div class="amt">ab 129 €</div></div>
-                <div class="price-row"><div class="name">Glossing / Tönung</div><div class="dots"></div><div class="amt">ab 35 €</div></div>
-            </div>
-            <div class="price-group reveal delay-1">
-                <h3>Pflege <span>Treatments</span></h3>
-                <div class="price-row"><div class="name">Olaplex Behandlung</div><div class="dots"></div><div class="amt">ab 29 €</div></div>
-                <div class="price-row"><div class="name">Kérastase Fusio-Dose</div><div class="dots"></div><div class="amt">25 €</div></div>
-                <div class="price-row"><div class="name">Keratin-Glättung</div><div class="dots"></div><div class="amt">ab 189 €</div></div>
-                <div class="price-row"><div class="name">Kopfhaut-Peeling</div><div class="dots"></div><div class="amt">19 €</div></div>
-                <div class="price-row"><div class="name">Intensivkur mit Wärme</div><div class="dots"></div><div class="amt">22 €</div></div>
-            </div>
-        </div>
-        <p class="pricing-note">Langhaarzuschlag ab Schulterlänge: +10 € · Studenten & Azubis erhalten 10 % Rabatt (Mo–Mi)</p>
-    </div>
-</section>
+<footer class="site-footer">© <span id="year"></span> Gabi – Kunst & Fotografie. Alle Rechte vorbehalten.</footer>
 
-<!-- GALERIE -->
-<section class="gallery" id="gallery">
-    <div class="container">
-        <div class="section-head reveal">
-            <div class="eyebrow">Galerie</div>
-            <h2>Unsere <em>Arbeiten</em></h2>
-            <p>Ein kleiner Einblick – mehr finden Sie auf Instagram unter @hairandstyle</p>
-            <div class="divider"></div>
-        </div>
-        <div class="gallery-grid reveal">
-            <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80" alt="Haarschnitt"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=800&q=80" alt="Coloration"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=800&q=80" alt="Styling"></div>
-            <div class="gallery-item tall"><img src="https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=800&q=80" alt="Balayage"></div>
-            <div class="gallery-item wide"><img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=1200&q=80" alt="Salon"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=800&q=80" alt="Herrenhaarschnitt"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=800&q=80" alt="Föhnfrisur"></div>
+<!-- ===================== WORK DETAIL MODAL ===================== -->
+<div class="modal-overlay" id="workModal">
+    <div class="modal-box">
+        <button class="modal-close" id="closeWorkModal">×</button>
+        <div class="work-modal-content">
+            <img class="work-modal-img" id="modalImg">
+            <div class="work-modal-body">
+                <div class="eyebrow" id="modalCat">Kategorie</div>
+                <h2 id="modalTitle">Titel</h2>
+                <p id="modalDesc"></p>
+                <p id="modalYear" style="color:var(--muted);font-size:13px;"></p>
+                <button class="pill-btn work-modal-fav" id="modalFavBtn">♡ Zu Favoriten</button>
+            </div>
         </div>
     </div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lbClose">×</button>
-    <button class="lightbox-prev" id="lbPrev">‹</button>
-    <img id="lbImg" src="" alt="">
-    <button class="lightbox-next" id="lbNext">›</button>
 </div>
 
-<!-- TEAM -->
-<section class="team" id="team">
-    <div class="container">
-        <div class="section-head reveal">
-            <div class="eyebrow">Unser Team</div>
-            <h2>Die Menschen hinter der <em>Schere</em></h2>
-            <p>Leidenschaftlich, ausgebildet und immer auf dem neuesten Stand.</p>
-            <div class="divider"></div>
-        </div>
-        <div class="team-grid">
-            <div class="team-card reveal">
-                <div class="team-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Sarah Meier">
-                    <div class="team-social"><a href="#">Instagram</a><a href="#contact">Termin</a></div>
-                </div>
-                <h3>Sarah Meier</h3>
-                <p>Inhaberin · Friseurmeisterin</p>
-                <p class="bio">Spezialistin für Schnitt-Techniken und Brautstyling. Über 20 Jahre Erfahrung.</p>
+<!-- ===================== WORK FORM MODAL (Admin) ===================== -->
+<div class="modal-overlay" id="workFormModal">
+    <div class="modal-box small">
+        <button class="modal-close" id="closeWorkFormModal">×</button>
+        <div style="padding:40px;">
+            <h2 id="workFormTitle" style="font-size:24px;margin-bottom:24px;">Neues Werk</h2>
+            <div class="form-group">
+                <label>Titel *</label>
+                <input type="text" id="wfTitle" placeholder="z. B. Marokko bei Nacht">
             </div>
-            <div class="team-card reveal delay-1">
-                <div class="team-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80" alt="Max Schmidt">
-                    <div class="team-social"><a href="#">Instagram</a><a href="#contact">Termin</a></div>
+            <div class="form-row2">
+                <div class="form-group">
+                    <label>Hauptkategorie *</label>
+                    <select id="wfMainCat"></select>
                 </div>
-                <h3>Max Schmidt</h3>
-                <p>Senior Stylist · Barber</p>
-                <p class="bio">Herrenschnitte, Fades und Bartpflege sind seine Welt. Präzise und modern.</p>
-            </div>
-            <div class="team-card reveal delay-2">
-                <div class="team-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=600&q=80" alt="Lisa Wagner">
-                    <div class="team-social"><a href="#">Instagram</a><a href="#contact">Termin</a></div>
-                </div>
-                <h3>Lisa Wagner</h3>
-                <p>Coloristin · Balayage-Expertin</p>
-                <p class="bio">Zertifizierte Wella-Coloristin mit einem Auge für natürliche Farbverläufe.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- BEWERTUNGEN -->
-<section class="testimonials">
-    <div class="container">
-        <div class="section-head reveal">
-            <div class="eyebrow">Kundenstimmen</div>
-            <h2>Was unsere Kunden <em>sagen</em></h2>
-            <div class="divider"></div>
-        </div>
-        <div class="testi-grid">
-            <div class="testi-card reveal">
-                <div class="stars">★★★★★</div>
-                <p>„Ich gehe seit Jahren zu Sarah und war noch nie enttäuscht. Sie hört wirklich zu und weiß genau, was zu einem passt. Absolute Empfehlung!"</p>
-                <div class="testi-author">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="">
-                    <div><strong>Anna K.</strong><span>Stammkundin seit 2015</span></div>
+                <div class="form-group">
+                    <label>Unterkategorie *</label>
+                    <select id="wfSubCat"></select>
                 </div>
             </div>
-            <div class="testi-card reveal delay-1">
-                <div class="stars">★★★★★</div>
-                <p>„Endlich ein Barber, der einen sauberen Fade hinbekommt. Max nimmt sich Zeit, der Laden ist stylisch und der Kaffee ist auch top."</p>
-                <div class="testi-author">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="">
-                    <div><strong>Thomas B.</strong><span>Google-Bewertung</span></div>
+            <div class="form-row2">
+                <div class="form-group">
+                    <label>Jahr</label>
+                    <input type="text" id="wfYear" placeholder="2024">
                 </div>
-            </div>
-            <div class="testi-card reveal delay-2">
-                <div class="stars">★★★★★</div>
-                <p>„Lisa hat meine Balayage perfekt umgesetzt – genau wie auf dem Bild, das ich mitgebracht habe. Meine Haare fühlen sich trotz Aufhellung super gesund an."</p>
-                <div class="testi-author">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="">
-                    <div><strong>Julia S.</strong><span>Google-Bewertung</span></div>
-                </div>
-            </div>
-        </div>
-        <p class="google-badge reveal">★ <strong>4,9 von 5</strong> bei über 380 Google-Bewertungen</p>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-    <div class="container reveal">
-        <h2>Bereit für Ihren <em>neuen Look?</em></h2>
-        <p>Sichern Sie sich jetzt Ihren Wunschtermin – online oder telefonisch.</p>
-        <a href="#contact" class="btn">Jetzt Termin buchen</a>
-        <a href="tel:+49123456789" class="cta-phone">+49 123 456 789</a>
-    </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq" id="faq">
-    <div class="container">
-        <div class="section-head reveal">
-            <div class="eyebrow">Häufige Fragen</div>
-            <h2>Gut zu <em>wissen</em></h2>
-            <div class="divider"></div>
-        </div>
-        <div class="faq-list reveal">
-            <div class="faq-item">
-                <button class="faq-q">Brauche ich einen Termin oder kann ich einfach vorbeikommen?</button>
-                <div class="faq-a"><p>Wir arbeiten überwiegend mit Terminen, damit wir uns ausreichend Zeit für Sie nehmen können. Kurzfristige Termine sind oft möglich – rufen Sie einfach an oder nutzen Sie unser Kontaktformular.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">Wie lange dauert eine Balayage?</button>
-                <div class="faq-a"><p>Je nach Haarlänge und Ausgangsfarbe zwischen 2,5 und 4 Stunden. Bei der Terminbuchung planen wir ausreichend Zeit ein und beraten Sie vorab kostenlos.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">Bieten Sie eine kostenlose Beratung an?</button>
-                <div class="faq-a"><p>Ja! Vor jeder größeren Veränderung – besonders bei Farbe – bieten wir eine unverbindliche Beratung von ca. 15 Minuten an. Einfach Termin vereinbaren.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">Was passiert, wenn ich einen Termin absagen muss?</button>
-                <div class="faq-a"><p>Bitte sagen Sie mindestens 24 Stunden vorher ab, damit wir den Termin anderweitig vergeben können. Bei kurzfristigen Absagen behalten wir uns vor, eine Ausfallgebühr zu berechnen.</p></div>
-            </div>
-            <div class="faq-item">
-                <button class="faq-q">Welche Zahlungsmöglichkeiten gibt es?</button>
-                <div class="faq-a"><p>Sie können bar, mit EC-Karte, Kreditkarte, Apple Pay und Google Pay bezahlen. Geschenkgutscheine sind ebenfalls erhältlich.</p></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- KONTAKT -->
-<section class="contact" id="contact">
-    <div class="container">
-        <div class="section-head reveal">
-            <div class="eyebrow">Kontakt</div>
-            <h2>Termin <em>vereinbaren</em></h2>
-            <p>Wir melden uns innerhalb von 24 Stunden mit einer Terminbestätigung.</p>
-            <div class="divider"></div>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-info reveal">
-                <h3>So erreichen Sie uns</h3>
-                <div class="info-block">
-                    <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                    <div><h4>Adresse</h4><p>Musterstraße 123<br>12345 Musterstadt</p></div>
-                </div>
-                <div class="info-block">
-                    <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2z"/></svg></div>
-                    <div><h4>Telefon</h4><p><a href="tel:+49123456789">+49 123 456 789</a></p></div>
-                </div>
-                <div class="info-block">
-                    <div class="info-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></div>
-                    <div><h4>E-Mail</h4><p><a href="mailto:info@hairandstyle.de">info@hairandstyle.de</a></p></div>
-                </div>
-                <div class="info-block">
-                    <div class="info-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-                    <div style="flex:1">
-                        <h4>Öffnungszeiten</h4>
-                        <table class="hours" id="hours">
-                            <tr data-day="1"><td>Montag</td><td>09:00 – 19:00</td></tr>
-                            <tr data-day="2"><td>Dienstag</td><td>09:00 – 19:00</td></tr>
-                            <tr data-day="3"><td>Mittwoch</td><td>09:00 – 19:00</td></tr>
-                            <tr data-day="4"><td>Donnerstag</td><td>09:00 – 20:00</td></tr>
-                            <tr data-day="5"><td>Freitag</td><td>09:00 – 19:00</td></tr>
-                            <tr data-day="6"><td>Samstag</td><td>09:00 – 16:00</td></tr>
-                            <tr data-day="0" class="closed"><td>Sonntag</td><td>Geschlossen</td></tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-form reveal delay-1" id="formWrap">
-                <form id="bookingForm" novalidate>
-                    <h3>Terminanfrage</h3>
-                    <p>Felder mit * sind Pflichtfelder.</p>
-                    <div class="form-row">
-                        <div class="form-group"><label>Name *</label><input type="text" name="name" required placeholder="Max Mustermann"></div>
-                        <div class="form-group"><label>Telefon *</label><input type="tel" name="phone" required placeholder="0123 456789"></div>
-                    </div>
-                    <div class="form-group"><label>E-Mail *</label><input type="email" name="email" required placeholder="max@beispiel.de"></div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Leistung *</label>
-                            <select name="service" required>
-                                <option value="">Bitte wählen</option>
-                                <option>Damenhaarschnitt</option>
-                                <option>Herrenhaarschnitt</option>
-                                <option>Coloration / Balayage</option>
-                                <option>Styling / Hochsteckfrisur</option>
-                                <option>Pflege / Treatment</option>
-                                <option>Brautstyling</option>
-                                <option>Beratungsgespräch</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Wunsch-Stylist</label>
-                            <select name="stylist">
-                                <option>Egal</option>
-                                <option>Sarah Meier</option>
-                                <option>Max Schmidt</option>
-                                <option>Lisa Wagner</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group"><label>Wunschdatum *</label><input type="date" name="date" id="dateInput" required></div>
-                        <div class="form-group">
-                            <label>Uhrzeit</label>
-                            <select name="time">
-                                <option>Vormittags</option>
-                                <option>Mittags</option>
-                                <option>Nachmittags</option>
-                                <option>Abends</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group"><label>Nachricht</label><textarea name="message" placeholder="Besondere Wünsche, Fragen oder Hinweise…"></textarea></div>
-                    <label class="form-check">
-                        <input type="checkbox" required>
-                        <span>Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Terminvereinbarung zu. *</span>
+                <div class="form-group">
+                    <label class="checkbox-row" style="margin-top:36px;">
+                        <input type="checkbox" id="wfFav"> Als Favorit markieren
                     </label>
-                    <button type="submit" class="btn" style="width:100%">Terminanfrage senden</button>
-                </form>
-                <div class="form-success" id="formSuccess">
-                    <div class="check">✓</div>
-                    <h3>Vielen Dank!</h3>
-                    <p>Ihre Anfrage ist bei uns eingegangen. Wir melden uns schnellstmöglich zur Bestätigung Ihres Termins.</p>
                 </div>
             </div>
+            <div class="form-group">
+                <label>Beschreibung</label>
+                <textarea id="wfDesc" placeholder="Kurze Beschreibung zum Werk ..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>Bild hochladen</label>
+                <input type="file" id="wfImageFile" accept="image/*">
+                <img id="wfPreview" class="upload-preview" style="display:none;">
+            </div>
+            <div class="form-group">
+                <label>...oder Bild-URL einfügen</label>
+                <input type="text" id="wfImageUrl" placeholder="https://beispiel.de/bild.jpg">
+            </div>
+            <button class="btn btn-dark" style="width:100%;" id="wfSaveBtn">Werk speichern</button>
         </div>
     </div>
-</section>
+</div>
 
-<!-- MAP -->
-<iframe class="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-    src="https://www.google.com/maps?q=Berlin+Alexanderplatz&output=embed" title="Standort"></iframe>
-
-<!-- FOOTER -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="#home" class="logo">
-                    <div class="logo-icon"><span>✂</span></div>
-                    <div class="logo-text">Hair <em>&</em> Style</div>
-                </a>
-                <p>Ihr Friseursalon für Damen, Herren und Kinder. Handwerk, Beratung und Wohlfühlatmosphäre seit 2009.</p>
-                <div class="socials">
-                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8C2.4 3.9 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 1 0 0 12.4 6.2 6.2 0 0 0 0-12.4zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.8a1.4 1.4 0 1 0 0 2.9 1.4 1.4 0 0 0 0-2.9z"/></svg></a>
-                    <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4H7.1V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg></a>
-                    <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.3V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.7V9.5a6.3 6.3 0 1 0 5.4 6.2V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9l-1-.2z"/></svg></a>
-                </div>
-            </div>
-            <div>
-                <h4>Navigation</h4>
-                <ul>
-                    <li><a href="#services">Leistungen</a></li>
-                    <li><a href="#pricing">Preisliste</a></li>
-                    <li><a href="#gallery">Galerie</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Kontakt</h4>
-                <ul>
-                    <li>Musterstraße 123</li>
-                    <li>12345 Musterstadt</li>
-                    <li><a href="tel:+49123456789">+49 123 456 789</a></li>
-                    <li><a href="mailto:info@hairandstyle.de">info@hairandstyle.de</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Öffnungszeiten</h4>
-                <ul>
-                    <li>Mo – Mi: 9:00 – 19:00</li>
-                    <li>Do: 9:00 – 20:00</li>
-                    <li>Fr: 9:00 – 19:00</li>
-                    <li>Sa: 9:00 – 16:00</li>
-                    <li>So: geschlossen</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div>© <span id="year"></span> Hair & Style. Alle Rechte vorbehalten.</div>
-            <div><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a></div>
-        </div>
-    </div>
-</footer>
-
-<div class="to-top" id="toTop">↑</div>
+<div class="toast" id="toast"></div>
 
 <script>
-    // ===== Jahr im Footer =====
-    document.getElementById('year').textContent = new Date().getFullYear();
+/* =========================================================
+   STATE & DATENVERWALTUNG
+========================================================= */
+const STORAGE_KEY = 'gabiGalleryData_v1';
+const ADMIN_PASSWORD = 'gabi2024'; // <-- Passwort hier ändern
 
-    // ===== Mobile Menü =====
-    const burger = document.getElementById('burger');
-    const navMenu = document.getElementById('navMenu');
-    burger.addEventListener('click', () => {
-        burger.classList.toggle('open');
-        navMenu.classList.toggle('open');
-    });
-    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-        burger.classList.remove('open');
-        navMenu.classList.remove('open');
-    }));
-
-    // ===== Header Schatten + Back-to-Top =====
-    const header = document.getElementById('header');
-    const toTop = document.getElementById('toTop');
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 40);
-        toTop.classList.toggle('show', window.scrollY > 600);
-        highlightNav();
-    });
-    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-    // ===== Aktiver Menüpunkt =====
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a:not(.btn)');
-    function highlightNav() {
-        let current = '';
-        sections.forEach(s => { if (window.scrollY >= s.offsetTop - 150) current = s.id; });
-        navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+const DEFAULT_DATA = {
+    categories: {
+        "Collagen": ["Berliner Mauerfall", "Marokko", "Frau(en)"],
+        "Acryl-Malerei": ["Natur", "Griechenland", "Marokko", "Frau", "Abstrakt"]
+    },
+    works: [],
+    info: {
+        intro: "Hier kann später ein persönlicher Text über Gabi eingefügt werden. Erzähle von deinem Werdegang, deiner künstlerischen Haltung und dem, was dich an der Arbeit mit Collage und Malerei begeistert.",
+        portrait: null,
+        kunst: "Platz für einen Text über die künstlerische Arbeit – Themen, Materialien, Herangehensweise.",
+        inspiration: "Platz für einen Text über Inspirationsquellen – Orte, Reisen, Menschen, Erlebnisse.",
+        techniken: "Platz für einen Text über die verwendeten Techniken – Collage, Acryl-Malerei, Mischtechniken.",
+        ausstellungen: "Platz für vergangene und aktuelle Ausstellungen.",
+        kontakt: "Platz für Kontaktmöglichkeiten, z. B. E-Mail-Adresse oder Atelier-Öffnungszeiten."
     }
+};
 
-    // ===== Scroll-Reveal Animation =====
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+let STATE = loadState();
 
-    // ===== Lightbox =====
-    const galleryImgs = [...document.querySelectorAll('.gallery-item img')];
-    const lightbox = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    let current = 0;
-    function showImg(i) {
-        current = (i + galleryImgs.length) % galleryImgs.length;
-        lbImg.src = galleryImgs[current].src.replace('w=800', 'w=1600').replace('w=1200', 'w=1800');
-        lbImg.alt = galleryImgs[current].alt;
+function loadState(){
+    try{
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if(raw) return JSON.parse(raw);
+    }catch(e){ console.warn('Konnte Daten nicht laden', e); }
+    return JSON.parse(JSON.stringify(DEFAULT_DATA));
+}
+function saveState(){
+    try{
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(STATE));
+    }catch(e){
+        showToast('⚠ Speicher voll – evtl. Bilder verkleinern.');
     }
-    galleryImgs.forEach((img, i) => img.parentElement.addEventListener('click', () => { showImg(i); lightbox.classList.add('open'); }));
-    document.getElementById('lbClose').onclick = () => lightbox.classList.remove('open');
-    document.getElementById('lbPrev').onclick = e => { e.stopPropagation(); showImg(current - 1); };
-    document.getElementById('lbNext').onclick = e => { e.stopPropagation(); showImg(current + 1); };
-    lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
-    document.addEventListener('keydown', e => {
-        if (!lightbox.classList.contains('open')) return;
-        if (e.key === 'Escape') lightbox.classList.remove('open');
-        if (e.key === 'ArrowLeft') showImg(current - 1);
-        if (e.key === 'ArrowRight') showImg(current + 1);
-    });
+}
+function uid(){
+    return 'w_' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+}
+function showToast(msg){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2600);
+}
 
-    // ===== FAQ Akkordeon =====
-    document.querySelectorAll('.faq-item').forEach(item => {
-        const q = item.querySelector('.faq-q');
-        const a = item.querySelector('.faq-a');
-        q.addEventListener('click', () => {
-            const isOpen = item.classList.contains('open');
-            document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = null; });
-            if (!isOpen) { item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+/* =========================================================
+   NAVIGATION
+========================================================= */
+const views = ['home','gallery','info','admin'];
+function showView(name){
+    views.forEach(v=>{
+        document.getElementById('view-'+v).classList.toggle('active', v===name);
+    });
+    document.querySelectorAll('.nav-link').forEach(l=>{
+        l.classList.toggle('active', l.dataset.nav===name);
+    });
+    document.getElementById('mainNav').classList.remove('open');
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(name==='home') renderHome();
+    if(name==='gallery') renderGallery();
+    if(name==='info') renderInfo();
+    if(name==='admin') renderAdmin();
+}
+document.querySelectorAll('[data-nav]').forEach(el=>{
+    el.addEventListener('click', e=>{
+        e.preventDefault();
+        showView(el.dataset.nav);
+    });
+});
+document.getElementById('burgerBtn').addEventListener('click', ()=>{
+    document.getElementById('mainNav').classList.toggle('open');
+});
+
+/* =========================================================
+   HOME / ÜBERSICHT
+========================================================= */
+function renderHome(){
+    const catGrid = document.getElementById('homeCatGrid');
+    const mainCats = Object.keys(STATE.categories);
+    if(mainCats.length===0){
+        catGrid.innerHTML = '<div class="empty-hint">Noch keine Kategorien angelegt. Füge welche in der <a href="#" data-nav="admin">Verwaltung</a> hinzu.</div>';
+    }else{
+        catGrid.innerHTML = mainCats.map(cat=>{
+            const subCount = STATE.categories[cat].length;
+            const workCount = STATE.works.filter(w=>w.category===cat).length;
+            return `<div class="cat-card" data-cat="${cat}">
+                <h3>${cat}</h3>
+                <p>${subCount} Unterkategorien · ${workCount} Werke</p>
+                <div class="cat-arrow">Ansehen →</div>
+            </div>`;
+        }).join('');
+    }
+    catGrid.querySelectorAll('.cat-card').forEach(card=>{
+        card.addEventListener('click', ()=>{
+            filterState.mainCat = card.dataset.cat;
+            filterState.subCat = null;
+            showView('gallery');
         });
     });
-
-    // ===== Heutigen Tag markieren =====
-    const today = new Date().getDay();
-    const row = document.querySelector(`#hours tr[data-day="${today}"]`);
-    if (row) row.classList.add('today');
-
-    // ===== Datum: nur ab heute =====
-    document.getElementById('dateInput').min = new Date().toISOString().split('T')[0];
-
-    // ===== Formular =====
-    const form = document.getElementById('bookingForm');
-    form.addEventListener('submit', e => {
-        e.preventDefault();
-        if (!form.checkValidity()) { form.reportValidity(); return; }
-        // Hier später z.B. Formspree einbinden:
-        // fetch('https://formspree.io/f/DEINE-ID', { method: 'POST', body: new FormData(form), headers: {Accept:'application/json'} })
-        form.style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
+    catGrid.querySelectorAll('[data-nav]').forEach(el=>{
+        el.addEventListener('click', e=>{e.preventDefault(); showView(el.dataset.nav);});
     });
+
+    const preview = document.getElementById('homeWorksPreview');
+    const latest = [...STATE.works].sort((a,b)=>b.createdAt-a.createdAt).slice(0,4);
+    if(latest.length===0){
+        preview.innerHTML = '<div class="empty-hint">Es wurden noch keine Werke hinzugefügt. Lege welche in der <a href="#" data-nav="admin">Verwaltung</a> an.</div>';
+        preview.querySelectorAll('[data-nav]').forEach(el=>{
+            el.addEventListener('click', e=>{e.preventDefault(); showView(el.dataset.nav);});
+        });
+    }else{
+        preview.innerHTML = `<div class="works-preview-grid">${latest.map(w=>workCardHTML(w)).join('')}</div>`;
+        bindWorkCardEvents(preview);
+    }
+}
+
+/* =========================================================
+   GALERIE / BILDER
+========================================================= */
+let filterState = { mainCat:null, subCat:null, search:'', onlyFav:false, sort:'newest' };
+
+function renderSidebar(){
+    const sb = document.getElementById('sidebar');
+    let html = `<div class="sidebar-all ${(!filterState.mainCat)?'':'inactive'}" id="allWorksBtn">Alle Werke</div>`;
+    const mainCats = Object.keys(STATE.categories);
+    if(mainCats.length===0){
+        html += '<p class="sidebar-empty">Noch keine Kategorien vorhanden.</p>';
+    }
+    mainCats.forEach(cat=>{
+        html += `<div class="cat-group">
+            <div class="cat-group-title" data-maincat="${cat}">${cat}</div>
+            <ul class="sub-list">
+                ${STATE.categories[cat].map(sub=>`<li data-maincat="${cat}" data-subcat="${sub}" class="${filterState.mainCat===cat && filterState.subCat===sub?'active':''}">${sub}</li>`).join('')}
+            </ul>
+        </div>`;
+    });
+    sb.innerHTML = html;
+
+    document.getElementById('allWorksBtn').addEventListener('click', ()=>{
+        filterState.mainCat=null; filterState.subCat=null; renderGallery();
+    });
+    sb.querySelectorAll('.cat-group-title').forEach(el=>{
+        el.addEventListener('click', ()=>{
+            filterState.mainCat = el.dataset.maincat; filterState.subCat=null; renderGallery();
+        });
+    });
+    sb.querySelectorAll('.sub-list li').forEach(el=>{
+        el.addEventListener('click', ()=>{
+            filterState.mainCat = el.dataset.maincat; filterState.subCat = el.dataset.subcat; renderGallery();
+        });
+    });
+}
+
+function getFilteredWorks(){
+    let list = [...STATE.works];
+    if(filterState.mainCat) list = list.filter(w=>w.category===filterState.mainCat);
+    if(filterState.subCat) list = list.filter(w=>w.subcategory===filterState.subCat);
+    if(filterState.onlyFav) list = list.filter(w=>w.favorite);
+    if(filterState.search.trim()){
+        const q = filterState.search.trim().toLowerCase();
+        list = list.filter(w=> w.title.toLowerCase().includes(q) || (w.description||'').toLowerCase().includes(q));
+    }
+    switch(filterState.sort){
+        case 'newest': list.sort((a,b)=>b.createdAt-a.createdAt); break;
+        case 'oldest': list.sort((a,b)=>a.createdAt-b.createdAt); break;
+        case 'az': list.sort((a,b)=>a.title.localeCompare(b.title)); break;
+        case 'za': list.sort((a,b)=>b.title.localeCompare(a.title)); break;
+    }
+    return list;
+}
+
+function workCardHTML(w){
+    const img = w.image ? `<img class="work-thumb" src="${w.image}" alt="${w.title}">` : `<div class="work-thumb">Kein Bild</div>`;
+    return `<div class="work-card" data-id="${w.id}">
+        ${img}
+        <button class="fav-btn" data-favid="${w.id}">${w.favorite?'♥':'♡'}</button>
+        <div class="work-info">
+            <h4>${w.title}</h4>
+            <div class="work-meta">${w.category}${w.subcategory? ' · '+w.subcategory:''}</div>
+        </div>
+    </div>`;
+}
+
+function bindWorkCardEvents(container){
+    container.querySelectorAll('.work-card').forEach(card=>{
+        card.addEventListener('click', ()=> openWorkModal(card.dataset.id));
+    });
+    container.querySelectorAll('.fav-btn').forEach(btn=>{
+        btn.addEventListener('click', e=>{
+            e.stopPropagation();
+            toggleFavorite(btn.dataset.favid);
+        });
+    });
+}
+
+function renderGallery(){
+    renderSidebar();
+    const grid = document.getElementById('workGrid');
+    const empty = document.getElementById('emptyState');
+    const list = getFilteredWorks();
+
+    document.getElementById('resultCount').textContent = list.length + (list.length===1 ? ' Werk angezeigt' : ' Werke angezeigt');
+    document.getElementById('favToggleBtn').classList.toggle('active', filterState.onlyFav);
+    document.getElementById('sortSelect').value = filterState.sort;
+    document.getElementById('searchInput').value = filterState.search;
+
+    if(list.length===0){
+        grid.classList.add('hidden');
+        empty.classList.remove('hidden');
+    }else{
+        grid.classList.remove('hidden');
+        empty.classList.add('hidden');
+        grid.innerHTML = list.map(workCardHTML).join('');
+        bindWorkCardEvents(grid);
+    }
+}
+
+function toggleFavorite(id){
+    const w = STATE.works.find(x=>x.id===id);
+    if(!w) return;
+    w.favorite = !w.favorite;
+    saveState();
+    renderGallery();
+    if(document.getElementById('view-admin').classList.contains('active')) renderAdminWorksTable();
+}
+
+document.getElementById('searchInput').addEventListener('input', e=>{
+    filterState.search = e.target.value; renderGallery();
+});
+document.getElementById('favToggleBtn').addEventListener('click', ()=>{
+    filterState.onlyFav = !filterState.onlyFav; renderGallery();
+});
+document.getElementById('sortSelect').addEventListener('change', e=>{
+    filterState.sort = e.target.value; renderGallery();
+});
+
+/* ---- Work Detail Modal ---- */
+let currentModalWorkId = null;
+function openWorkModal(id){
+    const w = STATE.works.find(x=>x.id===id);
+    if(!w) return;
+    currentModalWorkId = id;
+    document.getElementById('modalImg').src = w.image || '';
+    document.getElementById('modalImg').style.background = w.image ? 'none' : '#e6e3d6';
+    document.getElementById('modalCat').textContent = w.category + (w.subcategory ? ' · '+w.subcategory : '');
+    document.getElementById('modalTitle').textContent = w.title;
+    document.getElementById('modalDesc').textContent = w.description || 'Keine Beschreibung vorhanden.';
+    document.getElementById('modalYear').textContent = w.year ? 'Jahr: '+w.year : '';
+    document.getElementById('modalFavBtn').innerHTML = w.favorite ? '♥ Favorit' : '♡ Zu Favoriten';
+    document.getElementById('workModal').classList.add('open');
+}
+document.getElementById('modalFavBtn').addEventListener('click', ()=>{
+    if(currentModalWorkId){ toggleFavorite(currentModalWorkId); openWorkModal(currentModalWorkId); }
+});
+document.getElementById('closeWorkModal').addEventListener('click', ()=>{
+    document.getElementById('workModal').classList.remove('open');
+});
+document.getElementById('workModal').addEventListener('click', e=>{
+    if(e.target.id==='workModal') e.currentTarget.classList.remove('open');
+});
+
+/* =========================================================
+   INFO VON GABI
+========================================================= */
+function renderInfo(){
+    document.getElementById('infoIntroText').textContent = STATE.info.intro;
+    document.getElementById('infoKunst').textContent = STATE.info.kunst;
+    document.getElementById('infoInspiration').textContent = STATE.info.inspiration;
+    document.getElementById('infoTechniken').textContent = STATE.info.techniken;
+    document.getElementById('infoAusstellungen').textContent = STATE.info.ausstellungen;
+    document.getElementById('infoKontakt').textContent = STATE.info.kontakt;
+
+    const box = document.getElementById('portraitBox');
+    if(STATE.info.portrait){
+        box.innerHTML = `<img src="${STATE.info.portrait}" alt="Porträt von Gabi">`;
+    }else{
+        box.innerHTML = `<div class="badge-dashed">Porträt</div><p>Hier erscheint bald ein Foto von Gabi.</p>`;
+    }
+}
+
+/* =========================================================
+   VERWALTUNG / ADMIN
+========================================================= */
+let adminLoggedIn = sessionStorage.getItem('gabiAdminLoggedIn') === 'true';
+
+function renderAdmin(){
+    document.getElementById('adminLogin').classList.toggle('hidden', adminLoggedIn);
+    document.getElementById('adminDash').classList.toggle('hidden', !adminLoggedIn);
+    if(adminLoggedIn){
+        renderAdminWorksTable();
+        renderAdminCategories();
+        fillInfoEditForm();
+    }
+}
+document.getElementById('adminLoginBtn').addEventListener('click', doLogin);
+document.getElementById('adminPassword').addEventListener('keydown', e=>{ if(e.key==='Enter') doLogin(); });
+function doLogin(){
+    const val = document.getElementById('adminPassword').value;
+    if(val === ADMIN_PASSWORD){
+        adminLoggedIn = true;
+        sessionStorage.setItem('gabiAdminLoggedIn','true');
+        document.getElementById('adminLoginError').style.display='none';
+        document.getElementById('adminPassword').value='';
+        renderAdmin();
+    }else{
+        document.getElementById('adminLoginError').style.display='block';
+    }
+}
+document.getElementById('adminLogoutBtn').addEventListener('click', ()=>{
+    adminLoggedIn=false;
+    sessionStorage.removeItem('gabiAdminLoggedIn');
+    renderAdmin();
+});
+
+/* ---- Tabs ---- */
+document.querySelectorAll('.admin-tab').forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+        document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+        document.querySelectorAll('.admin-panel').forEach(p=>p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+    });
+});
+
+/* ---- Werke-Tabelle ---- */
+function renderAdminWorksTable(){
+    const tbody = document.getElementById('worksTableBody');
+    document.getElementById('worksCountLabel').textContent = STATE.works.length + ' Werke insgesamt';
+    if(STATE.works.length===0){
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:40px;">Noch keine Werke vorhanden. Klicke auf "+ Neues Werk".</td></tr>`;
+        return;
+    }
+    tbody.innerHTML = [...STATE.works].sort((a,b)=>b.createdAt-a.createdAt).map(w=>`
+        <tr>
+            <td>${w.image ? `<img src="${w.image}" alt="">` : '—'}</td>
+            <td><strong>${w.title}</strong></td>
+            <td>${w.category}${w.subcategory ? ' · '+w.subcategory : ''}</td>
+            <td>${w.year || '–'}</td>
+            <td>${w.favorite ? '♥' : '–'}</td>
+            <td class="row-actions">
+                <button class="icon-btn" data-edit="${w.id}">Bearbeiten</button>
+                <button class="icon-btn danger" data-del="${w.id}">Löschen</button>
+            </td>
+        </tr>
+    `).join('');
+
+    tbody.querySelectorAll('[data-edit]').forEach(b=>b.addEventListener('click', ()=>openWorkForm(b.dataset.edit)));
+    tbody.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', ()=>{
+        if(confirm('Dieses Werk wirklich löschen?')){
+            STATE.works = STATE.works.filter(w=>w.id!==b.dataset.del);
+            saveState(); renderAdminWorksTable(); showToast('Werk gelöscht.');
+        }
+    }));
+}
+
+/* ---- Werk-Formular (Hinzufügen/Bearbeiten) ---- */
+let editingWorkId = null;
+let wfImageData = null;
+
+function populateCategorySelects(selectedMain, selectedSub){
+    const mainSel = document.getElementById('wfMainCat');
+    const subSel = document.getElementById('wfSubCat');
+    const cats = Object.keys(STATE.categories);
+    mainSel.innerHTML = cats.map(c=>`<option value="${c}">${c}</option>`).join('') || '<option value="">Keine Kategorien</option>';
+    const activeMain = selectedMain && cats.includes(selectedMain) ? selectedMain : cats[0];
+    mainSel.value = activeMain;
+    updateSubSelect(activeMain, selectedSub);
+}
+function updateSubSelect(mainCat, selectedSub){
+    const subSel = document.getElementById('wfSubCat');
+    const subs = STATE.categories[mainCat] || [];
+    subSel.innerHTML = subs.map(s=>`<option value="${s}">${s}</option>`).join('') || '<option value="">Keine Unterkategorien</option>';
+    if(selectedSub && subs.includes(selectedSub)) subSel.value = selectedSub;
+}
+document.getElementById('wfMainCat').addEventListener('change', e=>{
+    updateSubSelect(e.target.value, null);
+});
+
+function openWorkForm(id){
+    editingWorkId = id || null;
+    wfImageData = null;
+    const isEdit = !!id;
+    document.getElementById('workFormTitle').textContent = isEdit ? 'Werk bearbeiten' : 'Neues Werk';
+    const w = isEdit ? STATE.works.find(x=>x.id===id) : null;
+
+    if(Object.keys(STATE.categories).length===0){
+        alert('Bitte lege zuerst mindestens eine Kategorie im Tab "Kategorien" an.');
+        return;
+    }
+
+    document.getElementById('wfTitle').value = w ? w.title : '';
+    document.getElementById('wfYear').value = w ? (w.year||'') : '';
+    document.getElementById('wfDesc').value = w ? (w.description||'') : '';
+    document.getElementById('wfFav').checked = w ? !!w.favorite : false;
+    document.getElementById('wfImageUrl').value = (w && w.image && w.image.startsWith('http')) ? w.image : '';
+    document.getElementById('wfImageFile').value = '';
+    const preview = document.getElementById('wfPreview');
+    if(w && w.image){ preview.src = w.image; preview.style.display='block'; }
+    else { preview.style.display='none'; }
+
+    populateCategorySelects(w ? w.category : null, w ? w.subcategory : null);
+    document.getElementById('workFormModal').classList.add('open');
+}
+document.getElementById('addWorkBtn').addEventListener('click', ()=>openWorkForm(null));
+document.getElementById('closeWorkFormModal').addEventListener('click', ()=>{
+    document.getElementById('workFormModal').classList.remove('open');
+});
+document.getElementById('workFormModal').addEventListener('click', e=>{
+    if(e.target.id==='workFormModal') e.currentTarget.classList.remove('open');
+});
+document.getElementById('wfImageFile').addEventListener('change', e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{
+        wfImageData = ev.target.result;
+        const preview = document.getElementById('wfPreview');
+        preview.src = wfImageData;
+        preview.style.display='block';
+    };
+    reader.readAsDataURL(file);
+});
+
+document.getElementById('wfSaveBtn').addEventListener('click', ()=>{
+    const title = document.getElementById('wfTitle').value.trim();
+    const mainCat = document.getElementById('wfMainCat').value;
+    const subCat = document.getElementById('wfSubCat').value;
+    const year = document.getElementById('wfYear').value.trim();
+    const desc = document.getElementById('wfDesc').value.trim();
+    const fav = document.getElementById('wfFav').checked;
+    const urlVal = document.getElementById('wfImageUrl').value.trim();
+
+    if(!title){ alert('Bitte einen Titel eingeben.'); return; }
+    if(!mainCat){ alert('Bitte eine Kategorie wählen.'); return; }
+
+    let finalImage = null;
+    if(wfImageData) finalImage = wfImageData;
+    else if(urlVal) finalImage = urlVal;
+    else if(editingWorkId){
+        const existing = STATE.works.find(w=>w.id===editingWorkId);
+        finalImage = existing ? existing.image : null;
+    }
+
+    if(editingWorkId){
+        const w = STATE.works.find(x=>x.id===editingWorkId);
+        Object.assign(w, {title, category:mainCat, subcategory:subCat, year, description:desc, favorite:fav, image:finalImage});
+        showToast('Werk aktualisiert.');
+    }else{
+        STATE.works.push({
+            id: uid(), title, category:mainCat, subcategory:subCat, year, description:desc,
+            favorite:fav, image:finalImage, createdAt: Date.now()
+        });
+        showToast('Werk hinzugefügt.');
+    }
+    saveState();
+    document.getElementById('workFormModal').classList.remove('open');
+    renderAdminWorksTable();
+});
+
+/* ---- Kategorien verwalten ---- */
+function renderAdminCategories(){
+    const wrap = document.getElementById('catManageList');
+    const cats = Object.keys(STATE.categories);
+    if(cats.length===0){
+        wrap.innerHTML = '<p style="color:var(--muted);margin-bottom:20px;">Noch keine Kategorien vorhanden.</p>';
+        return;
+    }
+    wrap.innerHTML = cats.map(cat=>`
+        <div class="cat-manage-card">
+            <h4>${cat} <button class="icon-btn danger" data-delmain="${cat}">Kategorie löschen</button></h4>
+            <div class="tag-row">
+                ${STATE.categories[cat].map(sub=>`<span class="tag">${sub} <button data-delsub="${cat}|||${sub}">×</button></span>`).join('') || '<span style="color:var(--muted);font-size:13px;">Keine Unterkategorien</span>'}
+            </div>
+            <div class="inline-add">
+                <input type="text" placeholder="Neue Unterkategorie ..." data-subinput="${cat}">
+                <button class="icon-btn" data-addsub="${cat}">+ Hinzufügen</button>
+            </div>
+        </div>
+    `).join('');
+
+    wrap.querySelectorAll('[data-delmain]').forEach(b=>b.addEventListener('click', ()=>{
+        const cat = b.dataset.delmain;
+        if(confirm('Kategorie "'+cat+'" inkl. aller Unterkategorien löschen? Zugeordnete Werke bleiben erhalten, verlieren aber ihre Kategorie-Zuordnung.')){
+            delete STATE.categories[cat];
+            STATE.works.forEach(w=>{ if(w.category===cat){ w.category=''; w.subcategory=''; } });
+            saveState(); renderAdminCategories(); renderAdminWorksTable();
+        }
+    }));
+    wrap.querySelectorAll('[data-delsub]').forEach(b=>b.addEventListener('click', ()=>{
+        const [cat, sub] = b.dataset.delsub.split('|||');
+        STATE.categories[cat] = STATE.categories[cat].filter(s=>s!==sub);
+        saveState(); renderAdminCategories();
+    }));
+    wrap.querySelectorAll('[data-addsub]').forEach(b=>b.addEventListener('click', ()=>{
+        const cat = b.dataset.addsub;
+        const input = wrap.querySelector(`[data-subinput="${cat}"]`);
+        const val = input.value.trim();
+        if(!val) return;
+        if(!STATE.categories[cat].includes(val)) STATE.categories[cat].push(val);
+        input.value='';
+        saveState(); renderAdminCategories();
+    }));
+}
+document.getElementById('addMainCatBtn').addEventListener('click', ()=>{
+    const input = document.getElementById('newMainCatInput');
+    const val = input.value.trim();
+    if(!val) return;
+    if(STATE.categories[val]){ alert('Diese Kategorie gibt es bereits.'); return; }
+    STATE.categories[val] = [];
+    input.value='';
+    saveState(); renderAdminCategories();
+});
+
+/* ---- Info-Seite bearbeiten ---- */
+function fillInfoEditForm(){
+    document.getElementById('editIntro').value = STATE.info.intro;
+    document.getElementById('editKunst').value = STATE.info.kunst;
+    document.getElementById('editInspiration').value = STATE.info.inspiration;
+    document.getElementById('editTechniken').value = STATE.info.techniken;
+    document.getElementById('editAusstellungen').value = STATE.info.ausstellungen;
+    document.getElementById('editKontakt').value = STATE.info.kontakt;
+    const preview = document.getElementById('portraitPreview');
+    if(STATE.info.portrait){ preview.src = STATE.info.portrait; preview.style.display='block'; }
+    else preview.style.display='none';
+}
+let portraitTempData = null;
+document.getElementById('portraitUpload').addEventListener('change', e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{
+        portraitTempData = ev.target.result;
+        const preview = document.getElementById('portraitPreview');
+        preview.src = portraitTempData;
+        preview.style.display='block';
+    };
+    reader.readAsDataURL(file);
+});
+document.getElementById('saveInfoBtn').addEventListener('click', ()=>{
+    STATE.info.intro = document.getElementById('editIntro').value;
+    STATE.info.kunst = document.getElementById('editKunst').value;
+    STATE.info.inspiration = document.getElementById('editInspiration').value;
+    STATE.info.techniken = document.getElementById('editTechniken').value;
+    STATE.info.ausstellungen = document.getElementById('editAusstellungen').value;
+    STATE.info.kontakt = document.getElementById('editKontakt').value;
+    if(portraitTempData) STATE.info.portrait = portraitTempData;
+    saveState();
+    showToast('Info-Seite gespeichert.');
+});
+
+/* ---- Daten Export / Import / Reset ---- */
+document.getElementById('exportBtn').addEventListener('click', ()=>{
+    const blob = new Blob([JSON.stringify(STATE, null, 2)], {type:'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'gabi-galerie-daten.json';
+    a.click();
+    URL.revokeObjectURL(url);
+});
+document.getElementById('importBtn').addEventListener('click', ()=>{
+    document.getElementById('importFile').click();
+});
+document.getElementById('importFile').addEventListener('change', e=>{
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev=>{
+        try{
+            const data = JSON.parse(ev.target.result);
+            if(!data.categories || !data.works || !data.info) throw new Error('Ungültiges Format');
+            STATE = data;
+            saveState();
+            showToast('Daten erfolgreich importiert.');
+            renderAdmin();
+        }catch(err){
+            alert('Die Datei konnte nicht gelesen werden. Bitte eine gültige Export-Datei verwenden.');
+        }
+    };
+    reader.readAsText(file);
+});
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+    if(confirm('Wirklich ALLE Werke, Kategorien und Texte zurücksetzen? Das kann nicht rückgängig gemacht werden.')){
+        STATE = JSON.parse(JSON.stringify(DEFAULT_DATA));
+        saveState();
+        renderAdmin();
+        showToast('Alles wurde zurückgesetzt.');
+    }
+});
+
+/* =========================================================
+   INIT
+========================================================= */
+document.getElementById('year').textContent = new Date().getFullYear();
+showView('home');
 </script>
 </body>
 </html>
